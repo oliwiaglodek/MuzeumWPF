@@ -6,5 +6,4 @@
 
 04.08.2024 - Rejestracja
 - obsługa rejestracji
-- zahaszowanie hasła
-- obsługa "pokaż hasło"
+- walidacja na email i hasło

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SQLite;
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace MuzeumInz
 {
@@ -70,8 +71,6 @@ namespace MuzeumInz
             registerWindow.Show();
             this.Hide();
         }
-
-       
     }
 
 }
