@@ -24,6 +24,7 @@ namespace MuzeumInz
     public partial class MainWindow : Window
     {
         public DbConnect dbConnect;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,13 +34,14 @@ namespace MuzeumInz
         //zamknięcie okna na "X"
         private void exitClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
+        //Obsługa logowania
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
-            string email = loginTxt.Text;
-            string password = loginPassTxt.Text;
+            string email = login_loginTxt.Text;
+            string password = login_passTxt.Password;
 
             string query = $"SELECT * FROM users WHERE email='{email}' AND password='{password}'";
 
@@ -60,6 +62,16 @@ namespace MuzeumInz
             }
 
         }
+
+        //Otworzy okno rejestracji
+        private void signBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Register registerWindow = new Register();
+            registerWindow.Show();
+            this.Hide();
+        }
+
+       
     }
 
 }
