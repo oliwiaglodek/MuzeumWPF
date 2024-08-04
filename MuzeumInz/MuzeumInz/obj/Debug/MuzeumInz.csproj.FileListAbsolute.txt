@@ -22,3 +22,29 @@ C:\Users\Admin\Desktop\Nowy folder (2)\MuzeumInz\MuzeumInz\bin\Debug\EntityFrame
 C:\Users\Admin\Desktop\Nowy folder (2)\MuzeumInz\MuzeumInz\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Admin\Desktop\Nowy folder (2)\MuzeumInz\MuzeumInz\bin\Debug\System.Data.SQLite.xml
 C:\Users\Admin\Desktop\Nowy folder (2)\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.csproj.Up2Date
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\MuzeumInz.exe.config
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\MuzeumInz.exe
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\MuzeumInz.pdb
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\System.Data.SQLite.dll
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\System.Data.SQLite.xml
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MainWindow.g.cs
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\App.g.cs
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz_MarkupCompile.cache
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz_MarkupCompile.lref
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MainWindow.baml
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.g.resources
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.Properties.Resources.resources
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.csproj.GenerateResource.cache
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.csproj.Up2Date
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.exe
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.pdb
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Register.g.cs
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Register.baml
