@@ -7,3 +7,4 @@
 04.08.2024 - Rejestracja
 - obsługa rejestracji
 - walidacja na email i hasło
+- hashowanie hasła

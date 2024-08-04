@@ -17,6 +17,7 @@ using System.Data.Entity;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography; //hashowanie hasła algorytmem SHA-256
 
 namespace MuzeumInz
 {
@@ -65,6 +66,9 @@ namespace MuzeumInz
                 return;
             }
 
+            //Hashowanie hasła
+            string hashedPass = HashPassword(password);
+
             //Sprawdzenie czy pola nie są puste
             if (string.IsNullOrEmpty(register_loginTxt.Text))
             {
@@ -85,7 +89,7 @@ namespace MuzeumInz
                     return;
                 }
 
-                dbConnect.RegisterUser(email, password);
+                dbConnect.RegisterUser(email, hashedPass);
                 MessageBox.Show("Zarejestrowano poprawnie");
 
                 //czyszczenie pól
@@ -135,6 +139,21 @@ namespace MuzeumInz
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        //Hashowanie hasła
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
     }
