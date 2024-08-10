@@ -55,10 +55,12 @@ namespace MuzeumInz
             if (result.Rows.Count > 0)
             {
                 MessageBox.Show("Logowanie poprawne");
+                
             }
             else
             {
                 MessageBox.Show("Błedy login lub hasło");
+                MessageBox.Show();
 
             }
 
@@ -69,6 +71,14 @@ namespace MuzeumInz
         {
             Register registerWindow = new Register();
             registerWindow.Show();
+            this.Hide();
+        }
+
+        //Otworzy okno panelu głównego
+        private void Main_Panel_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            MainPanel MainPanelWindow = new MainPanel();
+            MainPanelWindow.Show();
             this.Hide();
         }
     }
