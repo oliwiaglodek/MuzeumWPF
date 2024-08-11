@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuzeumInz"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="690" WindowStyle="None">
+        Title="Login" Height="450" Width="690" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid x:Name="login">
-        <Border Background="#210B61" BorderThickness="0" CornerRadius="0" Padding="20" HorizontalAlignment="Left" Width="283"/>
+        <Border Background="#210B61" BorderThickness="0" CornerRadius="0" Padding="20" HorizontalAlignment="Left" Width="267" Margin="10,10,0,10"/>
         <Label Content="Zaloguj się" HorizontalAlignment="Left" Margin="312,53,0,0" VerticalAlignment="Top" Height="46" Width="337" FontSize="25" FontFamily="Tahoma" FontWeight="Bold"/>
         <Label Content="Login:" HorizontalAlignment="Left" Margin="312,140,0,0" VerticalAlignment="Top" Width="79" FontFamily="Tahoma" FontSize="15"/>
         <TextBox x:Name="login_loginTxt" HorizontalAlignment="Left" Margin="312,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" Height="29" FontFamily="Tahoma" FontSize="15"/>
         <Label Content="Hasło:" HorizontalAlignment="Left" Margin="312,207,0,0" VerticalAlignment="Top" Width="79" FontFamily="Tahoma" FontSize="15"/>
-        <Button x:Name="login_loginBtn" Content="Zaloguj się" HorizontalAlignment="Left" Margin="312,341,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="168" Background="#210B61" Foreground="White" FontWeight="Bold" Click="loginBtn_Click"/>
+        <Button x:Name="login_loginBtn" Content="Zaloguj się" HorizontalAlignment="Left" Margin="396,341,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="168" Background="#210B61" Foreground="White" FontWeight="Bold" Click="loginBtn_Click" Cursor="Hand"/>
         <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="659,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
         <Button x:Name="login_signBtn" Content="Zarejestruj się" HorizontalAlignment="Left" Margin="21,341,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="243" Background="White" Foreground="#210B61
-                " FontWeight="Bold" Click="signBtn_Click"/>
+                " FontWeight="Bold" Click="signBtn_Click" Cursor="Hand"/>
         <Label Content="Załóż konto" HorizontalAlignment="Left" Margin="93,310,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Foreground="White"/>
-        <Label Content="System Zarządzania" HorizontalAlignment="Left" Margin="22,56,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="25" Width="242"/>
-        <Label Content="Zbiorami Muzealnymi" HorizontalAlignment="Left" Margin="15,101,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="25" Width="243"/>
+        <Label Content="System Zarządzania" HorizontalAlignment="Left" Margin="28,56,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="25" Width="242"/>
+        <Label Content="Zbiorami Muzealnymi" HorizontalAlignment="Left" Margin="21,101,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="25" Width="243"/>
         <PasswordBox x:Name="login_passTxt" HorizontalAlignment="Left" Margin="312,240,0,0" VerticalAlignment="Top" Width="337" Height="29"/>
 
 
