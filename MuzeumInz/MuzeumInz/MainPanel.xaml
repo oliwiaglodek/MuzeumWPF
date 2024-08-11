@@ -8,7 +8,12 @@
         Title="MainPanel" Height="450" Width="800">
     <Grid x:Name="MainPanelGrid">
         <Border Background="#210B61" BorderThickness="0" CornerRadius="0" Padding="20" HorizontalAlignment="Left" Width="141"/>
-        <Label Content="Panel &#xD;&#xA; Administracyjny" HorizontalAlignment="Left" Margin="9,19,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="14" Width="119" Height="76" Grid.RowSpan="2"/>
+        <Label Content="Panel &#xA;Administracyjny" HorizontalAlignment="Left" Foreground="white" FontFamily="Tahoma" FontSize="14" Width="141" Height="64" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center"/>
         <Label x:Name="exitClick" HorizontalAlignment="Left" Margin="9,396,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="13" FontWeight="Bold" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619" Content="Zamknij program" Background="White" BorderThickness="1,1,1,1" Foreground="#FF210B61" Cursor="Arrow"/>
+        <Label x:Name="ExhibitsBtn" Content="Eksponaty" HorizontalAlignment="Left" Margin="0,78,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="11" Width="141" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="ExhibitsHistoryBtn" Content="Historia zmian eksponatów" HorizontalAlignment="Left" Margin="1,120,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="11" Width="141" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="InventoryBtn" Content="Inwentaryzacja" HorizontalAlignment="Left" Margin="1,162,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="11" Width="141" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="ExhibitionsBtn" Content="Wystawy" HorizontalAlignment="Left" Margin="1,204,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="11" Width="141" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="ReportsBtn" Content="Raporty, analiza PDF" HorizontalAlignment="Left" Margin="1,246,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="11" Width="141" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
 </Window>

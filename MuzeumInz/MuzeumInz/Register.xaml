@@ -15,7 +15,7 @@
         <Button x:Name="register_loginBtn" Content="Zaloguj się" HorizontalAlignment="Left" Margin="21,341,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="243" Background="White" Foreground="#210B61
                 " FontWeight="Bold" Click="register_loginBtn_Click"/>
         <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="659,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
-        <Button x:Name="register_signBtn" Content="Zrejestruj się" HorizontalAlignment="Left" Margin="312,341,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="168" Background="#210B61" Foreground="White" FontWeight="Bold" Click="register_signBtn_Click"/>
+        <Button x:Name="register_signBtn" Content="Zarejestruj się" HorizontalAlignment="Left" Margin="312,341,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="168" Background="#210B61" Foreground="White" FontWeight="Bold" Click="register_signBtn_Click"/>
         <Label Content="Mam już konto" HorizontalAlignment="Left" Margin="93,310,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Foreground="White"/>
         <Label Content="System Zarządzania" HorizontalAlignment="Left" Margin="22,56,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="25" Width="242"/>
         <Label Content="Zbiorami Muzealnymi" HorizontalAlignment="Left" Margin="15,101,0,0" VerticalAlignment="Top" Foreground="white" FontFamily="Tahoma" FontSize="25" Width="243"/>

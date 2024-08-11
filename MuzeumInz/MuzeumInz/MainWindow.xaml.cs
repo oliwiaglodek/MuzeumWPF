@@ -55,12 +55,11 @@ namespace MuzeumInz
             if (result.Rows.Count > 0)
             {
                 MessageBox.Show("Logowanie poprawne");
-                
+                Main_Panel_Btn_Click(sender, e); //przy poprawnym zalogoaniu otworzy panel administracyjny
             }
             else
             {
                 MessageBox.Show("Błedy login lub hasło");
-                MessageBox.Show();
 
             }
 
