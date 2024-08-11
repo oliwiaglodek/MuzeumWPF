@@ -16,6 +16,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Configuration;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace MuzeumInz
 {
@@ -43,18 +44,18 @@ namespace MuzeumInz
         {
             string email = login_loginTxt.Text;
             string password = login_passTxt.Password;
+            string hashedPass = HashPassword(password); //zahaszowanie podanego hasła i sprawdzenie hashu w bazie danych
 
-            string query = $"SELECT * FROM users WHERE email='{email}' AND password='{password}'";
+            string query = $"SELECT * FROM users WHERE email='{email}' AND password='{hashedPass}'";
 
             SQLiteCommand command = new SQLiteCommand(query);
             command.Parameters.AddWithValue("@email", email);
-            command.Parameters.AddWithValue("@password", password);
+            command.Parameters.AddWithValue("@password", hashedPass);
 
             DataTable result = dbConnect.GetData(command);
 
             if (result.Rows.Count > 0)
             {
-                MessageBox.Show("Logowanie poprawne");
                 Main_Panel_Btn_Click(sender, e); //przy poprawnym zalogoaniu otworzy panel administracyjny
             }
             else
@@ -79,6 +80,20 @@ namespace MuzeumInz
             MainPanel MainPanelWindow = new MainPanel();
             MainPanelWindow.Show();
             this.Hide();
+        }
+        //Hashowanie hasła
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
     }
 

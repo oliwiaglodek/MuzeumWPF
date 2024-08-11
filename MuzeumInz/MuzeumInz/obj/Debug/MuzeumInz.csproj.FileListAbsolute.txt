@@ -110,3 +110,5 @@ C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.csproj.Up2Date
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.exe
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MuzeumInz.pdb
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MainPanel.g.cs
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\MainPanel.baml

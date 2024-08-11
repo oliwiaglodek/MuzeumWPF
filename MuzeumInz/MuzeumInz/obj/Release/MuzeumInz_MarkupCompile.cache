@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Release\
 MuzeumInz
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\App.xaml
 3311544635
 
-937962187
+82120050805
 21-23424910
 MainPanel.xaml;MainWindow.xaml;Register.xaml;
 
