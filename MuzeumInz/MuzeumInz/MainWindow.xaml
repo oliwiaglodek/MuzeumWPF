@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuzeumInz"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="700" WindowStyle="None">
+        Title="Login" Height="450" Width="690" WindowStyle="None">
     <Grid x:Name="login">
         <Border Background="#210B61" BorderThickness="0" CornerRadius="0" Padding="20" HorizontalAlignment="Left" Width="283"/>
         <Label Content="Zaloguj się" HorizontalAlignment="Left" Margin="312,53,0,0" VerticalAlignment="Top" Height="46" Width="337" FontSize="25" FontFamily="Tahoma" FontWeight="Bold"/>
