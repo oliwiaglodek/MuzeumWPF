@@ -61,10 +61,22 @@ namespace MuzeumInz
             DataTable addExhibits = dbConnect.GetExhibits();          
             exhibits_exhibitsDb.ItemsSource = addExhibits.DefaultView;
         }
-
+        //przy zaznaczeniu wiersza, automatycznie uzupełnia pola z edycji
         private void exhibits_exhibitsDb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (exhibits_exhibitsDb.SelectedItem is DataRowView selectedRow)
+            {
+                exhibitsEdit_nameTxt.Text = selectedRow["name"].ToString();
+                exhibitsEdit_authorTxt.Text = selectedRow["Author"].ToString();
+                exhibitsEdit_categoryList.Text = selectedRow["Category"].ToString();
+                exhibitsEdit_yearTxt.Text = selectedRow["Year"].ToString();
+                exhibitsEdit_originTxt.Text = selectedRow["Origin"].ToString();
+                exhibitsEdit_locationTxt.Text = selectedRow["Location"].ToString();
+                exhibitsEdit_descriptionTxt.Text = selectedRow["Description"].ToString();
+                //exhibitsEdit_imageBtn.Text = selectedRow["Image"].ToString(); //do przemyślenia
+                exhibitsEdit_nameTxt.Focus();
+            }
+            
         }
 
         private void exhibits_saveBtn_Click(object sender, RoutedEventArgs e)
@@ -98,5 +110,11 @@ namespace MuzeumInz
                 loadGrid();
             }
         }
+        //Przycisk edytuj
+        private void exhibits_editBtn_Click(object sender, RoutedEventArgs e)
+        {
+            exhibits_editGrid.Visibility = Visibility.Visible;
+        }
+        
     }
 }
