@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Windows.Media.Imaging;
+using System.Data.Entity;
+using System.IO;
 
 namespace MuzeumInz
 {
@@ -77,6 +80,58 @@ namespace MuzeumInz
 
                 command.ExecuteNonQuery();
             }
+        }
+        //wczytaj eksponaty
+        public DataTable GetExhibits()
+        {
+            string sql = "SELECT id, name, Description, Year, Category, Author, Origin, Location FROM exhibits;";            ;
+            DataTable dt = new DataTable(); //przechowuje wyniki z db
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();                
+                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, connection))
+                {
+                    adapter.Fill(dt);//wypełnia pole danymi
+                } //wykonuje zapytanie sql i wypełnia tabele
+            }
+            return dt;
+        }
+        //dodaj eksponat
+        public void InsertExhibits(AddExhibits addExhibits)
+        {
+
+            string sql = "INSERT INTO exhibits(Name,Description,Year,Category,Author,Origin,Location) VALUES(@Name,@Description,@Year,@Category,@Author,@Origin,@Location);";
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", addExhibits.Name);
+                    command.Parameters.AddWithValue("@Description", addExhibits.Description);
+                    command.Parameters.AddWithValue("@Year", addExhibits.Year);
+                    command.Parameters.AddWithValue("@Category", addExhibits.Category);
+                    command.Parameters.AddWithValue("@Author", addExhibits.Author);
+                    command.Parameters.AddWithValue("@Origin", addExhibits.Origin);
+                    //command.Parameters.AddWithValue("@Image", addExhibits.Image); //przerobić na tablice bytes
+                    command.Parameters.AddWithValue("@Location", addExhibits.Location);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private BitmapImage convertBytesToBitmap(byte[] bytes)
+        {
+            BitmapImage image = new BitmapImage();
+            MemoryStream ms = new MemoryStream(bytes);
+            image.BeginInit();
+            image.CacheOption = BitmapCacheOption.OnLoad;
+            image.StreamSource = ms;
+            image.EndInit();
+
+            return image;
         }
     }
 }
