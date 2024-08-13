@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SQLite;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Collections;
+using System.Runtime.Remoting.Contexts;
+using System.Collections.ObjectModel;
 
 namespace MuzeumInz
 {
@@ -23,10 +27,15 @@ namespace MuzeumInz
     {
         private BitmapImage image;        
         private DbConnect dbConnect;
+        public ObservableCollection<AddExhibits> Items { get; set; } //powiązania danych z interfejsem użytkownika
+
         public Exhibits()
         {
             InitializeComponent();
             dbConnect = new DbConnect();
+
+            Items = new ObservableCollection<AddExhibits>();
+            exhibits_exhibitsDb.ItemsSource = Items;
 
             loadGrid();            
         }
@@ -54,6 +63,7 @@ namespace MuzeumInz
         private void exhibits_addBtn_Click(object sender, RoutedEventArgs e)
         {
             exhibits_addGrid.Visibility = Visibility.Visible;
+            exhibits_editGrid.Visibility = Visibility.Collapsed;
         }
 
         public void loadGrid()
@@ -114,7 +124,24 @@ namespace MuzeumInz
         private void exhibits_editBtn_Click(object sender, RoutedEventArgs e)
         {
             exhibits_editGrid.Visibility = Visibility.Visible;
+            exhibits_addGrid.Visibility = Visibility.Collapsed;
         }
-        
+        //usuwanie eksponatu
+        private void exhibits_deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(exhibits_exhibitsDb.SelectedItem != null)
+            {
+                // Pobranie zaznaczonego rekordu (wiersza) jako obiekt
+                var selectedItem = (DataRowView)exhibits_exhibitsDb.SelectedItem;
+                int id = Convert.ToInt32(selectedItem["id"]);
+
+                dbConnect.DeleteExhibits(id);                
+                loadGrid();                
+            }
+            else
+            {
+                MessageBox.Show("Proszę zaznaczyć rekord do usunięcia.");
+            }
+        }
     }
 }

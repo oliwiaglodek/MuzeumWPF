@@ -84,7 +84,7 @@ namespace MuzeumInz
         //wczytaj eksponaty
         public DataTable GetExhibits()
         {
-            string sql = "SELECT id, name, Description, Year, Category, Author, Origin, Location FROM exhibits;";            ;
+            string sql = "SELECT id, name, Description, Year, Category, Author, Origin, Location FROM exhibits;";            
             DataTable dt = new DataTable(); //przechowuje wyniki z db
 
             using (var connection = new SQLiteConnection(connectionString))
@@ -120,6 +120,22 @@ namespace MuzeumInz
                     command.ExecuteNonQuery();
                 }
             }
+        }
+        //Usuń eksponat z bazy
+        public void DeleteExhibits(int id)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE FROM exhibits WHERE id = @Id";
+
+                using (var command = new SQLiteCommand(sql,connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+            
         }
 
         private BitmapImage convertBytesToBitmap(byte[] bytes)
