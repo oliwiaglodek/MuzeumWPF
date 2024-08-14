@@ -79,6 +79,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AddExhibits.cs" />
+    <Compile Include="Exhibitions.xaml.cs">
+      <DependentUpon>Exhibitions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Exhibits.xaml.cs">
       <DependentUpon>Exhibits.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Page Include="Exhibitions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Exhibits.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

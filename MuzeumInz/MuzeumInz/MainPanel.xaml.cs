@@ -50,5 +50,12 @@ namespace MuzeumInz
             Exhibits.Show();
             this.Hide();
         }
+
+        private void ExhibitionsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Exhibitions Exhibitions = new Exhibitions();
+            Exhibitions.Show();
+            this.Hide();
+        }
     }
 }

@@ -143,5 +143,20 @@ namespace MuzeumInz
                 MessageBox.Show("Proszę zaznaczyć rekord do usunięcia.");
             }
         }
+
+        private void ExhibitionsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Exhibitions Exhibitions = new Exhibitions();
+            Exhibitions.Show();
+            this.Hide();
+        }
+
+        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow MainWindow = new MainWindow();
+            MainWindow.Show();
+            this.Hide();
+            MessageBox.Show("Pomyślnie wylogowano!");
+        }
     }
 }
