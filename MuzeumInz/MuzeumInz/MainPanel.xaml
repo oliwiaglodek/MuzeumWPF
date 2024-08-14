@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuzeumInz"
         mc:Ignorable="d"
-        Title="MainPanel" Height="800" Width="1482" WindowStyle="None" MinWidth="1445" MinHeight="800" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" MaxWidth="1455" MaxHeight="738" Margin="-17,0,0,0" Padding="5,5,5,5">
+        Title="MainPanel" Height="800" Width="1482" WindowStyle="None" MinWidth="1445" MinHeight="800" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" MaxWidth="1455" MaxHeight="738" Margin="-17,0,0,0" Padding="5,5,5,5" WindowState="Maximized">
     <Grid x:Name="MainPanelGrid" Height="774" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
@@ -14,149 +14,7 @@
             <ColumnDefinition Width="204*"/>
             <ColumnDefinition Width="17*"/>
         </Grid.ColumnDefinitions>
-        <Border Background="#210B61" BorderThickness="0" CornerRadius="0" Padding="20" HorizontalAlignment="Center" Width="210" Margin="0,260,0,436" RenderTransformOrigin="0.5,0.5" MinWidth="210" MaxWidth="210" MinHeight="78" MaxHeight="78" Grid.Column="1">
-            <Border.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="0.867"/>
-                    <SkewTransform AngleY="-37.736" AngleX="11.231"/>
-                    <RotateTransform Angle="11.818"/>
-                    <TranslateTransform Y="-50.622" X="-8.007"/>
-                </TransformGroup>
-            </Border.RenderTransform>
-        </Border>
-        <Label Content="         Panel &#xA;Administracyjny" Foreground="white" FontFamily="Tahoma" FontSize="22" Width="241" Height="130" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="20,28,0,0" Panel.ZIndex="1" FontWeight="Bold" MinWidth="241" MaxWidth="241" MinHeight="127" MaxHeight="127" Grid.Column="1" HorizontalAlignment="Left">
-            <Label.Effect>
-                <DropShadowEffect/>
-            </Label.Effect>
-        </Label>
-        <Label x:Name="LogoutBtn" HorizontalAlignment="Left" Margin="56,654,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="13" FontWeight="Bold" MouseLeftButtonDown="logout_Btn_Click" RenderTransformOrigin="-0.416,0.619" Content="Wyloguj" BorderThickness="1,1,1,1" Foreground="#FF210B61" Cursor="Hand" Grid.Column="1" Height="28" Width="66" Panel.ZIndex="1">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="25.098"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label
-        Width="244" VerticalAlignment="Top" VerticalContentAlignment="Center" x:Name="ExhibitsBtn" Margin="18,300,0,0" HorizontalContentAlignment="Center" Height="36" HorizontalAlignment="Left" FontSize="20" FontFamily="Tahoma" Foreground="White" Content="Eksponaty" Cursor="Hand" Panel.ZIndex="1" RenderTransformOrigin="0.5,0.5" Grid.Column="1" MouseLeftButtonDown="ExhibitsBtn_MouseLeftButtonDown">
-            <Label.Effect>
-                <DropShadowEffect/>
-            </Label.Effect>
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-26.494"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label x:Name="ExhibitsHistoryBtn" Content="Historia zmian eksponatów" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White" FontFamily="Tahoma" FontSize="20" Width="262" Height="38" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Cursor="Hand" Panel.ZIndex="1" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
-            <Label.Effect>
-                <DropShadowEffect/>
-            </Label.Effect>
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-26.019"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label x:Name="InventoryBtn" Content="Inwentaryzacja" HorizontalAlignment="Left" Margin="16,445,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Tahoma" FontSize="20" Width="248" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Cursor="Hand" Panel.ZIndex="1" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
-            <Label.Effect>
-                <DropShadowEffect/>
-            </Label.Effect>
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-25.954"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label x:Name="ExhibitionsBtn" Content="Wystawy" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontFamily="Tahoma" FontSize="20" Width="243" Height="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Cursor="Hand" RenderTransformOrigin="0.659,1.338" MinWidth="243" MaxWidth="243" MinHeight="39" Grid.Column="1" Margin="21,224,0,0">
-            <Label.Effect>
-                <DropShadowEffect/>
-            </Label.Effect>
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-25.978"/>
-                    <TranslateTransform X="10.415" Y="-20.228"/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label x:Name="ReportsBtn" Content="Raporty, analiza, PDF" HorizontalAlignment="Left" Margin="31,517,0,0" Foreground="White" FontFamily="Tahoma" FontSize="20" Width="218" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Cursor="Hand" Panel.ZIndex="9" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Height="37" VerticalAlignment="Top">
-            <Label.Effect>
-                <DropShadowEffect/>
-            </Label.Effect>
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-25.529"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
         <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="181,13,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619" Grid.Column="3" Height="28" Width="19"/>
-        <Rectangle Fill="#FF210B61" Margin="20,28,38,618" MinWidth="241" MaxWidth="241" MinHeight="128" MaxHeight="128" Grid.Column="1" />
-        <Border Background="#210B61" BorderThickness="0" CornerRadius="0" Padding="20" HorizontalAlignment="Center" Width="210" Margin="0,314,0,346" RenderTransformOrigin="0.5,0.5" MaxHeight="78" MinHeight="78" MinWidth="210" MaxWidth="210" Grid.Column="1">
-            <Border.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="0.867"/>
-                    <SkewTransform AngleY="-37.736" AngleX="11.231"/>
-                    <RotateTransform Angle="11.818"/>
-                    <TranslateTransform Y="-50.622" X="-8.007"/>
-                </TransformGroup>
-            </Border.RenderTransform>
-        </Border>
-        <Border Background="#210B61" BorderThickness="0" CornerRadius="0" Padding="20" HorizontalAlignment="Center" Width="210" Margin="0,386,0,274" RenderTransformOrigin="0.5,0.5" MinWidth="210" MaxWidth="210" MinHeight="78" MaxHeight="78" Grid.Column="1">
-            <Border.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="0.867"/>
-                    <SkewTransform AngleY="-37.736" AngleX="11.231"/>
-                    <RotateTransform Angle="11.818"/>
-                    <TranslateTransform Y="-50.622" X="-8.007"/>
-                </TransformGroup>
-            </Border.RenderTransform>
-        </Border>
-        <Border Background="#210B61" BorderThickness="0" CornerRadius="0" Padding="20" HorizontalAlignment="Center" Width="210" Margin="0,459,0,201" RenderTransformOrigin="0.5,0.5" MinWidth="210" MaxWidth="210" MinHeight="78" MaxHeight="78" Grid.Column="1">
-            <Border.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="0.867"/>
-                    <SkewTransform AngleY="-37.736" AngleX="11.231"/>
-                    <RotateTransform Angle="11.818"/>
-                    <TranslateTransform Y="-50.622" X="-8.007"/>
-                </TransformGroup>
-            </Border.RenderTransform>
-        </Border>
-        <Border Background="#210B61" BorderThickness="0" CornerRadius="0" Padding="20" HorizontalAlignment="Center" Width="210" Margin="0,533,0,127" RenderTransformOrigin="0.5,0.5" MinWidth="210" MaxWidth="210" MinHeight="78" MaxHeight="78" Grid.Column="1">
-            <Border.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="0.867"/>
-                    <SkewTransform AngleY="-37.736" AngleX="11.231"/>
-                    <RotateTransform Angle="11.818"/>
-                    <TranslateTransform Y="-50.622" X="-8.007"/>
-                </TransformGroup>
-            </Border.RenderTransform>
-        </Border>
-        <Border Background="White" BorderThickness="5" BorderBrush="#210B61"  CornerRadius="0" Padding="20" HorizontalAlignment="Right" Width="112" Margin="0,708,151,-6" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
-            <Border.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-0.867"/>
-                    <SkewTransform AngleY="37.736" AngleX="-11.231"/>
-                    <RotateTransform Angle="-11.818"/>
-                    <TranslateTransform X="-8.007" Y="-50.622"/>
-                </TransformGroup>
-            </Border.RenderTransform>
-        </Border>
         <Calendar Grid.Column="3" HorizontalAlignment="Left" Height="178" Margin="27,366,0,0" VerticalAlignment="Top" Width="184" Grid.ColumnSpan="2"/>
         <Grid Grid.Column="2" HorizontalAlignment="Center" Height="774" VerticalAlignment="Center" Width="934">
             <Grid.RowDefinitions>
@@ -169,6 +27,115 @@
             <Label Content="Witaj {User} !" HorizontalAlignment="Center" Margin="0,231,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="48"/>
 
         </Grid>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,10,-22" >
+            <Button Content="Panel Administracyjny" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Top" 
+                Background="#210B61" 
+                Foreground="White"
+                Height="100"
+                FontSize="20"
+                FontWeight="Bold"
+                Margin="10" FontFamily="Tahoma" />
+            <Button x:Name="ExhibitionsBtn" Content="Wystawy" 
+                Background="#210B61" 
+                Foreground="White"
+                Height="43"
+                FontSize="16"
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,50,0,0" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-20"/>
+                        <RotateTransform Angle="-20"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button x:Name="ExhibitionsBtn1" Content="Eksponaty" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Top" 
+                Background="#210B61" 
+                Foreground="White"
+                Height="43"
+                FontSize="16"
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Click="ExhibitionsBtn1_Click" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-20"/>
+                        <RotateTransform Angle="-20"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button x:Name="ExhibitsHistoryBtn" Content="Historia zmian eksponatów" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Top" 
+                Background="#210B61" 
+                Foreground="White"
+                Height="43"
+                FontSize="16"
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-20"/>
+                        <RotateTransform Angle="-20"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button x:Name="InventoryBtn" Content="Inwentaryzacja" 
+                Background="#210B61" 
+                Foreground="White"
+                Height="43"
+                FontSize="16"
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-20"/>
+                        <RotateTransform Angle="-20"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button x:Name="ReportsBtn" Content="Raporty, analiza, PDF" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Top" 
+                Background="#210B61" 
+                Foreground="White"
+                Height="43"
+                FontSize="16"
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-20"/>
+                        <RotateTransform Angle="-20"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button x:Name="LogoutBtn" Content="Wyloguj" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Top" 
+                Background="White" 
+                Foreground="#210B61"
+                Height="43"
+                FontSize="16"
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" BorderBrush="#FF210B61" MouseLeftButtonDown="logout_Btn_Click" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-20"/>
+                        <RotateTransform Angle="-20"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+        </StackPanel>
 
     </Grid>
 </Window>

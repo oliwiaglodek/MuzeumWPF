@@ -44,7 +44,7 @@ namespace MuzeumInz
             MessageBox.Show("Pomyślnie wylogowano!");
         }
 
-        private void ExhibitsBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ExhibitionsBtn1_Click(object sender, RoutedEventArgs e)
         {
             Exhibits Exhibits = new Exhibits();
             Exhibits.Show();
