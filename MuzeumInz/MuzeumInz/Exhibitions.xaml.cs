@@ -43,5 +43,26 @@ namespace MuzeumInz
         {
             Application.Current.Shutdown();
         }
+
+        private void exhibition_addExhibitsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            exhibitions_allExhibitsGrid.Visibility = Visibility.Visible;
+            exhibitions_addExhibitionsGrid.Visibility = Visibility.Collapsed;
+            exhibitions_editExhibitionsGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void exhibition_addBtn_Click(object sender, RoutedEventArgs e)
+        {
+            exhibitions_addExhibitionsGrid.Visibility = Visibility.Visible;
+            exhibitions_allExhibitsGrid.Visibility = Visibility.Collapsed;
+            exhibitions_editExhibitionsGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void exhibition_editBtn_Click(object sender, RoutedEventArgs e)
+        {
+            exhibitions_editExhibitionsGrid.Visibility= Visibility.Visible;
+            exhibitions_addExhibitionsGrid.Visibility = Visibility.Collapsed;
+            exhibitions_allExhibitsGrid.Visibility = Visibility.Collapsed;
+        }
     }
 }
