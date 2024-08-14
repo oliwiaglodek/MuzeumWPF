@@ -38,5 +38,10 @@ namespace MuzeumInz
             exhibits.Show();
             this.Hide();
         }
+
+        private void exit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
