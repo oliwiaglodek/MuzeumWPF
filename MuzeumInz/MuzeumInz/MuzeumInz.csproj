@@ -78,6 +78,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddExhibitions.cs" />
     <Compile Include="AddExhibits.cs" />
     <Compile Include="Exhibitions.xaml.cs">
       <DependentUpon>Exhibitions.xaml</DependentUpon>

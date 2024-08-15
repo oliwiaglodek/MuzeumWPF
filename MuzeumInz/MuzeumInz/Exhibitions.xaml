@@ -111,10 +111,10 @@
             </Button>
         </StackPanel>
         <Grid Margin="275,15,61,617">
-            <DataGrid x:Name="exhibitionsDb" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,10,10"/>
+            <DataGrid x:Name="exhibitionsDb" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,10,10" ColumnWidth="*" AutoGenerateColumns="True" IsReadOnly="True" FontFamily="Tahoma" FontSize="15"/>
         </Grid>
         <Grid Margin="1394,5,7,737">
-            <Label x:Name="exit" Content="X" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exit_MouseLeftButtonDown"/>
+            <Label x:Name="exit" Content="X" HorizontalAlignment="Left" Margin="22,1,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exit_MouseLeftButtonDown"/>
         </Grid>
         <Grid Margin="275,188,61,560">
             <Button x:Name="exhibition_addBtn" Content="Dodaj wystawe" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="0,10,0,0" Click="exhibition_addBtn_Click" />
@@ -143,8 +143,6 @@
             <Label Content="Organizator wystawy" HorizontalAlignment="Left" Margin="12,205,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15"/>
             <Label Content="Typ wystawy" HorizontalAlignment="Left" Margin="12,238,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15"/>
             <TextBox x:Name="exhibitions_addNameTxt" HorizontalAlignment="Left" Margin="175,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="359" Height="28" FontFamily="Tahoma" FontSize="15"/>
-            <TextBox x:Name="exhibitions_addStartDateTxt" HorizontalAlignment="Left" Margin="175,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="359" Height="28" FontFamily="Tahoma" FontSize="15"/>
-            <TextBox x:Name="exhibitions_addEndDateTxt" HorizontalAlignment="Left" Margin="175,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="359" Height="28" FontFamily="Tahoma" FontSize="15"/>
             <TextBox x:Name="exhibitions_addLocationTxt" HorizontalAlignment="Left" Margin="175,172,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="359" Height="28" FontFamily="Tahoma" FontSize="15"/>
             <TextBox x:Name="exhibitions_addResponsiblePersonTxt" HorizontalAlignment="Left" Margin="175,205,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="359" Height="28" FontFamily="Tahoma" FontSize="15"/>
             <ComboBox x:Name="exhibitions_addStatusList" HorizontalAlignment="Left" Margin="175,73,0,0" VerticalAlignment="Top" Width="359" Height="25" SelectedIndex="0">
@@ -158,7 +156,9 @@
                 <ComboBoxItem Content="Objazdowa" FontFamily="Tahoma" FontSize="15"/>
             </ComboBox>
             <TextBox x:Name="exhibitions_addDescriptionTxt" HorizontalAlignment="Left" Margin="711,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="414" Height="232" FontFamily="Tahoma" FontSize="15"/>
-            <Button x:Name="exhibitions_saveAddBtn" Content="Zapisz wystawe" HorizontalAlignment="Left" Margin="883,290,0,0" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold"/>
+            <Button x:Name="exhibitions_saveAddBtn" Content="Zapisz wystawe" HorizontalAlignment="Left" Margin="883,290,0,0" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Click="exhibitions_saveAddBtn_Click"/>
+            <DatePicker x:Name="exhibitions_addStartDateTxt" HorizontalAlignment="Left" Margin="175,106,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma"/>
+            <DatePicker x:Name="exhibitions_addEndDateTxt" HorizontalAlignment="Left" Margin="175,138,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma"/>
         </Grid>
         <Grid x:Name="exhibitions_editExhibitionsGrid" Margin="275,281,61,28" Visibility="Collapsed">
             <Label Content="Nazwa wystawy" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15"/>

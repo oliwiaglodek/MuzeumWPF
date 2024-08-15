@@ -137,6 +137,46 @@ namespace MuzeumInz
             }
             
         }
+        //wczytaj wystawy
+        public DataTable GetExhibitions()
+        {
+            string sql = "SELECT * FROM exhibitions;";
+            DataTable dt = new DataTable(); //przechowuje wyniki z db
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, connection))
+                {
+                    adapter.Fill(dt);//wypełnia pole danymi
+                } //wykonuje zapytanie sql i wypełnia tabele
+            }
+            return dt;
+        }
+        //dodaj wystawe
+        public void InsertExhibitions(AddExhibitions addExhibitions)
+        {
+
+            string sql = "INSERT INTO exhibitions(Name,Description,StartDate,EndDate,Location,ResponsiblePerson,Status,Type) VALUES(@Name,@Description,@StartDate,@EndDate,@Location,@ResponsiblePerson,@Status,@Type);";
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", addExhibitions.Name);
+                    command.Parameters.AddWithValue("@Description", addExhibitions.Description);
+                    command.Parameters.AddWithValue("@StartDate", addExhibitions.StartDate);
+                    command.Parameters.AddWithValue("@EndDate", addExhibitions.EndDate);
+                    command.Parameters.AddWithValue("@Location", addExhibitions.Location);
+                    command.Parameters.AddWithValue("@ResponsiblePerson", addExhibitions.ResponsiblePerson);
+                    command.Parameters.AddWithValue("@Status", addExhibitions.Status);
+                    command.Parameters.AddWithValue("@Type", addExhibitions.Type);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
 
         private BitmapImage convertBytesToBitmap(byte[] bytes)
         {
