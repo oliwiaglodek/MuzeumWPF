@@ -137,6 +137,30 @@ namespace MuzeumInz
             }
             
         }
+        // edytuj eksponat
+        public void UpdateExhibits(AddExhibits addExhibits)
+        {
+            string sql = @"UPDATE exhibits SET name = @Name, description = @Description, year = @Year, category = @Category, author = @Author, origin = @Origin,location = @Location WHERE id = @Id";
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", addExhibits.Name);
+                    command.Parameters.AddWithValue("@Description", addExhibits.Description);
+                    command.Parameters.AddWithValue("@Year", addExhibits.Year);
+                    command.Parameters.AddWithValue("@Category", addExhibits.Category);
+                    command.Parameters.AddWithValue("@Author", addExhibits.Author);
+                    command.Parameters.AddWithValue("@Origin", addExhibits.Origin);
+                    //command.Parameters.AddWithValue("@Image", addExhibits.Image); //przerobić na tablice bytes
+                    command.Parameters.AddWithValue("@Location", addExhibits.Location);
+                    command.Parameters.AddWithValue("@Id", addExhibits.Id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
         //wczytaj wystawy
         public DataTable GetExhibitions()
         {

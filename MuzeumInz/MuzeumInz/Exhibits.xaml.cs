@@ -158,5 +158,24 @@ namespace MuzeumInz
             this.Hide();
             MessageBox.Show("Pomyślnie wylogowano!");
         }
+
+        private void exhibitsEdit_saveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = (DataRowView)exhibits_exhibitsDb.SelectedItem;
+            int id = Convert.ToInt32(selectedItem["id"]);
+            string name = exhibitsEdit_nameTxt.Text;
+            string description = exhibitsEdit_descriptionTxt.Text;
+            int year = Convert.ToInt32(exhibitsEdit_yearTxt.Text);
+            string category = exhibitsEdit_categoryList.Text;
+            string author = exhibitsEdit_authorTxt.Text;
+            string origin = exhibitsEdit_originTxt.Text;
+            //imagine
+            string location = exhibitsEdit_locationTxt.Text;
+
+            // Wywołaj metodę aktualizacji
+            AddExhibits addExhibits = new AddExhibits(id, name, description, year, category, author, origin, /*imagine,*/ location);
+            dbConnect.UpdateExhibits(addExhibits);
+            loadGrid();
+        }
     }
 }

@@ -40,7 +40,7 @@
             <Button x:Name="exhibits_imageBtn" Grid.Column="1" Content="Wybierz" HorizontalAlignment="Left" Margin="155,221,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma"/>
             <Button x:Name="exhibits_saveBtn" Grid.Column="1" Content="Zapisz" HorizontalAlignment="Left" Margin="155,280,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibits_saveBtn_Click"/>
         </Grid>
-        <Grid x:Name="exhibits_editGrid" Margin="299,448,87,10" Visibility="Collapsed">
+        <Grid x:Name="exhibits_editGrid" Margin="299,448,87,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -65,7 +65,7 @@
                 <ComboBoxItem Content="Inne"/>
             </ComboBox>
             <Button x:Name="exhibitsEdit_imageBtn" Grid.Column="1" Content="Wybierz" HorizontalAlignment="Left" Margin="155,221,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma"/>
-            <Button x:Name="exhibitsEdit_saveBtn" Grid.Column="1" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="155,280,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma"/>
+            <Button x:Name="exhibitsEdit_saveBtn" Grid.Column="1" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="155,280,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibitsEdit_saveBtn_Click"/>
         </Grid>
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,1282,0" >
             <Button 
