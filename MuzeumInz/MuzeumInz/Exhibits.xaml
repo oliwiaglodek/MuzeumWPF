@@ -10,9 +10,9 @@
     <Grid>
         <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="1453,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
         <DataGrid x:Name="exhibits_exhibitsDb" d:ItemsSource="{d:SampleData ItemCount=20}" Margin="276,42,330,392" FontFamily="Tahoma" FontSize="15" SelectionChanged="exhibits_exhibitsDb_SelectionChanged" ColumnWidth="*" IsReadOnly="True"/>
-        <Button x:Name="exhibits_addBtn" Content="Dodaj" HorizontalAlignment="Left" Margin="1180,268,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="242" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_addBtn_Click"/>
-        <Button x:Name="exhibits_deleteBtn" Content="Usuń" HorizontalAlignment="Left" Margin="1180,309,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="242" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_deleteBtn_Click"/>
-        <Button x:Name="exhibits_editBtn" Content="Edytuj" HorizontalAlignment="Left" Margin="1180,350,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="243" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_editBtn_Click"/>
+        <Button x:Name="exhibits_addBtn" Content="Dodaj" HorizontalAlignment="Left" Margin="1200,268,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="242" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_addBtn_Click"/>
+        <Button x:Name="exhibits_deleteBtn" Content="Usuń" HorizontalAlignment="Left" Margin="1200,309,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="242" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_deleteBtn_Click"/>
+        <Button x:Name="exhibits_editBtn" Content="Edytuj" HorizontalAlignment="Left" Margin="1200,350,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="243" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_editBtn_Click"/>
         <Grid x:Name="exhibits_addGrid" Margin="299,448,87,10" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -40,7 +40,7 @@
             <Button x:Name="exhibits_imageBtn" Grid.Column="1" Content="Wybierz" HorizontalAlignment="Left" Margin="155,221,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibits_imageBtn_Click"/>
             <Button x:Name="exhibits_saveBtn" Grid.Column="1" Content="Zapisz" HorizontalAlignment="Left" Margin="155,280,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibits_saveBtn_Click"/>
         </Grid>
-        <Grid x:Name="exhibits_editGrid" Margin="299,448,87,10">
+        <Grid x:Name="exhibits_editGrid" Margin="299,448,87,10" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -170,7 +170,7 @@
                 </Button.RenderTransform>
             </Button>
         </StackPanel>
-        <Image x:Name="exhibits_selectedImageBox" HorizontalAlignment="Left" Height="200" Margin="1200,42,0,0" VerticalAlignment="Top" Width="200"/>
+        <Image x:Name="exhibits_selectedImageBox" HorizontalAlignment="Left" Height="200" Margin="1217,42,0,0" VerticalAlignment="Top" Width="200"/>
 
     </Grid>
 </Window>
