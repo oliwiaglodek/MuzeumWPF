@@ -90,20 +90,24 @@ namespace MuzeumInz
                 {
                     imageBytes = (byte[])selectedRow["Image"];
                 }
+                else
+                {
+                    imageBytes = null; 
+                }
                 BitmapImage image = imageBytes != null ? convertBytesToBitmap(imageBytes) : null; 
                 exhibitsEdit_nameTxt.Focus();
 
-                if (image != null)
-                {
-                    exhibitsEdit_imageBtn.Content = "Załadowano"; //tutaj nie potrafie wczytać nazwy obrazka :(
-                    exhibits_selectedImageBox.Source = image;
-                }
-                else
+                if (image == null)
                 {
                     exhibitsEdit_imageBtn.Content = "Wybierz";
                     exhibits_selectedImageBox.Source = null;
                     exhibits_selectedImageBox.UpdateLayout();
                 }
+                else
+                {
+                    exhibitsEdit_imageBtn.Content = "Załadowano"; //tutaj nie potrafie wczytać nazwy obrazka :(
+                    exhibits_selectedImageBox.Source = image;
+                }       
                 
             }         
         }
