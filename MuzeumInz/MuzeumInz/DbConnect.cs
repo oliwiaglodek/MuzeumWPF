@@ -37,7 +37,7 @@ namespace MuzeumInz
 
             return dt;
         }
-        public void ExecuteQuery(string query)
+        /*public void ExecuteQuery(string query)
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -45,7 +45,7 @@ namespace MuzeumInz
                 connection.Open();
                 command.ExecuteNonQuery();
             }
-        }
+        }*/
 
         public SQLiteConnection GetConnection()
         {
@@ -84,7 +84,7 @@ namespace MuzeumInz
         //wczytaj eksponaty
         public DataTable GetExhibits()
         {
-            string sql = "SELECT id, name, Description, Year, Category, Author, Origin, Location FROM exhibits;";            
+            string sql = "SELECT id, name, Description, Year, Category, Author, Origin, Image, Location FROM exhibits;";            
             DataTable dt = new DataTable(); //przechowuje wyniki z db
 
             using (var connection = new SQLiteConnection(connectionString))
@@ -101,7 +101,7 @@ namespace MuzeumInz
         public void InsertExhibits(AddExhibits addExhibits)
         {
 
-            string sql = "INSERT INTO exhibits(Name,Description,Year,Category,Author,Origin,Location) VALUES(@Name,@Description,@Year,@Category,@Author,@Origin,@Location);";
+            string sql = "INSERT INTO exhibits(Name,Description,Year,Category,Author,Origin, Image,Location) VALUES(@Name,@Description,@Year,@Category,@Author,@Origin,@Image,@Location);";
 
             using (var connection = new SQLiteConnection(connectionString))
             {
@@ -115,7 +115,7 @@ namespace MuzeumInz
                     command.Parameters.AddWithValue("@Category", addExhibits.Category);
                     command.Parameters.AddWithValue("@Author", addExhibits.Author);
                     command.Parameters.AddWithValue("@Origin", addExhibits.Origin);
-                    //command.Parameters.AddWithValue("@Image", addExhibits.Image); //przerobić na tablice bytes
+                    command.Parameters.AddWithValue("@Image", addExhibits.Image != null ? convertBitmapToBytes(addExhibits.Image) : null); 
                     command.Parameters.AddWithValue("@Location", addExhibits.Location);
                     command.ExecuteNonQuery();
                 }
@@ -140,7 +140,7 @@ namespace MuzeumInz
         // edytuj eksponat
         public void UpdateExhibits(AddExhibits addExhibits)
         {
-            string sql = @"UPDATE exhibits SET name = @Name, description = @Description, year = @Year, category = @Category, author = @Author, origin = @Origin,location = @Location WHERE id = @Id";
+            string sql = @"UPDATE exhibits SET name = @Name, description = @Description, year = @Year, category = @Category, author = @Author, origin = @Origin,image = @Image, location = @Location WHERE id = @Id";
 
             using (var connection = new SQLiteConnection(connectionString))
             {
@@ -154,7 +154,7 @@ namespace MuzeumInz
                     command.Parameters.AddWithValue("@Category", addExhibits.Category);
                     command.Parameters.AddWithValue("@Author", addExhibits.Author);
                     command.Parameters.AddWithValue("@Origin", addExhibits.Origin);
-                    //command.Parameters.AddWithValue("@Image", addExhibits.Image); //przerobić na tablice bytes
+                    command.Parameters.AddWithValue("@Image", addExhibits.Image != null ? convertBitmapToBytes(addExhibits.Image) : null);
                     command.Parameters.AddWithValue("@Location", addExhibits.Location);
                     command.Parameters.AddWithValue("@Id", addExhibits.Id);
                     command.ExecuteNonQuery();
@@ -225,6 +225,7 @@ namespace MuzeumInz
             }
         }
 
+        //metoda konwertuje tablice byte na obrazek bitmap 
         private BitmapImage convertBytesToBitmap(byte[] bytes)
         {
             BitmapImage image = new BitmapImage();
@@ -235,6 +236,20 @@ namespace MuzeumInz
             image.EndInit();
 
             return image;
+        }
+        //metoda konwertuje obrazek bitmap na tablice byte 
+        private byte[] convertBitmapToBytes(BitmapImage image)
+        {
+            byte[] data;
+
+            MemoryStream ms = new MemoryStream();
+            BitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(image));
+            encoder.Save(ms);
+
+            data = ms.ToArray();
+
+            return data;
         }
     }
 }

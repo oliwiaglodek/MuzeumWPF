@@ -17,6 +17,9 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Collections;
 using System.Runtime.Remoting.Contexts;
 using System.Collections.ObjectModel;
+using Microsoft.Win32;
+using System.Runtime.Remoting.Messaging;
+using System.IO;
 
 namespace MuzeumInz
 {
@@ -28,6 +31,8 @@ namespace MuzeumInz
         private BitmapImage image;        
         private DbConnect dbConnect;
         public ObservableCollection<AddExhibits> Items { get; set; } //powiązania danych z interfejsem użytkownika
+        private int? selectedId;
+        private byte[] imageBytes;
 
         public Exhibits()
         {
@@ -36,6 +41,8 @@ namespace MuzeumInz
 
             Items = new ObservableCollection<AddExhibits>();
             exhibits_exhibitsDb.ItemsSource = Items;
+
+            selectedId = null;
 
             loadGrid();            
         }
@@ -55,10 +62,6 @@ namespace MuzeumInz
             MessageBox.Show("Pomyślnie wylogowano!");
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
         //Widoczność pól dodania nowego eksponatu
         private void exhibits_addBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -83,10 +86,26 @@ namespace MuzeumInz
                 exhibitsEdit_originTxt.Text = selectedRow["Origin"].ToString();
                 exhibitsEdit_locationTxt.Text = selectedRow["Location"].ToString();
                 exhibitsEdit_descriptionTxt.Text = selectedRow["Description"].ToString();
-                //exhibitsEdit_imageBtn.Text = selectedRow["Image"].ToString(); //do przemyślenia
+                if(selectedRow["Image"] != DBNull.Value)
+                {
+                    imageBytes = (byte[])selectedRow["Image"];
+                }
+                BitmapImage image = imageBytes != null ? convertBytesToBitmap(imageBytes) : null; 
                 exhibitsEdit_nameTxt.Focus();
-            }
-            
+
+                if (image != null)
+                {
+                    exhibitsEdit_imageBtn.Content = "Załadowano"; //tutaj nie potrafie wczytać nazwy obrazka :(
+                    exhibits_selectedImageBox.Source = image;
+                }
+                else
+                {
+                    exhibitsEdit_imageBtn.Content = "Wybierz";
+                    exhibits_selectedImageBox.Source = null;
+                    exhibits_selectedImageBox.UpdateLayout();
+                }
+                
+            }         
         }
 
         private void exhibits_saveBtn_Click(object sender, RoutedEventArgs e)
@@ -115,7 +134,7 @@ namespace MuzeumInz
             }
             else
             {
-                AddExhibits exhibit = new AddExhibits(0, exhibits_nameTxt.Text, exhibits_descriptionTxt.Text, year, ((ComboBoxItem)exhibits_categoryList.SelectedItem).Content.ToString(), exhibits_authorTxt.Text, exhibits_originTxt.Text, /*image*/ exhibits_locationTxt.Text);
+                AddExhibits exhibit = new AddExhibits(0, exhibits_nameTxt.Text, exhibits_descriptionTxt.Text, year, ((ComboBoxItem)exhibits_categoryList.SelectedItem).Content.ToString(), exhibits_authorTxt.Text, exhibits_originTxt.Text, image, exhibits_locationTxt.Text);
                 dbConnect.InsertExhibits(exhibit);
                 loadGrid();
             }
@@ -134,6 +153,7 @@ namespace MuzeumInz
                 // Pobranie zaznaczonego rekordu (wiersza) jako obiekt
                 var selectedItem = (DataRowView)exhibits_exhibitsDb.SelectedItem;
                 int id = Convert.ToInt32(selectedItem["id"]);
+                exhibits_selectedImageBox.Source = null;
 
                 dbConnect.DeleteExhibits(id);                
                 loadGrid();                
@@ -169,13 +189,69 @@ namespace MuzeumInz
             string category = exhibitsEdit_categoryList.Text;
             string author = exhibitsEdit_authorTxt.Text;
             string origin = exhibitsEdit_originTxt.Text;
-            //imagine
+            BitmapImage image = imageBytes != null ? convertBytesToBitmap(imageBytes) : null;
             string location = exhibitsEdit_locationTxt.Text;
 
             // Wywołaj metodę aktualizacji
-            AddExhibits addExhibits = new AddExhibits(id, name, description, year, category, author, origin, /*imagine,*/ location);
+            AddExhibits addExhibits = new AddExhibits(id, name, description, year, category, author, origin, image, location);
             dbConnect.UpdateExhibits(addExhibits);
             loadGrid();
+        }
+        //przycisk wybór obrazka
+        private void exhibits_imageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                image = new BitmapImage();
+                image.BeginInit();
+                image.UriSource = new Uri(openFileDialog.FileName);
+                image.EndInit();
+
+                exhibits_imageBtn.Content = System.IO.Path.GetFileName(openFileDialog.FileName);
+               //zamiana obrazka na tablice byte
+                using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    imageBytes = new byte[fs.Length];
+                    fs.Read(imageBytes, 0, (int)fs.Length);
+                }
+            }
+        }
+        //metoda konwertuje tablice byte na obrazek bitmap
+        private BitmapImage convertBytesToBitmap(byte[] imageBytes)
+        {
+            BitmapImage image = new BitmapImage();
+            MemoryStream ms = new MemoryStream(imageBytes);
+            image.BeginInit();
+            image.CacheOption = BitmapCacheOption.OnLoad;
+            image.StreamSource = ms;
+            image.EndInit();
+
+            return image;
+        }
+        //obrazek w edycji
+        private void exhibitsEdit_imageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                image = new BitmapImage();
+                image.BeginInit();
+                image.UriSource = new Uri(openFileDialog.FileName);
+                image.EndInit();
+
+                exhibits_imageBtn.Content = System.IO.Path.GetFileName(openFileDialog.FileName);
+                //zamiana obrazka na tablice byte
+                using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    imageBytes = new byte[fs.Length];
+                    fs.Read(imageBytes, 0, (int)fs.Length);
+                }
+            }
         }
     }
 }

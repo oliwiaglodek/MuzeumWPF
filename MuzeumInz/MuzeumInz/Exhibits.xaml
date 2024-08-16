@@ -6,19 +6,19 @@
         xmlns:local="clr-namespace:MuzeumInz"
         mc:Ignorable="d"
         Title="Exhibits" Height="800" Width="1482" WindowStyle="None" WindowState="Maximized">
-    
+
     <Grid>
         <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="1453,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
-        <DataGrid x:Name="exhibits_exhibitsDb" d:ItemsSource="{d:SampleData ItemCount=20}" Margin="276,42,87,392" FontFamily="Tahoma" FontSize="15" SelectionChanged="exhibits_exhibitsDb_SelectionChanged" ColumnWidth="*" IsReadOnly="True"/>
-        <Button x:Name="exhibits_addBtn" Content="Dodaj" HorizontalAlignment="Left" Margin="299,425,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="243" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_addBtn_Click"/>
-        <Button x:Name="exhibits_deleteBtn" Content="Usuń" HorizontalAlignment="Left" Margin="741,425,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="242" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_deleteBtn_Click"/>
-        <Button x:Name="exhibits_editBtn" Content="Edytuj" HorizontalAlignment="Left" Margin="1152,425,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="243" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_editBtn_Click"/>
+        <DataGrid x:Name="exhibits_exhibitsDb" d:ItemsSource="{d:SampleData ItemCount=20}" Margin="276,42,330,392" FontFamily="Tahoma" FontSize="15" SelectionChanged="exhibits_exhibitsDb_SelectionChanged" ColumnWidth="*" IsReadOnly="True"/>
+        <Button x:Name="exhibits_addBtn" Content="Dodaj" HorizontalAlignment="Left" Margin="1180,268,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="242" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_addBtn_Click"/>
+        <Button x:Name="exhibits_deleteBtn" Content="Usuń" HorizontalAlignment="Left" Margin="1180,309,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="242" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_deleteBtn_Click"/>
+        <Button x:Name="exhibits_editBtn" Content="Edytuj" HorizontalAlignment="Left" Margin="1180,350,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="243" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_editBtn_Click"/>
         <Grid x:Name="exhibits_addGrid" Margin="299,448,87,10" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="exhibits_nameTxt" HorizontalAlignment="Left" Margin="151,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316" Height="34" FontFamily="Tahoma" FontSize="22" TextChanged="TextBox_TextChanged"/>
+            <TextBox x:Name="exhibits_nameTxt" HorizontalAlignment="Left" Margin="151,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316" Height="34" FontFamily="Tahoma" FontSize="22"/>
             <Label Content="Nazwa" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="136" FontFamily="Tahoma" FontSize="20"/>
             <Label Content="Autor" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="136" FontFamily="Tahoma" FontSize="20"/>
             <Label Content="Kategoria" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Width="136" FontFamily="Tahoma" FontSize="20"/>
@@ -37,7 +37,7 @@
                 <ComboBoxItem Content="Rzeźba"/>
                 <ComboBoxItem Content="Inne"/>
             </ComboBox>
-            <Button x:Name="exhibits_imageBtn" Grid.Column="1" Content="Wybierz" HorizontalAlignment="Left" Margin="155,221,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma"/>
+            <Button x:Name="exhibits_imageBtn" Grid.Column="1" Content="Wybierz" HorizontalAlignment="Left" Margin="155,221,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibits_imageBtn_Click"/>
             <Button x:Name="exhibits_saveBtn" Grid.Column="1" Content="Zapisz" HorizontalAlignment="Left" Margin="155,280,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibits_saveBtn_Click"/>
         </Grid>
         <Grid x:Name="exhibits_editGrid" Margin="299,448,87,10">
@@ -64,7 +64,7 @@
                 <ComboBoxItem Content="Rzeźba"/>
                 <ComboBoxItem Content="Inne"/>
             </ComboBox>
-            <Button x:Name="exhibitsEdit_imageBtn" Grid.Column="1" Content="Wybierz" HorizontalAlignment="Left" Margin="155,221,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma"/>
+            <Button x:Name="exhibitsEdit_imageBtn" Grid.Column="1" Content="Wybierz" HorizontalAlignment="Left" Margin="155,221,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibitsEdit_imageBtn_Click"/>
             <Button x:Name="exhibitsEdit_saveBtn" Grid.Column="1" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="155,280,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibitsEdit_saveBtn_Click"/>
         </Grid>
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,1282,0" >
@@ -170,6 +170,7 @@
                 </Button.RenderTransform>
             </Button>
         </StackPanel>
+        <Image x:Name="exhibits_selectedImageBox" HorizontalAlignment="Left" Height="200" Margin="1200,42,0,0" VerticalAlignment="Top" Width="200"/>
 
     </Grid>
 </Window>

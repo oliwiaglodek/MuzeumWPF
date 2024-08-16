@@ -16,10 +16,10 @@ namespace MuzeumInz
         public string Category { get; set; }
         public string Author { get; set; }
         public string Origin { get; set; }
-        //public BitmapImage Image { get; set; }
+        public BitmapImage Image { get; set; }
         public string Location { get; set; }
 
-        public AddExhibits(int id, string name, string description, int year, string category, string author, string origin, /*BitmapImage image,*/ string location) 
+        public AddExhibits(int id, string name, string description, int year, string category, string author, string origin, BitmapImage image, string location) 
         { 
             Id = id;
             Name = name;
@@ -28,7 +28,7 @@ namespace MuzeumInz
             Category = category;
             Author = author;
             Origin = origin;
-            //Image = image;
+            Image = image;
             Location = location;
         }
     }
