@@ -157,8 +157,8 @@
             </ComboBox>
             <TextBox x:Name="exhibitions_addDescriptionTxt" HorizontalAlignment="Left" Margin="711,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="414" Height="232" FontFamily="Tahoma" FontSize="15"/>
             <Button x:Name="exhibitions_saveAddBtn" Content="Zapisz wystawe" HorizontalAlignment="Left" Margin="883,290,0,0" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Click="exhibitions_saveAddBtn_Click"/>
-            <DatePicker x:Name="exhibitions_addStartDateTxt" HorizontalAlignment="Left" Margin="175,106,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma"/>
-            <DatePicker x:Name="exhibitions_addEndDateTxt" HorizontalAlignment="Left" Margin="175,138,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma"/>
+            <DatePicker x:Name="exhibitions_addStartDateTxt" HorizontalAlignment="Left" Margin="175,106,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma" DisplayDateStart="{Binding DisplayDate.Date.Date.Today, ElementName=exhibitions_addStartDateTxt, Mode=OneWay}"/>
+            <DatePicker x:Name="exhibitions_addEndDateTxt" HorizontalAlignment="Left" Margin="175,138,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma" DisplayDateStart="{Binding DisplayDate.Date.Date.Today, ElementName=exhibitions_addEndDateTxt, Mode=OneWay}"/>
         </Grid>
         <Grid x:Name="exhibitions_editExhibitionsGrid" Margin="275,281,61,28">
             <Label Content="Nazwa wystawy" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15"/>
@@ -184,8 +184,8 @@
             </ComboBox>
             <TextBox x:Name="exhibitions_editDescriptionTxt" HorizontalAlignment="Left" Margin="711,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="414" Height="232" FontFamily="Tahoma" FontSize="15"/>
             <Button x:Name="exhibitions_saveEditBtn" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="883,290,0,0" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Click="exhibitions_saveEditBtn_Click"/>
-            <DatePicker x:Name="exhibitions_editStartDateTxt" HorizontalAlignment="Left" Margin="175,108,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma" FontSize="15"/>
-            <DatePicker x:Name="exhibitions_editEndDateTxt" HorizontalAlignment="Left" Margin="175,141,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma" FontSize="15"/>
+            <DatePicker x:Name="exhibitions_editStartDateTxt" HorizontalAlignment="Left" Margin="175,108,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma" FontSize="15" DisplayDateStart="{Binding DisplayDate.Date.Date.Today, ElementName=exhibitions_editStartDateTxt, Mode=OneWay}"/>
+            <DatePicker x:Name="exhibitions_editEndDateTxt" HorizontalAlignment="Left" Margin="175,141,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma" FontSize="15" DisplayDateStart="{Binding DisplayDate.Today, ElementName=exhibitions_editEndDateTxt, Mode=OneWay}"/>
         </Grid>
 
     </Grid>
