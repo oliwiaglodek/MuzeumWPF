@@ -160,7 +160,7 @@
             <DatePicker x:Name="exhibitions_addStartDateTxt" HorizontalAlignment="Left" Margin="175,106,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma" DisplayDateStart="{Binding DisplayDate.Date.Date.Today, ElementName=exhibitions_addStartDateTxt, Mode=OneWay}"/>
             <DatePicker x:Name="exhibitions_addEndDateTxt" HorizontalAlignment="Left" Margin="175,138,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma" DisplayDateStart="{Binding DisplayDate.Date.Date.Today, ElementName=exhibitions_addEndDateTxt, Mode=OneWay}"/>
         </Grid>
-        <Grid x:Name="exhibitions_editExhibitionsGrid" Margin="275,281,61,28">
+        <Grid x:Name="exhibitions_editExhibitionsGrid" Margin="275,281,61,28" Visibility="Collapsed">
             <Label Content="Nazwa wystawy" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15"/>
             <Label Content="Opis wystawy" HorizontalAlignment="Left" Margin="591,34,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15"/>
             <Label Content="Status wystawy" HorizontalAlignment="Left" Margin="12,73,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15"/>
