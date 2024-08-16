@@ -110,5 +110,39 @@ namespace MuzeumInz
                 loadGrid();
             }
         }
+        //usupełnij pola edycji po zaznczeniu wiersza
+        private void exhibitionsDb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (exhibitionsDb.SelectedItem is DataRowView selectedRow)
+            {
+                exhibitions_editNameTxt.Text = selectedRow["name"].ToString();
+                exhibitions_editStatusList.Text = selectedRow["Status"].ToString();
+                exhibitions_editStartDateTxt.Text = selectedRow["StartDate"].ToString();
+                exhibitions_editEndDateTxt.Text = selectedRow["EndDate"].ToString();
+                exhibitions_editResponsiblePersonTxt.Text = selectedRow["ResponsiblePerson"].ToString();
+                exhibitions_editLocationTxt.Text = selectedRow["Location"].ToString();
+                exhibitions_editDescriptionTxt.Text = selectedRow["Description"].ToString();
+                exhibitions_editTypeTxt.Text = selectedRow["Type"].ToString();
+            }
+        }
+        //zapisz edycje wystawy
+        private void exhibitions_saveEditBtn_Click(object sender, RoutedEventArgs e)
+        {          
+            var selectedItem = (DataRowView)exhibitionsDb.SelectedItem;
+            int id = Convert.ToInt32(selectedItem["id"]); 
+            string name = exhibitions_editNameTxt.Text;
+            string description = exhibitions_editDescriptionTxt.Text;
+            DateTime startDate = exhibitions_editStartDateTxt.SelectedDate.Value;
+            DateTime endDate = exhibitions_editEndDateTxt.SelectedDate.Value;
+            string location = exhibitions_editLocationTxt.Text;
+            string responsiblePerson = exhibitions_editResponsiblePersonTxt.Text;
+            string status = exhibitions_editStatusList.Text;
+            string type = exhibitions_editTypeTxt.Text;
+
+            // Wywołaj metodę aktualizacji
+            AddExhibitions addExhibitions = new AddExhibitions(id, name, description, startDate, endDate, location, responsiblePerson, status, type);
+            dbConnect.UpdateExhibitions(addExhibitions);
+            loadGrid();
+        }
     }
 }

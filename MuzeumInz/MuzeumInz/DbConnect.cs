@@ -177,6 +177,29 @@ namespace MuzeumInz
                 }
             }
         }
+        //Update wystawy
+        public void UpdateExhibitions(AddExhibitions addExhibitions)
+        {
+            string sql = @"UPDATE exhibitions SET name = @Name, description = @Description, startDate = @StartDate, endDate = @EndDate, location = @Location, responsiblePerson = @ResponsiblePerson, status = @Status, type = @Type WHERE id = @Id";
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();                
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", addExhibitions.Name);
+                    command.Parameters.AddWithValue("@Description", addExhibitions.Description);
+                    command.Parameters.AddWithValue("@StartDate", addExhibitions.StartDate);
+                    command.Parameters.AddWithValue("@EndDate", addExhibitions.EndDate);
+                    command.Parameters.AddWithValue("@Location", addExhibitions.Location);
+                    command.Parameters.AddWithValue("@ResponsiblePerson", addExhibitions.ResponsiblePerson);
+                    command.Parameters.AddWithValue("@Status", addExhibitions.Status);
+                    command.Parameters.AddWithValue("@Type", addExhibitions.Type);
+                    command.Parameters.AddWithValue("@Id", addExhibitions.Id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
 
         private BitmapImage convertBytesToBitmap(byte[] bytes)
         {
