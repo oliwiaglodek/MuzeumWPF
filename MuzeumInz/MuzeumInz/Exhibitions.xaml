@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:MuzeumInz"
         mc:Ignorable="d"
         Title="Exhibitions" Height="800" Width="1482" WindowStyle="None" WindowState="Maximized">
-    <Grid>
-        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,1282,0" >
+    <Grid Width="1482" Height="800">
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,1282,0" Width="200" Height="800" >
             <Button 
                 VerticalAlignment="Top" 
                 Margin="10" Height="100" HorizontalAlignment="Stretch" FontSize="20" FontWeight="Bold" FontFamily="Tahoma" Foreground="White" Content="Wystawy" Background="#210B61" />
@@ -16,7 +16,7 @@
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,50,0,0" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,50,0,0" Width="200" >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -33,7 +33,7 @@
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Click="ExhibitionsBtn1_Click" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Click="ExhibitionsBtn1_Click" Width="200" >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -50,7 +50,7 @@
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -65,7 +65,7 @@
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -82,7 +82,7 @@
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -99,7 +99,7 @@
                 Foreground="#210B61"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" BorderBrush="#FF210B61" Click="LogoutBtn_Click" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" BorderBrush="#FF210B61" Click="LogoutBtn_Click" Width="200" >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

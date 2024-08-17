@@ -36,7 +36,7 @@ namespace MuzeumInz
             Application.Current.Shutdown();
         }
 
-        private void logout_Btn_Click(object sender, RoutedEventArgs e)
+        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow MainWindow = new MainWindow();
             MainWindow.Show();
@@ -44,7 +44,7 @@ namespace MuzeumInz
             MessageBox.Show("Pomyślnie wylogowano!");
         }
 
-        private void ExhibitionsBtn1_Click(object sender, RoutedEventArgs e)
+        private void ExhibitsBtn_Click(object sender, RoutedEventArgs e)
         {
             Exhibits Exhibits = new Exhibits();
             Exhibits.Show();
@@ -57,5 +57,11 @@ namespace MuzeumInz
             Exhibitions.Show();
             this.Hide();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

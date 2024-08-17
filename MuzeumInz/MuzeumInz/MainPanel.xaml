@@ -5,44 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuzeumInz"
         mc:Ignorable="d"
-        Title="MainPanel" Height="800" Width="1482" WindowStyle="None" MinWidth="1445" MinHeight="800" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" MaxWidth="1455" MaxHeight="738" Margin="-17,0,0,0" Padding="5,5,5,5" WindowState="Maximized">
-    <Grid x:Name="MainPanelGrid" Height="774" VerticalAlignment="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="300" MinWidth="262"/>
-            <ColumnDefinition Width="934*"/>
-            <ColumnDefinition Width="204*"/>
-            <ColumnDefinition Width="17*"/>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="181,13,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619" Grid.Column="3" Height="28" Width="19"/>
-        <Calendar Grid.Column="3" HorizontalAlignment="Left" Height="178" Margin="27,366,0,0" VerticalAlignment="Top" Width="184" Grid.ColumnSpan="2"/>
-        <Grid Grid.Column="2" HorizontalAlignment="Center" Height="774" VerticalAlignment="Center" Width="934">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="229*"/>
-                <RowDefinition Height="545*"/>
-            </Grid.RowDefinitions>
-            <Rectangle HorizontalAlignment="Left" Height="180" Margin="132,0,0,0" Fill="#FF210B61" VerticalAlignment="Center" Width="180" Panel.ZIndex="4"/>
-            <Rectangle HorizontalAlignment="Center" Height="180" Fill="#FF210B61" VerticalAlignment="Center" Width="180" Panel.ZIndex="4"/>
-            <Rectangle HorizontalAlignment="Left" Height="180" Margin="621,0,0,0" Fill="#FF210B61" VerticalAlignment="Center" Width="180" Panel.ZIndex="4"/>
-            <Label Content="Witaj {User} !" HorizontalAlignment="Center" Margin="0,231,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="48"/>
-
-        </Grid>
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,10,-22" >
-            <Button Content="Panel Administracyjny" 
-                HorizontalAlignment="Stretch" 
+        Title="MainPanel" Height="800" Width="1482" WindowStyle="None" WindowState="Maximized">
+    <Grid Width="1482" Height="800">
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,1282,0" Width="200" Height="800" >
+            <Button 
                 VerticalAlignment="Top" 
-                Background="#210B61" 
-                Foreground="White"
-                Height="100"
-                FontSize="20"
-                FontWeight="Bold"
-                Margin="10" FontFamily="Tahoma" />
-            <Button x:Name="ExhibitionsBtn" Content="Wystawy" 
+                Margin="10" Height="100" FontSize="20" FontWeight="Bold" FontFamily="Tahoma" Foreground="White" Content="Główny&#xD;&#xA;Panel" Background="#210B61" Click="Button_Click" />
+            <Button x:Name="ExhibitionsBtn2" Content="Wystawy" 
                 Background="#210B61" 
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,50,0,0" Click="ExhibitionsBtn_Click" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,50,0,0" Width="200" Click="ExhibitionsBtn_Click">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -59,7 +33,7 @@
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Click="ExhibitionsBtn1_Click" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Click="ExhibitsBtn_Click" Width="200" >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -76,7 +50,7 @@
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -91,7 +65,7 @@
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -101,14 +75,14 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <Button x:Name="ReportsBtn" Content="Raporty, analiza, PDF" 
+            <Button x:Name="ReportsBtn1" Content="Raporty, analiza, PDF" 
                 HorizontalAlignment="Stretch" 
                 VerticalAlignment="Top" 
                 Background="#210B61" 
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -125,7 +99,7 @@
                 Foreground="#210B61"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" BorderBrush="#FF210B61" MouseLeftButtonDown="logout_Btn_Click" Click="logout_Btn_Click" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" BorderBrush="#FF210B61" Click="LogoutBtn_Click" Width="200" >
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
