@@ -27,7 +27,7 @@ namespace MuzeumInz
             InitializeComponent();
             dbConnect = new DbConnect();
             loadGrid();
-            LoadExhibitsInExhibitions(idExhibitions);
+            //LoadExhibitsInExhibitions(idExhibitions);
         }
         public void loadGrid()
         {
@@ -129,7 +129,7 @@ namespace MuzeumInz
                 exhibitions_editTypeTxt.Text = selectedRow["Type"].ToString();
 
                 idExhibitions = Convert.ToInt32(selectedRow["id"]);
-                dbConnect.LoadExhibitsInExhibition(idExhibitions);
+                //dbConnect.LoadExhibitsInExhibition(idExhibitions);
                 exhibitions_exhibitsInExhibitionsGrid.Visibility = Visibility.Visible;
             }
         }
