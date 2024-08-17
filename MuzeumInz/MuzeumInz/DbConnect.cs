@@ -251,5 +251,20 @@ namespace MuzeumInz
 
             return data;
         }
+        //usuwanie wystawy
+        public void DeleteExhibitions(int id)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE FROM exhibitions WHERE id = @Id";
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

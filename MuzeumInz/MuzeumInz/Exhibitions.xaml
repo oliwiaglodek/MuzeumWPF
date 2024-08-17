@@ -118,7 +118,7 @@
         </Grid>
         <Grid Margin="275,188,61,560">
             <Button x:Name="exhibition_addBtn" Content="Dodaj wystawe" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="0,10,0,0" Click="exhibition_addBtn_Click" />
-            <Button x:Name="exhibition_deleteBtn" Content="Usuń wystawe" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="432,10,0,0" />
+            <Button x:Name="exhibition_deleteBtn" Content="Usuń wystawe" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="432,10,0,0" Click="exhibition_deleteBtn_Click" />
             <Button x:Name="exhibition_editBtn" Content="Edytuj wystawe" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="894,10,0,0" Click="exhibition_editBtn_Click" />
         </Grid>
         <Grid x:Name="exhibitions_exhibitsInExhibitionsGrid" Margin="275,266,61,250" Visibility="Collapsed">

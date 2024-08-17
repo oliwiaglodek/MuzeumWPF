@@ -144,5 +144,22 @@ namespace MuzeumInz
             dbConnect.UpdateExhibitions(addExhibitions);
             loadGrid();
         }
+        //usuwanie wystawy
+        private void exhibition_deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (exhibitionsDb.SelectedItem != null)
+            {
+                // Pobranie zaznaczonego rekordu (wiersza) jako obiekt
+                var selectedItem = (DataRowView)exhibitionsDb.SelectedItem;
+                int id = Convert.ToInt32(selectedItem["id"]);                
+
+                dbConnect.DeleteExhibitions(id);
+                loadGrid();
+            }
+            else
+            {
+                MessageBox.Show("Proszę zaznaczyć rekord do usunięcia.");
+            }
+        }
     }
 }
