@@ -21,11 +21,13 @@ namespace MuzeumInz
     public partial class Exhibitions : Window
     {
         private DbConnect dbConnect;
+        private int idExhibitions;
         public Exhibitions()
         {
             InitializeComponent();
             dbConnect = new DbConnect();
             loadGrid();
+            LoadExhibitsInExhibitions(idExhibitions);
         }
         public void loadGrid()
         {
@@ -65,6 +67,7 @@ namespace MuzeumInz
             exhibitions_addExhibitionsGrid.Visibility = Visibility.Visible;
             exhibitions_allExhibitsGrid.Visibility = Visibility.Collapsed;
             exhibitions_editExhibitionsGrid.Visibility = Visibility.Collapsed;
+            exhibitions_exhibitsInExhibitionsGrid.Visibility = Visibility.Collapsed;
         }
 
         private void exhibition_editBtn_Click(object sender, RoutedEventArgs e)
@@ -72,6 +75,7 @@ namespace MuzeumInz
             exhibitions_editExhibitionsGrid.Visibility= Visibility.Visible;
             exhibitions_addExhibitionsGrid.Visibility = Visibility.Collapsed;
             exhibitions_allExhibitsGrid.Visibility = Visibility.Collapsed;
+            exhibitions_exhibitsInExhibitionsGrid.Visibility = Visibility.Collapsed;
         }
         //dodaj wystawe
         private void exhibitions_saveAddBtn_Click(object sender, RoutedEventArgs e)
@@ -123,6 +127,10 @@ namespace MuzeumInz
                 exhibitions_editLocationTxt.Text = selectedRow["Location"].ToString();
                 exhibitions_editDescriptionTxt.Text = selectedRow["Description"].ToString();
                 exhibitions_editTypeTxt.Text = selectedRow["Type"].ToString();
+
+                idExhibitions = Convert.ToInt32(selectedRow["id"]);
+                dbConnect.LoadExhibitsInExhibition(idExhibitions);
+                exhibitions_exhibitsInExhibitionsGrid.Visibility = Visibility.Visible;
             }
         }
         //zapisz edycje wystawy
@@ -160,6 +168,11 @@ namespace MuzeumInz
             {
                 MessageBox.Show("Proszę zaznaczyć rekord do usunięcia.");
             }
+        }
+        private void LoadExhibitsInExhibitions(int idExhibition)
+        {
+            DataTable exhibitsTab = dbConnect.LoadExhibitsInExhibition(idExhibition);
+            exhibitions_exhibitsInExhibitionDb.ItemsSource = exhibitionsDb.Items;
         }
     }
 }

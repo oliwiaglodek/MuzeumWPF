@@ -266,5 +266,25 @@ namespace MuzeumInz
                 }
             }
         }
+        //Pobierz eksponty przypisane do wystawy
+        public DataTable LoadExhibitsInExhibition(int idExhibition)
+        {
+            string sql = @"SELECT e.id FROM exhibits e INNER JOIN exhibits_exhibitions ee ON e.id = ee.idExhibits WHERE ee.idExhibitions = @idExhibition";
+            DataTable exhibitisTab = new DataTable();
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@idExhibitions", idExhibition);
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                    {
+                        adapter.Fill(exhibitisTab);       //tutaj wywala bład                  
+                    }
+                }
+            }
+            return exhibitisTab;
+        }
     }
 }

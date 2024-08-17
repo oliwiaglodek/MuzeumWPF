@@ -86,6 +86,7 @@
     <Compile Include="Exhibits.xaml.cs">
       <DependentUpon>Exhibits.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExhibitsExhibitions.cs" />
     <Compile Include="MainPanel.xaml.cs">
       <DependentUpon>MainPanel.xaml</DependentUpon>
     </Compile>
