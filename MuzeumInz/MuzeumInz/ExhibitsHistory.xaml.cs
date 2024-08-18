@@ -10,22 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data;
-using System.Data.SQLite;
-using System.Configuration;
-using System.Text.RegularExpressions;
-using System.ComponentModel;
-using System.Windows.Threading;
+
 namespace MuzeumInz
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainPanel.xaml
+    /// Logika interakcji dla klasy ExhibitsHistory.xaml
     /// </summary>
-    public partial class MainPanel : Window
+    public partial class ExhibitsHistory : Window
     {
-        public MainPanel()
+        public ExhibitsHistory()
         {
             InitializeComponent();
         }
@@ -76,6 +70,5 @@ namespace MuzeumInz
         {
 
         }
-
     }
 }

@@ -50,6 +50,20 @@ namespace MuzeumInz
             this.Hide();
         }
 
+        private void HistoryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ExhibitsHistory ExhibitsHistory = new ExhibitsHistory();
+            ExhibitsHistory.Show();
+            this.Hide();
+        }
+
+        private void Inventory_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory Inventory = new Inventory();
+            Inventory.Show();
+            this.Hide();
+        }
+
         private void exit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();

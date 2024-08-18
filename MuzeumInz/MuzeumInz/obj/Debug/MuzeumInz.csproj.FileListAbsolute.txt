@@ -120,3 +120,7 @@ C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Exhibitio
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Exhibits.g.cs
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Exhibitions.baml
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Exhibits.baml
+C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\ExhibitsHistory.g.cs
+C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\ExhibitsHistory.baml
+C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Inventory.g.cs
+C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Inventory.baml
