@@ -50,6 +50,7 @@ namespace MuzeumInz
         //Zamknięcie na "X"
         private void exitClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            dbConnect.ClearCurrentUser(); // Wyczyść zalogowanego użytkownika
             Application.Current.Shutdown();
         }
 

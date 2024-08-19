@@ -113,9 +113,7 @@
         <Grid Margin="275,15,61,617">
             <DataGrid x:Name="exhibitionsDb" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,10,10" ColumnWidth="*" AutoGenerateColumns="True" IsReadOnly="True" FontFamily="Tahoma" FontSize="15" SelectionChanged="exhibitionsDb_SelectionChanged"/>
         </Grid>
-        <Grid Margin="1394,5,7,737">
-            <Label x:Name="exit" Content="X" HorizontalAlignment="Left" Margin="22,1,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exit_MouseLeftButtonDown"/>
-        </Grid>
+        <Grid Margin="1448,10,10,764"/>
         <Grid Margin="275,188,61,560">
             <Button x:Name="exhibition_addBtn" Content="Dodaj wystawe" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="0,10,0,0" Click="exhibition_addBtn_Click" />
             <Button x:Name="exhibition_deleteBtn" Content="Usuń wystawe" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="432,10,0,0" Click="exhibition_deleteBtn_Click" />
@@ -187,6 +185,7 @@
             <DatePicker x:Name="exhibitions_editStartDateTxt" HorizontalAlignment="Left" Margin="175,108,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma" FontSize="15" DisplayDateStart="{Binding DisplayDate.Date.Date.Today, ElementName=exhibitions_editStartDateTxt, Mode=OneWay}"/>
             <DatePicker x:Name="exhibitions_editEndDateTxt" HorizontalAlignment="Left" Margin="175,141,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma" FontSize="15" DisplayDateStart="{Binding DisplayDate.Today, ElementName=exhibitions_editEndDateTxt, Mode=OneWay}"/>
         </Grid>
+        <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="1453,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exit_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
 
     </Grid>
 </Window>

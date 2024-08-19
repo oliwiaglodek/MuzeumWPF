@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Windows.Media.Imaging;
 using System.Data.Entity;
 using System.IO;
+using System.ComponentModel.DataAnnotations;
 
 namespace MuzeumInz
 {
@@ -81,6 +82,53 @@ namespace MuzeumInz
                 command.ExecuteNonQuery();
             }
         }
+        //ustawia w tymczasowej tabeli użytkownika a raczej jego nazwę - potem można rozszerzyć o dane logowania i itp
+        public void SetCurrentUser(string userEmail)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                // Sprawdź, czy tabela current_user istnieje, jeśli nie, to ją stwórz
+                string createTableQuery = @"
+            CREATE TABLE IF NOT EXISTS current_user (
+                user_id TEXT
+            );
+            DELETE FROM current_user; -- usuń istniejącego użytkownika
+        ";
+
+                using (var command = new SQLiteCommand(createTableQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                // Dodaj nowego użytkownika do tabeli
+                string insertUserQuery = "INSERT INTO current_user (user_id) VALUES (@UserEmail)";
+                using (var command = new SQLiteCommand(insertUserQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserEmail", userEmail);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void ClearCurrentUser()
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                // Usuń użytkownika z tabeli current_user
+                string deleteUserQuery = "DELETE FROM current_user";
+                using (var command = new SQLiteCommand(deleteUserQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
         //wczytaj eksponaty
         public DataTable GetExhibits()
         {

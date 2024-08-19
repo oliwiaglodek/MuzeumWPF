@@ -18,6 +18,7 @@ using System.Configuration;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
 using System.Windows.Threading;
+using System.Data.Entity;
 namespace MuzeumInz
 {
     /// <summary>
@@ -25,6 +26,8 @@ namespace MuzeumInz
     /// </summary>
     public partial class MainPanel : Window
     {
+
+        private DbConnect dbConnect;
         public MainPanel()
         {
             InitializeComponent();
@@ -33,6 +36,7 @@ namespace MuzeumInz
         //Zamknięcie na "X"
         private void exitClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            dbConnect.ClearCurrentUser(); // Wyczyść zalogowanego użytkownika
             Application.Current.Shutdown();
         }
 

@@ -110,6 +110,7 @@
                 </Button.RenderTransform>
             </Button>
         </StackPanel>
+        <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="1453,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
 
     </Grid>
 </Window>

@@ -36,6 +36,7 @@ namespace MuzeumInz
         //zamknięcie okna na "X"
         private void exitClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            dbConnect.ClearCurrentUser(); // Wyczyść zalogowanego użytkownika
             Application.Current.Shutdown();
         }
 
@@ -44,26 +45,27 @@ namespace MuzeumInz
         {
             string email = login_loginTxt.Text;
             string password = login_passTxt.Password;
-            string hashedPass = HashPassword(password); //zahaszowanie podanego hasła i sprawdzenie hashu w bazie danych
+            string hashedPass = HashPassword(password);
 
-            string query = $"SELECT * FROM users WHERE email='{email}' AND password='{hashedPass}'";
+            string query = "SELECT * FROM users WHERE email = @Email AND password = @Password";
 
-            SQLiteCommand command = new SQLiteCommand(query);
-            command.Parameters.AddWithValue("@email", email);
-            command.Parameters.AddWithValue("@password", hashedPass);
-
-            DataTable result = dbConnect.GetData(command);
-
-            if (result.Rows.Count > 0)
+            using (SQLiteCommand command = new SQLiteCommand(query))
             {
-                Main_Panel_Btn_Click(sender, e); //przy poprawnym zalogoaniu otworzy panel administracyjny
-            }
-            else
-            {
-                MessageBox.Show("Błedy login lub hasło");
+                command.Parameters.AddWithValue("@Email", email);
+                command.Parameters.AddWithValue("@Password", hashedPass);
 
-            }
+                DataTable result = dbConnect.GetData(command);
 
+                if (result.Rows.Count > 0)
+                {
+                    dbConnect.SetCurrentUser(email);  // Zapisz zalogowanego użytkownika
+                    Main_Panel_Btn_Click(sender, e); //przy poprawnym zalogowaniu otworzy panel administracyjny
+                }
+                else
+                {
+                    MessageBox.Show("Błędny login lub hasło");
+                }
+            }
         }
 
         //Otworzy okno rejestracji
