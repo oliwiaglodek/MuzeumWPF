@@ -76,10 +76,6 @@ namespace MuzeumInz
             this.Hide();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
     }
 }
