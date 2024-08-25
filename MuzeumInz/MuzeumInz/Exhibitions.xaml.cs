@@ -191,13 +191,9 @@ namespace MuzeumInz
         //usuwanie wystawy
         private void exhibition_deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (exhibitionsDb.SelectedItem != null)
+            if (idExhibitions != null)
             {
-                // Pobranie zaznaczonego rekordu (wiersza) jako obiekt
-                var selectedItem = (DataRowView)exhibitionsDb.SelectedItem;
-                int id = Convert.ToInt32(selectedItem["id"]);                
-
-                dbConnect.DeleteExhibitions(id);
+                dbConnect.DeleteExhibitions(idExhibitions.Value);
                 loadGrid();
             }
             else
@@ -214,6 +210,7 @@ namespace MuzeumInz
             exhibitions_exhibitsInExhibitionDb.ItemsSource = exhibitsInExhibitionsDtos;
 
             exhibitionsCmb.ItemsSource = dbConnect.GetExhibitions();
+            exhibitionsCmb.SelectedIndex = 0;
         }
     }
 }
