@@ -247,7 +247,8 @@ namespace MuzeumInz
         public void InsertExhibitions(AddExhibitions addExhibitions)
         {
 
-            string sql = "INSERT INTO exhibitions(Name,Description,StartDate,EndDate,Location,ResponsiblePerson,Status,Type) VALUES(@Name,@Description,@StartDate,@EndDate,@Location,@ResponsiblePerson,@Status,@Type);";
+            string sql = @"INSERT INTO exhibitions(Name,Description,StartDate,EndDate,Location,ResponsiblePerson,Status,Type) 
+                    VALUES(@Name,@Description,@StartDate,@EndDate,@Location,@ResponsiblePerson,@Status,@Type);";
 
             using (var connection = new SQLiteConnection(connectionString))
             {
@@ -270,7 +271,16 @@ namespace MuzeumInz
         //Update wystawy
         public void UpdateExhibitions(AddExhibitions addExhibitions)
         {
-            string sql = @"UPDATE exhibitions SET name = @Name, description = @Description, startDate = @StartDate, endDate = @EndDate, location = @Location, responsiblePerson = @ResponsiblePerson, status = @Status, type = @Type WHERE id = @Id";
+            string sql = @"UPDATE exhibitions 
+                SET name = @Name, 
+                description = @Description, 
+                startDate = @StartDate, 
+                endDate = @EndDate, 
+                location = @Location, 
+                responsiblePerson = @ResponsiblePerson, 
+                status = @Status, 
+                type = @Type 
+                WHERE id = @Id";
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();                
