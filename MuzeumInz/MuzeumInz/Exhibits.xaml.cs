@@ -30,7 +30,7 @@ namespace MuzeumInz
     {
         private BitmapImage image;        
         private DbConnect dbConnect;
-        public ObservableCollection<AddExhibits> Items { get; set; } //powiązania danych z interfejsem użytkownika
+        List<AddExhibits> addExhibits;
         private int? selectedId;
         private byte[] imageBytes;
 
@@ -38,9 +38,6 @@ namespace MuzeumInz
         {
             InitializeComponent();
             dbConnect = new DbConnect();
-
-            Items = new ObservableCollection<AddExhibits>();
-            exhibits_exhibitsDb.ItemsSource = Items;
 
             selectedId = null;
 
@@ -72,44 +69,37 @@ namespace MuzeumInz
 
         public void loadGrid()
         {
-            DataTable addExhibits = dbConnect.GetExhibits();          
-            exhibits_exhibitsDb.ItemsSource = addExhibits.DefaultView;
+            addExhibits = dbConnect.GetExhibits();
+            exhibits_exhibitsDb.ItemsSource = null;
+            exhibits_exhibitsDb.ItemsSource = addExhibits;
         }
         //przy zaznaczeniu wiersza, automatycznie uzupełnia pola z edycji
         private void exhibits_exhibitsDb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (exhibits_exhibitsDb.SelectedItem is DataRowView selectedRow)
+            if (exhibits_exhibitsDb.SelectedIndex != -1)
             {
-                exhibitsEdit_nameTxt.Text = selectedRow["name"].ToString();
-                exhibitsEdit_authorTxt.Text = selectedRow["Author"].ToString();
-                exhibitsEdit_categoryList.Text = selectedRow["Category"].ToString();
-                exhibitsEdit_yearTxt.Text = selectedRow["Year"].ToString();
-                exhibitsEdit_originTxt.Text = selectedRow["Origin"].ToString();
-                exhibitsEdit_locationTxt.Text = selectedRow["Location"].ToString();
-                exhibitsEdit_descriptionTxt.Text = selectedRow["Description"].ToString();
-                if(selectedRow["Image"] != DBNull.Value)
+                AddExhibits exhibits = (AddExhibits)exhibits_exhibitsDb.SelectedItem;
+
+                selectedId = exhibits.Id;
+
+                exhibitsEdit_nameTxt.Text = exhibits.Name;
+                exhibitsEdit_authorTxt.Text = exhibits.Author;
+                exhibitsEdit_categoryList.Text = exhibits.Category;
+                exhibitsEdit_yearTxt.Text = exhibits.Year.ToString();
+                exhibitsEdit_originTxt.Text = exhibits.Origin;
+                exhibitsEdit_locationTxt.Text = exhibits.Location;
+                exhibitsEdit_descriptionTxt.Text = exhibits.Description;
+                image = exhibits.Image;
+
+                if(image != null)
                 {
-                    imageBytes = (byte[])selectedRow["Image"];
+                    exhibitsEdit_imageBtn.Content = "Załadowano";
                 }
                 else
-                {
-                    imageBytes = null; 
-                }
-                BitmapImage image = imageBytes != null ? convertBytesToBitmap(imageBytes) : null; 
-                exhibitsEdit_nameTxt.Focus();
-
-                if (image == null)
                 {
                     exhibitsEdit_imageBtn.Content = "Wybierz";
-                    exhibits_selectedImageBox.Source = null;
-                    exhibits_selectedImageBox.UpdateLayout();
                 }
-                else
-                {
-                    exhibitsEdit_imageBtn.Content = "Załadowano"; //tutaj nie potrafie wczytać nazwy obrazka :(
-                    exhibits_selectedImageBox.Source = image;
-                }       
-                
+                exhibits_selectedImageBox.Source = image;
             }         
         }
 
@@ -153,15 +143,11 @@ namespace MuzeumInz
         //usuwanie eksponatu
         private void exhibits_deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(exhibits_exhibitsDb.SelectedItem != null)
+            if(selectedId != null)
             {
-                // Pobranie zaznaczonego rekordu (wiersza) jako obiekt
-                var selectedItem = (DataRowView)exhibits_exhibitsDb.SelectedItem;
-                int id = Convert.ToInt32(selectedItem["id"]);
+                dbConnect.DeleteExhibits(selectedId.Value);                
+                loadGrid();
                 exhibits_selectedImageBox.Source = null;
-
-                dbConnect.DeleteExhibits(id);                
-                loadGrid();                
             }
             else
             {
@@ -200,21 +186,34 @@ namespace MuzeumInz
 
         private void exhibitsEdit_saveBtn_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = (DataRowView)exhibits_exhibitsDb.SelectedItem;
-            int id = Convert.ToInt32(selectedItem["id"]);
-            string name = exhibitsEdit_nameTxt.Text;
-            string description = exhibitsEdit_descriptionTxt.Text;
-            int year = Convert.ToInt32(exhibitsEdit_yearTxt.Text);
-            string category = exhibitsEdit_categoryList.Text;
-            string author = exhibitsEdit_authorTxt.Text;
-            string origin = exhibitsEdit_originTxt.Text;
-            BitmapImage image = imageBytes != null ? convertBytesToBitmap(imageBytes) : null;
-            string location = exhibitsEdit_locationTxt.Text;
+            int year;
 
-            // Wywołaj metodę aktualizacji
-            AddExhibits addExhibits = new AddExhibits(id, name, description, year, category, author, origin, image, location);
-            dbConnect.UpdateExhibits(addExhibits);
-            loadGrid();
+            if (string.IsNullOrEmpty(exhibitsEdit_nameTxt.Text))
+            {
+                MessageBox.Show("Nazwa nie może być pusta");
+            }
+            else if (string.IsNullOrEmpty(exhibitsEdit_yearTxt.Text) || !int.TryParse(exhibitsEdit_yearTxt.Text, out year))
+            {
+                MessageBox.Show("Podano niepoprawny rok");
+            }
+            else if (string.IsNullOrEmpty(exhibitsEdit_authorTxt.Text))
+            {
+                MessageBox.Show("Autor nie może być pusty");
+            }
+            else if (string.IsNullOrEmpty(exhibitsEdit_originTxt.Text))
+            {
+                MessageBox.Show("Pochodzenie nie może być puste");
+            }
+            else if (string.IsNullOrEmpty(exhibitsEdit_locationTxt.Text))
+            {
+                MessageBox.Show("Obecna lokalizacja nie może być pusta");
+            }
+            else
+            {
+                AddExhibits exhibit = new AddExhibits(selectedId.Value, exhibitsEdit_nameTxt.Text, exhibitsEdit_descriptionTxt.Text, year, ((ComboBoxItem)exhibitsEdit_categoryList.SelectedItem).Content.ToString(), exhibitsEdit_authorTxt.Text, exhibitsEdit_originTxt.Text, image, exhibitsEdit_locationTxt.Text);
+                dbConnect.UpdateExhibits(exhibit);
+                loadGrid();
+            }
         }
         //przycisk wybór obrazka
         private void exhibits_imageBtn_Click(object sender, RoutedEventArgs e)
@@ -231,7 +230,7 @@ namespace MuzeumInz
 
                 exhibits_imageBtn.Content = System.IO.Path.GetFileName(openFileDialog.FileName);
                //zamiana obrazka na tablice byte
-                using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+               using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
                 {
                     imageBytes = new byte[fs.Length];
                     fs.Read(imageBytes, 0, (int)fs.Length);

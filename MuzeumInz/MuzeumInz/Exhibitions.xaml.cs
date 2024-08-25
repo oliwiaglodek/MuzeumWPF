@@ -211,6 +211,8 @@ namespace MuzeumInz
 
             exhibitionsCmb.ItemsSource = dbConnect.GetExhibitions();
             exhibitionsCmb.SelectedIndex = 0;
+            exhibitsCmb.ItemsSource = dbConnect.GetExhibits();
+            exhibitsCmb.SelectedIndex = 0;
         }
     }
 }

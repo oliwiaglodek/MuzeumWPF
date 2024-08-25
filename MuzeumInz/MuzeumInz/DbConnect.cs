@@ -127,30 +127,46 @@ namespace MuzeumInz
                 }
             }
         }
-
-
-
         //wczytaj eksponaty
-        public DataTable GetExhibits()
+        public List<AddExhibits> GetExhibits()
         {
-            string sql = "SELECT id, name, Description, Year, Category, Author, Origin, Image, Location FROM exhibits;";            
-            DataTable dt = new DataTable(); //przechowuje wyniki z db
+            string sql = "SELECT id, name, Description, Year, Category, Author, Origin, Image, Location FROM exhibits;";
+            List < AddExhibits > list = new List<AddExhibits>();
 
             using (var connection = new SQLiteConnection(connectionString))
             {
-                connection.Open();                
-                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, connection))
+                connection.Open();
+                using (var command = new SQLiteCommand(sql, connection))
                 {
-                    adapter.Fill(dt);//wypełnia pole danymi
-                } //wykonuje zapytanie sql i wypełnia tabele
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            string name = reader.GetString(1);
+                            string description = reader.IsDBNull(2) ? null : reader.GetString(2);
+                            int year = reader.GetInt32(3);
+                            string category = reader.GetString(4);
+                            string author = reader.GetString(5);
+                            string origin = reader.GetString(6);
+                            byte[] imageBytes = reader.IsDBNull(7) ? null : (byte[])reader["Image"];
+                            BitmapImage image = imageBytes == null ? null : convertBytesToBitmap(imageBytes);
+                            string location = reader.IsDBNull(8) ? null : reader.GetString(8);
+
+                            AddExhibits exhibits = new AddExhibits(id, name, description, year, category, author, origin, image, location);
+                            list.Add(exhibits);
+                        }
+                    }
+                }
             }
-            return dt;
+            return list;
         }
         //dodaj eksponat
         public void InsertExhibits(AddExhibits addExhibits)
         {
 
-            string sql = "INSERT INTO exhibits(Name,Description,Year,Category,Author,Origin, Image,Location) VALUES(@Name,@Description,@Year,@Category,@Author,@Origin,@Image,@Location);";
+            string sql = @"INSERT INTO exhibits(Name,Description,Year,Category,Author,Origin, Image,Location) 
+                    VALUES(@Name,@Description,@Year,@Category,@Author,@Origin,@Image,@Location);";
 
             using (var connection = new SQLiteConnection(connectionString))
             {
@@ -189,7 +205,16 @@ namespace MuzeumInz
         // edytuj eksponat
         public void UpdateExhibits(AddExhibits addExhibits)
         {
-            string sql = @"UPDATE exhibits SET name = @Name, description = @Description, year = @Year, category = @Category, author = @Author, origin = @Origin,image = @Image, location = @Location WHERE id = @Id";
+            string sql = @"UPDATE exhibits 
+                    SET name = @Name, 
+                    description = @Description, 
+                    year = @Year, 
+                    category = @Category, 
+                    author = @Author, 
+                    origin = @Origin,
+                    image = @Image, 
+                    location = @Location 
+                    WHERE id = @Id";
 
             using (var connection = new SQLiteConnection(connectionString))
             {
@@ -246,7 +271,6 @@ namespace MuzeumInz
         //dodaj wystawe
         public void InsertExhibitions(AddExhibitions addExhibitions)
         {
-
             string sql = @"INSERT INTO exhibitions(Name,Description,StartDate,EndDate,Location,ResponsiblePerson,Status,Type) 
                     VALUES(@Name,@Description,@StartDate,@EndDate,@Location,@ResponsiblePerson,@Status,@Type);";
 
