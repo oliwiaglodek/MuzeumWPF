@@ -39,6 +39,7 @@ namespace MuzeumInz
         {
             MainWindow MainWindow = new MainWindow();
             MainWindow.Show();
+            dbConnect.ClearCurrentUser();
             this.Hide();
             MessageBox.Show("Pomyślnie wylogowano!");
         }

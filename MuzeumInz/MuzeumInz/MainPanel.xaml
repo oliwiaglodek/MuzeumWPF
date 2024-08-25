@@ -10,7 +10,7 @@
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,1282,0" Width="200" Height="800" >
             <Button 
                 VerticalAlignment="Top" 
-                Margin="10" Height="100" FontSize="20" FontWeight="Bold" FontFamily="Tahoma" Foreground="White" Content="Główny&#xD;&#xA;Panel" Background="#210B61" Click="Button_Click" />
+                Margin="10" Height="100" FontSize="20" FontWeight="Bold" FontFamily="Tahoma" Foreground="White" Content="Główny&#xD;&#xA;Panel" Background="#210B61" />
             <Button x:Name="ExhibitionsBtn2" Content="Wystawy" 
                 Background="#210B61" 
                 Foreground="White"

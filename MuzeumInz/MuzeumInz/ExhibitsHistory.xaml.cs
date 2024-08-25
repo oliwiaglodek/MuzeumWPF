@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace MuzeumInz
     /// </summary>
     public partial class ExhibitsHistory : Window
     {
+        DbConnect dbConnect;
         public ExhibitsHistory()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace MuzeumInz
         {
             MainWindow MainWindow = new MainWindow();
             MainWindow.Show();
+            dbConnect.ClearCurrentUser();
             this.Hide();
             MessageBox.Show("Pomyślnie wylogowano!");
         }
@@ -49,7 +52,8 @@ namespace MuzeumInz
         {
             Exhibitions Exhibitions = new Exhibitions();
             Exhibitions.Show();
-            this.Hide();
+            //this.Hide();
+            this.Close();
         }
 
         private void HistoryBtn_Click(object sender, RoutedEventArgs e)

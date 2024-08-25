@@ -127,8 +127,38 @@ namespace MuzeumInz
             }
         }
 
+        public void LoginUserHistory(string userEmail)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
 
+                // zarejestruj aktywnośc zalogowania użytkownika
+                string insertHistoryQuery = "INSERT INTO history (table_name, record_id, operation, changed_by, old_values, new_values, changed_at) VALUES ('użytkownicy', (SELECT users.id FROM users WHERE users.email = @UserEmail), 'logowanie', @UserEmail, NULL, NULL,CURRENT_TIMESTAMP);";
+                using (var command = new SQLiteCommand(insertHistoryQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserEmail", userEmail);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+/*
+        public void LogoutUserHistory(string userEmail)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
 
+                // zarejestruj aktywnośc zalogowania użytkownika
+                string insertHistoryQuery = "INSERT INTO history (table_name, record_id, operation, changed_by, old_values, new_values, changed_at) VALUES ('użytkownicy', (SELECT users.id FROM users WHERE users.email = @UserEmail), 'wylogowanie', @UserEmail, NULL, NULL,CURRENT_TIMESTAMP);";
+                using (var command = new SQLiteCommand(insertHistoryQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserEmail", userEmail);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+*/
         //wczytaj eksponaty
         public DataTable GetExhibits()
         {

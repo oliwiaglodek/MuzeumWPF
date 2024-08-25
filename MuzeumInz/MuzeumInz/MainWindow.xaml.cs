@@ -59,6 +59,7 @@ namespace MuzeumInz
                 if (result.Rows.Count > 0)
                 {
                     dbConnect.SetCurrentUser(email);  // Zapisz zalogowanego użytkownika
+                    dbConnect.LoginUserHistory(email);
                     Main_Panel_Btn_Click(sender, e); //przy poprawnym zalogowaniu otworzy panel administracyjny
                 }
                 else
@@ -96,6 +97,7 @@ namespace MuzeumInz
                 }
                 return builder.ToString();
             }
+
         }
     }
 

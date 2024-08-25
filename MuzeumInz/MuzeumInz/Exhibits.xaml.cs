@@ -54,15 +54,6 @@ namespace MuzeumInz
             Application.Current.Shutdown();
         }
 
-        //Wyloguj
-        private void logout_Btn_Click(object sender, MouseButtonEventArgs e)
-        {
-            MainWindow MainWindow = new MainWindow();
-            MainWindow.Show();
-            this.Hide();
-            MessageBox.Show("Pomyślnie wylogowano!");
-        }
-
         //Widoczność pól dodania nowego eksponatu
         private void exhibits_addBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -189,11 +180,12 @@ namespace MuzeumInz
             Inventory.Show();
             this.Hide();
         }
-
+        //wylogowanie, czyszczenie usera
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow MainWindow = new MainWindow();
             MainWindow.Show();
+            dbConnect.ClearCurrentUser();
             this.Hide();
             MessageBox.Show("Pomyślnie wylogowano!");
         }
