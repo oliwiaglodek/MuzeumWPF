@@ -90,6 +90,7 @@
     <Compile Include="ExhibitsHistory.xaml.cs">
       <DependentUpon>ExhibitsHistory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExhibitsInExhibitionsDto.cs" />
     <Compile Include="Inventory.xaml.cs">
       <DependentUpon>Inventory.xaml</DependentUpon>
     </Compile>

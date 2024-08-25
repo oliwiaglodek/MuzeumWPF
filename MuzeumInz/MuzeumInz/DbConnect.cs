@@ -315,24 +315,46 @@ namespace MuzeumInz
             }
         }
         //Pobierz eksponty przypisane do wystawy
-        public DataTable LoadExhibitsInExhibition(int idExhibition)
+        public List<ExhibitsInExhibitionsDto> GetExhibitsInExhibitions()
         {
-            string sql = @"SELECT e.id FROM exhibits e INNER JOIN exhibits_exhibitions ee ON e.id = ee.idExhibits WHERE ee.idExhibitions = @idExhibition";
-            DataTable exhibitisTab = new DataTable();
+            string sql = @"SELECT 
+                exhibitions.id, 
+                exhibits.id,
+                exhibitions.name,
+                exhibitions.startDate,
+                exhibitions.endDate,
+                exhibits.name
+                from exhibits_exhibitions
+                join exhibitions on idExhibitions = exhibitions.id
+                join exhibits on idExhibits = exhibits.id;";
+            
+            List<ExhibitsInExhibitionsDto> list = new List<ExhibitsInExhibitionsDto>();
 
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
+
                 using (var command = new SQLiteCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@idExhibitions", idExhibition);
-                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                    using (var reader = command.ExecuteReader())
                     {
-                        adapter.Fill(exhibitisTab);       //tutaj wywala bład                  
+                        while (reader.Read())
+                        {
+                            int exhibitionId = reader.GetInt32(0);
+                            int exhibitId = reader.GetInt32(1);
+                            string exhibitionName = reader.GetString(2);
+                            DateTime exhibitionStart = DateTime.Parse(reader.GetString(3));
+                            DateTime exhibitionEnd = DateTime.Parse(reader.GetString(4));
+                            string exhibitName = reader.GetString(5);
+
+                            ExhibitsInExhibitionsDto expositionAssetDto = new ExhibitsInExhibitionsDto(exhibitionId, exhibitId, exhibitionName, exhibitionStart, exhibitionEnd, exhibitName);
+                            list.Add(expositionAssetDto);
+
+                        }
                     }
                 }
             }
-            return exhibitisTab;
+            return list;
         }
     }
 }

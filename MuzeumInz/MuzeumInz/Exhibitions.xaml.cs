@@ -22,12 +22,13 @@ namespace MuzeumInz
     {
         private DbConnect dbConnect;
         private int idExhibitions;
+        private List<ExhibitsInExhibitionsDto> exhibitsInExhibitionsDtos;
         public Exhibitions()
         {
             InitializeComponent();
             dbConnect = new DbConnect();
             loadGrid();
-            //LoadExhibitsInExhibitions(idExhibitions);
+            LoadExhibitsInExhibitions(idExhibitions);
         }
         public void loadGrid()
         {
@@ -184,10 +185,15 @@ namespace MuzeumInz
                 MessageBox.Show("Proszę zaznaczyć rekord do usunięcia.");
             }
         }
+        //pokazuje w DataGridzie wszystkie wystawy i przypisane do nich eksponaty
         private void LoadExhibitsInExhibitions(int idExhibition)
         {
-            DataTable exhibitsTab = dbConnect.LoadExhibitsInExhibition(idExhibition);
-            exhibitions_exhibitsInExhibitionDb.ItemsSource = exhibitionsDb.Items;
+            exhibitsInExhibitionsDtos = dbConnect.GetExhibitsInExhibitions();
+
+            exhibitions_exhibitsInExhibitionDb.ItemsSource = null;
+            exhibitions_exhibitsInExhibitionDb.ItemsSource = exhibitsInExhibitionsDtos;
+
+
         }
     }
 }
