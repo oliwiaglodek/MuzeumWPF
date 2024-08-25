@@ -21,19 +21,21 @@ namespace MuzeumInz
     public partial class Exhibitions : Window
     {
         private DbConnect dbConnect;
-        private int idExhibitions;
+        private int? idExhibitions;
+        List<AddExhibitions> addExhibitions;
         private List<ExhibitsInExhibitionsDto> exhibitsInExhibitionsDtos;
         public Exhibitions()
         {
             InitializeComponent();
             dbConnect = new DbConnect();
             loadGrid();
-            LoadExhibitsInExhibitions(idExhibitions);
+            LoadExhibitsInExhibitions();
         }
         public void loadGrid()
         {
-            DataTable addExhibitions = dbConnect.GetExhibitions();
-            exhibitionsDb.ItemsSource = addExhibitions.DefaultView;
+            addExhibitions = dbConnect.GetExhibitions();
+            exhibitionsDb.ItemsSource = null;
+            exhibitionsDb.ItemsSource = addExhibitions;
         }
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
@@ -96,18 +98,15 @@ namespace MuzeumInz
         //dodaj wystawe
         private void exhibitions_saveAddBtn_Click(object sender, RoutedEventArgs e)
         {
-            DateTime? startDate = exhibitions_addStartDateTxt.SelectedDate.Value.Date;//data z godziną :( pomyślec jak to sformatować
-            DateTime? endDate = exhibitions_addEndDateTxt.SelectedDate.Value.Date;
-
             if (string.IsNullOrEmpty(exhibitions_addNameTxt.Text))
             {
                 MessageBox.Show("Nazwa nie może być pusta");
             }
-            else if (!startDate.HasValue)
+            else if (!exhibitions_addStartDateTxt.SelectedDate.HasValue)
             {
                 MessageBox.Show("Data nie może być pusta");
             }
-            else if (!endDate.HasValue) 
+            else if (!exhibitions_addEndDateTxt.SelectedDate.HasValue)
             {
                 MessageBox.Show("Data nie może być pusta");
             }
@@ -125,48 +124,69 @@ namespace MuzeumInz
             }
             else
             {
-                AddExhibitions exhibitions = new AddExhibitions(0, exhibitions_addNameTxt.Text, exhibitions_addDescriptionTxt.Text, startDate,endDate, exhibitions_addLocationTxt.Text, exhibitions_addResponsiblePersonTxt.Text, ((ComboBoxItem)exhibitions_addStatusList.SelectedItem).Content.ToString(), ((ComboBoxItem)exhibitions_addTypeTxt.SelectedItem).Content.ToString());
+                AddExhibitions exhibitions = new AddExhibitions(0, exhibitions_addNameTxt.Text, exhibitions_addDescriptionTxt.Text, exhibitions_addStartDateTxt.SelectedDate.Value, exhibitions_addEndDateTxt.SelectedDate.Value, exhibitions_addLocationTxt.Text, exhibitions_addResponsiblePersonTxt.Text, ((ComboBoxItem)exhibitions_addStatusList.SelectedItem).Content.ToString(), ((ComboBoxItem)exhibitions_addTypeTxt.SelectedItem).Content.ToString());
                 dbConnect.InsertExhibitions(exhibitions);
                 loadGrid();
-            }
+            }       
+               
         }
         //usupełnij pola edycji po zaznczeniu wiersza
         private void exhibitionsDb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (exhibitionsDb.SelectedItem is DataRowView selectedRow)
+            if (exhibitionsDb.SelectedIndex != -1)
             {
-                exhibitions_editNameTxt.Text = selectedRow["name"].ToString();
-                exhibitions_editStatusList.Text = selectedRow["Status"].ToString();
-                exhibitions_editStartDateTxt.Text = selectedRow["StartDate"].ToString();
-                exhibitions_editEndDateTxt.Text = selectedRow["EndDate"].ToString();
-                exhibitions_editResponsiblePersonTxt.Text = selectedRow["ResponsiblePerson"].ToString();
-                exhibitions_editLocationTxt.Text = selectedRow["Location"].ToString();
-                exhibitions_editDescriptionTxt.Text = selectedRow["Description"].ToString();
-                exhibitions_editTypeTxt.Text = selectedRow["Type"].ToString();
+                AddExhibitions exhibitions = (AddExhibitions)exhibitionsDb.SelectedItem;
 
-                idExhibitions = Convert.ToInt32(selectedRow["id"]);
-                //dbConnect.LoadExhibitsInExhibition(idExhibitions);
+                idExhibitions = exhibitions.Id;
+                exhibitions_editNameTxt.Text = exhibitions.Name;
+                exhibitions_editStatusList.Text = exhibitions.Status;
+                exhibitions_editStartDateTxt.SelectedDate = exhibitions.StartDate;
+                exhibitions_editEndDateTxt.SelectedDate = exhibitions.EndDate;
+                exhibitions_editResponsiblePersonTxt.Text = exhibitions.ResponsiblePerson;
+                exhibitions_editLocationTxt.Text = exhibitions.Location;
+                exhibitions_editDescriptionTxt.Text = exhibitions.Description;
+                exhibitions_editTypeTxt.Text = exhibitions.Type;
+
                 exhibitions_exhibitsInExhibitionsGrid.Visibility = Visibility.Visible;
+            } 
+            else
+            {
+                idExhibitions = 0;
             }
         }
         //zapisz edycje wystawy
         private void exhibitions_saveEditBtn_Click(object sender, RoutedEventArgs e)
-        {          
-            var selectedItem = (DataRowView)exhibitionsDb.SelectedItem;
-            int id = Convert.ToInt32(selectedItem["id"]); 
-            string name = exhibitions_editNameTxt.Text;
-            string description = exhibitions_editDescriptionTxt.Text;
-            DateTime startDate = exhibitions_editStartDateTxt.SelectedDate.Value;
-            DateTime endDate = exhibitions_editEndDateTxt.SelectedDate.Value;
-            string location = exhibitions_editLocationTxt.Text;
-            string responsiblePerson = exhibitions_editResponsiblePersonTxt.Text;
-            string status = exhibitions_editStatusList.Text;
-            string type = exhibitions_editTypeTxt.Text;
-
-            // Wywołaj metodę aktualizacji
-            AddExhibitions addExhibitions = new AddExhibitions(id, name, description, startDate, endDate, location, responsiblePerson, status, type);
-            dbConnect.UpdateExhibitions(addExhibitions);
-            loadGrid();
+        {
+            if (string.IsNullOrEmpty(exhibitions_editNameTxt.Text))
+            {
+                MessageBox.Show("Nazwa nie może być pusta");
+            }
+            else if (!exhibitions_editStartDateTxt.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Data nie może być pusta");
+            }
+            else if (!exhibitions_editEndDateTxt.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Data nie może być pusta");
+            }
+            else if (string.IsNullOrEmpty(exhibitions_editResponsiblePersonTxt.Text))
+            {
+                MessageBox.Show("Organizator nie może być pusty");
+            }
+            else if (string.IsNullOrEmpty(exhibitions_editDescriptionTxt.Text))
+            {
+                MessageBox.Show("Opis nie może być pusty");
+            }
+            else if (string.IsNullOrEmpty(exhibitions_editLocationTxt.Text))
+            {
+                MessageBox.Show("Obecna lokalizacja nie może być pusta");
+            }
+            else
+            {
+                AddExhibitions exhibitions = new AddExhibitions(idExhibitions.Value, exhibitions_editNameTxt.Text, exhibitions_editDescriptionTxt.Text, exhibitions_editStartDateTxt.SelectedDate.Value, exhibitions_editEndDateTxt.SelectedDate.Value, exhibitions_editLocationTxt.Text, exhibitions_editResponsiblePersonTxt.Text, ((ComboBoxItem)exhibitions_editStatusList.SelectedItem).Content.ToString(), ((ComboBoxItem)exhibitions_editTypeTxt.SelectedItem).Content.ToString());
+                dbConnect.UpdateExhibitions(exhibitions);
+                loadGrid();
+            }
         }
         //usuwanie wystawy
         private void exhibition_deleteBtn_Click(object sender, RoutedEventArgs e)
@@ -186,14 +206,14 @@ namespace MuzeumInz
             }
         }
         //pokazuje w DataGridzie wszystkie wystawy i przypisane do nich eksponaty
-        private void LoadExhibitsInExhibitions(int idExhibition)
+        private void LoadExhibitsInExhibitions()
         {
             exhibitsInExhibitionsDtos = dbConnect.GetExhibitsInExhibitions();
 
             exhibitions_exhibitsInExhibitionDb.ItemsSource = null;
             exhibitions_exhibitsInExhibitionDb.ItemsSource = exhibitsInExhibitionsDtos;
 
-
+            exhibitionsCmb.ItemsSource = dbConnect.GetExhibitions();
         }
     }
 }

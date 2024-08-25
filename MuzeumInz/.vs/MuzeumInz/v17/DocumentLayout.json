@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|c:\\users\\admin\\documents\\github\\muzeumwpf\\muzeuminz\\muzeuminz\\exhibitions.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibitions.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\muzeuminz\\exhibitions.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibitions.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|c:\\users\\admin\\documents\\github\\muzeumwpf\\muzeuminz\\muzeuminz\\dbconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\dbconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|c:\\users\\admin\\documents\\github\\muzeumwpf\\muzeuminz\\muzeuminz\\exhibitsinexhibitionsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibitsinexhibitionsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\muzeuminz\\exhibitions.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibitions.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|c:\\users\\admin\\documents\\github\\muzeumwpf\\muzeuminz\\muzeuminz\\exhibitions.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibitions.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,30 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ExhibitsInExhibitionsDto.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\ExhibitsInExhibitionsDto.cs",
-              "RelativeDocumentMoniker": "MuzeumInz\\ExhibitsInExhibitionsDto.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\ExhibitsInExhibitionsDto.cs",
-              "RelativeToolTip": "MuzeumInz\\ExhibitsInExhibitionsDto.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAkwBEAAAClAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-25T14:19:29.757Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Exhibitions.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibitions.xaml.cs",
               "RelativeDocumentMoniker": "MuzeumInz\\Exhibitions.xaml.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibitions.xaml.cs*",
-              "RelativeToolTip": "MuzeumInz\\Exhibitions.xaml.cs*",
-              "ViewState": "AQIAAK8AAAAAAAAAAAAjwMUAAABWAAAA",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibitions.xaml.cs",
+              "RelativeToolTip": "MuzeumInz\\Exhibitions.xaml.cs",
+              "ViewState": "AQIAAMEAAAAAAAAAAAAqwMkAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-25T14:10:01.286Z",
               "EditorCaption": ""
@@ -62,14 +45,14 @@
               "RelativeDocumentMoniker": "MuzeumInz\\DbConnect.cs",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\DbConnect.cs",
               "RelativeToolTip": "MuzeumInz\\DbConnect.cs",
-              "ViewState": "AQIAAD0BAAAAAAAAAAAzwHsBAAAYAAAA",
+              "ViewState": "AQIAAEMBAAAAAAAAAAAwwPMAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-25T14:08:38.341Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Exhibitions.xaml",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibitions.xaml",
               "RelativeDocumentMoniker": "MuzeumInz\\Exhibitions.xaml",

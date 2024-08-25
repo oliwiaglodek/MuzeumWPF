@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Data.Entity;
 using System.IO;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace MuzeumInz
 {
@@ -210,20 +211,37 @@ namespace MuzeumInz
             }
         }
         //wczytaj wystawy
-        public DataTable GetExhibitions()
+        public List<AddExhibitions> GetExhibitions()
         {
-            string sql = "SELECT * FROM exhibitions;";
-            DataTable dt = new DataTable(); //przechowuje wyniki z db
+            string sql = "SELECT id,name,description,startDate,endDate, location, responsiblePerson, status, type FROM exhibitions;";
+            List<AddExhibitions> list = new List<AddExhibitions>();            
 
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
-                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, connection))
+                using (var command = new SQLiteCommand(sql, connection))
                 {
-                    adapter.Fill(dt);//wypełnia pole danymi
-                } //wykonuje zapytanie sql i wypełnia tabele
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            string name = reader.GetString(1);
+                            string description = reader.IsDBNull(2) ? null : reader.GetString(2);                            
+                            DateTime startDate = DateTime.Parse(reader.GetString(3));
+                            DateTime endDate = DateTime.Parse(reader.GetString(4));
+                            string location = reader.GetString(5);
+                            string responsiblePerson = reader.GetString(6);
+                            string status = reader.GetString(7);
+                            string type = reader.GetString(8);
+
+                            AddExhibitions exhibitions = new AddExhibitions(id, name, description, startDate, endDate, location, responsiblePerson, status, type);
+                            list.Add(exhibitions);
+                        }
+                    }
+                }               
             }
-            return dt;
+            return list;
         }
         //dodaj wystawe
         public void InsertExhibitions(AddExhibitions addExhibitions)
