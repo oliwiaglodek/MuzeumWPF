@@ -128,11 +128,11 @@
             <Button x:Name="exhibition_addExhibitsBtn" Content="Dodaj eksponat do wystawy" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="0,199,0,0" Grid.Row="1" Click="exhibition_addExhibitsBtn_Click" />
             <Button x:Name="exhibition_deleteExhibitsBtn" Content="Usuń eksponat z wystawy" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="424,0,0,10" Grid.Row="1" />
             <Label Content="Lista eksponatów na wystawach" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Width="417" FontFamily="Tahoma" FontSize="16"/>
-            <ComboBox x:Name="exhibitionsCmb" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Width="242"/>
+            <ComboBox x:Name="exhibitionsCmb" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Width="242" FontFamily="Tahoma" FontSize="15"/>
             <Label Content="Wystawa" HorizontalAlignment="Left" Margin="0,77,0,0" VerticalAlignment="Top" Width="232" FontFamily="Tahoma" FontSize="16" Grid.Row="1"/>
             <Label Content="Eksponat" HorizontalAlignment="Left" Margin="278,77,0,0" VerticalAlignment="Top" Width="232" FontFamily="Tahoma" FontSize="16" Grid.Row="1"/>
             <ComboBox x:Name="exhibitsCmb" HorizontalAlignment="Left" Margin="278,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="
-                      242"/>
+                      242" FontFamily="Tahoma"/>
         </Grid>
         <Grid x:Name="exhibitions_allExhibitsGrid" Margin="275,555,61,32" Visibility="Collapsed">
             <DataGrid x:Name="exhibition_exhibitsDb" d:ItemsSource="{d:SampleData ItemCount=5}"/>
