@@ -17,6 +17,7 @@ namespace MuzeumInz
         public string ResponsiblePerson { get; set; }
         public string Status { get; set; }
         public string Type { get; set; }
+
         public AddExhibitions(int id, string name, string description, DateTime? startDate, DateTime? endDate, string location, string responsiblePerson, string status, string type) 
         { 
             Id = id;
@@ -29,5 +30,10 @@ namespace MuzeumInz
             Status = status;
             Type = type;
         }
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }
 }

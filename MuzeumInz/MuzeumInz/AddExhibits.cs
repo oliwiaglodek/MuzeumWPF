@@ -31,5 +31,11 @@ namespace MuzeumInz
             Image = image;
             Location = location;
         }
+        //w comboboxe wyswietla nazwe eksponatu bo napisujemy tostring
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }
 }
