@@ -92,9 +92,7 @@ namespace MuzeumInz
 
                 // Sprawdź, czy tabela current_user istnieje, jeśli nie, to ją stwórz
                 string createTableQuery = @"
-            CREATE TABLE IF NOT EXISTS current_user (
-                user_id TEXT
-            );
+            CREATE TABLE IF NOT EXISTS current_user ( user_id TEXT);
             DELETE FROM current_user; -- usuń istniejącego użytkownika
         ";
 

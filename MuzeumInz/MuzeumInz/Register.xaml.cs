@@ -44,6 +44,7 @@ namespace MuzeumInz
         //Zamknięcie na "X"
         private void exitClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            dbConnect.ClearCurrentUser();
             Application.Current.Shutdown();
         }
 

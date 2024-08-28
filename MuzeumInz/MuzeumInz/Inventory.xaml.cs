@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace MuzeumInz
     /// </summary>
     public partial class Inventory : Window
     {
+        DbConnect dbConnect;
         public Inventory()
         {
             InitializeComponent();
@@ -43,6 +45,7 @@ namespace MuzeumInz
             MainWindow MainWindow = new MainWindow();
             MainWindow.Show();
             this.Hide();
+            dbConnect.ClearCurrentUser();
             MessageBox.Show("Pomyślnie wylogowano!");
         }
 
