@@ -38,6 +38,15 @@ namespace MuzeumInz
             exhibitionsDb.ItemsSource = addExhibitions;
         }
 
+        //przenoszenie okna
+        private void Move_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ButtonState == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow MainWindow = new MainWindow();

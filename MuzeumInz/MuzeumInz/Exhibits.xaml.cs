@@ -44,6 +44,15 @@ namespace MuzeumInz
             loadGrid();            
         }
 
+        //przenoszenie okna
+        private void Move_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ButtonState == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
         //Zamknięcie na "X"
         private void exitClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

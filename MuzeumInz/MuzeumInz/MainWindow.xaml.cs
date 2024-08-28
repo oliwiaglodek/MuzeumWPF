@@ -33,6 +33,15 @@ namespace MuzeumInz
             dbConnect = new DbConnect();
         }
 
+        //przenoszenie okna
+        private void Move_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ButtonState == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
         //zamknięcie okna na "X"
         private void exitClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
