@@ -20,10 +20,14 @@ namespace MuzeumInz
     /// </summary>
     public partial class ExhibitsHistory : Window
     {
-        DbConnect dbConnect;
+        private DbConnect dbConnect;
+        private List<History> exhibitsHistory;
+
         public ExhibitsHistory()
         {
             InitializeComponent();
+            dbConnect = new DbConnect();
+            loadGrid();
         }
 
         //przenoszenie okna
@@ -79,9 +83,11 @@ namespace MuzeumInz
             this.Hide();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void loadGrid()
         {
-
+            exhibitions_history.ItemsSource = dbConnect.GetHistory();
         }
+
+
     }
 }

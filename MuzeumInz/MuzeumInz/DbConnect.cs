@@ -406,5 +406,40 @@ namespace MuzeumInz
             }
             return list;
         }
+        //pobierz z tabeli historia
+        public List<History> GetHistory()
+        {
+            string sql = @"SELECT * FROM history";
+
+            List<History> list = new List<History>();
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int historyId = reader.GetInt32(0);
+                            string tableName = reader.GetString(1);
+                            int recordId = reader.GetInt32(2);
+                            string operation = reader.GetString(3);
+                            string changed_by = reader.IsDBNull(4) ? null : reader.GetString(4);//reader.IsDBNull(4) sprawdza, czy wartość w kolumnie o indeksie 4 jest NULL.
+                            DateTime changed_at = DateTime.Parse(reader.GetString(5));
+                            string old_values = reader.IsDBNull(6) ? null : reader.GetString(6);
+                            string new_values = reader.IsDBNull(7) ? null : reader.GetString(7);
+
+                            History HistoryList = new History(historyId, tableName, recordId, operation, changed_by, changed_at, old_values, new_values);
+                            list.Add(HistoryList);
+
+                        }
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

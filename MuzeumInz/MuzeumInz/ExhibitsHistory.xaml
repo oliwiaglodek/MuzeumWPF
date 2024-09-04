@@ -10,7 +10,7 @@
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,1282,0" Width="200" Height="800" >
             <Button 
                 VerticalAlignment="Top" 
-                Margin="10" Height="100" FontSize="20" FontWeight="Bold" FontFamily="Tahoma" Foreground="White" Content="Historia" Background="#210B61" Click="Button_Click" />
+                Margin="10" Height="100" FontSize="20" FontWeight="Bold" FontFamily="Tahoma" Foreground="White" Content="Historia" Background="#210B61" />
             <Button x:Name="ExhibitionsBtn2" Content="Wystawy" 
                 Background="#210B61" 
                 Foreground="White"
@@ -111,6 +111,7 @@
             </Button>
         </StackPanel>
         <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="1453,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
+        <DataGrid x:Name="exhibitions_history" HorizontalAlignment="Left" Height="570" Margin="347,50,0,0" VerticalAlignment="Top" Width="1041" d:ItemsSource="{d:SampleData ItemCount=20}"/>
 
     </Grid>
 </Window>
