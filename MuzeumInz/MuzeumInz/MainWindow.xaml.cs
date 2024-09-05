@@ -82,7 +82,7 @@ namespace MuzeumInz
         {
             Register registerWindow = new Register();
             registerWindow.Show();
-            this.Hide();
+            this.Close();
         }
 
         //Otworzy okno panelu głównego
@@ -90,7 +90,7 @@ namespace MuzeumInz
         {
             MainPanel MainPanelWindow = new MainPanel();
             MainPanelWindow.Show();
-            this.Hide();
+            this.Close();
         }
         //Hashowanie hasła
         private string HashPassword(string password)

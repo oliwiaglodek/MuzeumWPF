@@ -53,7 +53,7 @@ namespace MuzeumInz
         {
             MainWindow loginWindow = new MainWindow();
             loginWindow.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void register_signBtn_Click(object sender, RoutedEventArgs e)

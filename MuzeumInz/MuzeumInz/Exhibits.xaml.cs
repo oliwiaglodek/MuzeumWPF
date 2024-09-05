@@ -65,7 +65,7 @@ namespace MuzeumInz
         {
             MainWindow MainWindow = new MainWindow();
             MainWindow.Show();
-            this.Hide();
+            this.Close();
             dbConnect.ClearCurrentUser();
             MessageBox.Show("Pomyślnie wylogowano!");
         }
@@ -169,28 +169,28 @@ namespace MuzeumInz
         {
             Exhibitions Exhibitions = new Exhibitions();
             Exhibitions.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void HistoryBtn_Click(object sender, RoutedEventArgs e)
         {
             ExhibitsHistory ExhibitsHistory = new ExhibitsHistory();
             ExhibitsHistory.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void Inventory_Click(object sender, RoutedEventArgs e)
         {
             Inventory Inventory = new Inventory();
             Inventory.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow MainWindow = new MainWindow();
             MainWindow.Show();
-            this.Hide();
+            this.Close();
             MessageBox.Show("Pomyślnie wylogowano!");
         }
 

@@ -12,17 +12,35 @@ using System.Data.Entity;
 using System.IO;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices.ComTypes;
+using System.Data.Common;
 
 namespace MuzeumInz
 {
-    public class DbConnect
+    public class DbConnect : IDisposable
     {
         private string connectionString;
+        private SQLiteConnection _connection;
 
         public DbConnect()
         {
-            connectionString =ConfigurationManager.ConnectionStrings["Muzeum"].ConnectionString;//"Data Source=Muzeum.db;";
+            // Pobieramy connectionString z pliku konfiguracyjnego
+            connectionString = ConfigurationManager.ConnectionStrings["Muzeum"].ConnectionString;
+            _connection = new SQLiteConnection(connectionString);
+            _connection.Open(); // Otwieramy połączenie
         }
+        // Implementacja IDisposable do poprawnego zarządzania zasobami
+        public void Dispose()
+        {
+            if (_connection != null)
+            {
+                if (_connection.State == ConnectionState.Open)
+                    _connection.Close(); // Zamykamy połączenie do bazy danych
+
+                _connection.Dispose(); // Zwalniamy zasoby
+                _connection = null;
+            }
+        }
+
 
         public DataTable GetData(SQLiteCommand command)
         {
@@ -49,9 +67,12 @@ namespace MuzeumInz
             }
         }*/
 
+        // Zwracamy istniejące połączenie, aby inne metody mogły z niego korzystać
         public SQLiteConnection GetConnection()
         {
-            return new SQLiteConnection(connectionString);
+            if (_connection.State == ConnectionState.Closed)
+                _connection.Open();
+            return _connection;
         }
 
         //sprawdzenie czy użytkonik istanieje w bazie - do rejestracji
