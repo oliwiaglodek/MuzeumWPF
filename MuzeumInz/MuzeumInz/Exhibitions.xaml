@@ -16,7 +16,7 @@
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,50,0,0" Width="200" Click="HistoryBtn_Click">
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,50,0,0" Width="200">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -33,7 +33,7 @@
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Click="ExhibitionsBtn1_Click" Width="200" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" Click="ExhibitsBtn_Click">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

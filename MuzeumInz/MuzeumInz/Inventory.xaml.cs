@@ -51,30 +51,63 @@ namespace MuzeumInz
 
         private void ExhibitsBtn_Click(object sender, RoutedEventArgs e)
         {
-            Exhibits Exhibits = new Exhibits();
-            Exhibits.Show();
-            this.Close();
+            // Sprawdzamy, czy okno Exhibits już istnieje
+            var existingWindow = Application.Current.Windows.OfType<Exhibits>().FirstOrDefault();
+
+            if (existingWindow == null)  // Jeśli okno nie istnieje
+            {
+                using (DbConnect dbConnect = new DbConnect())
+                {
+                    Exhibits exhibitsWindow = new Exhibits();
+                    exhibitsWindow.Show();
+                    this.Close();  // Zamykamy aktualne okno, aby zwolnić zasoby
+                } // Po zakończeniu using dbConnect zostanie zamknięte
+            }
+            else  // Jeśli okno istnieje
+            {
+                existingWindow.Focus();  // Skupiamy się na istniejącym oknie
+            }
         }
 
         private void ExhibitionsBtn_Click(object sender, RoutedEventArgs e)
         {
-            Exhibitions Exhibitions = new Exhibitions();
-            Exhibitions.Show();
-            this.Close();
+
+            var existingWindow = Application.Current.Windows.OfType<Exhibitions>().FirstOrDefault();
+
+            if (existingWindow == null)
+            {
+                using (DbConnect dbConnect = new DbConnect())
+                {
+                    Exhibitions exhibitionsWindow = new Exhibitions();
+                    exhibitionsWindow.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                existingWindow.Focus();
+            }
         }
+
 
         private void HistoryBtn_Click(object sender, RoutedEventArgs e)
         {
-            ExhibitsHistory ExhibitsHistory = new ExhibitsHistory();
-            ExhibitsHistory.Show();
-            this.Close();
+            var existingWindow = Application.Current.Windows.OfType<ExhibitsHistory>().FirstOrDefault();
+
+            if (existingWindow == null)
+            {
+                using (DbConnect dbConnect = new DbConnect())
+                {
+                    ExhibitsHistory exhibitsHistoryWindow = new ExhibitsHistory();
+                    exhibitsHistoryWindow.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                existingWindow.Focus();  // Skupiamy się na istniejącym oknie
+            }
         }
 
-        private void Inventory_Click(object sender, RoutedEventArgs e)
-        {
-            Inventory Inventory = new Inventory();
-            Inventory.Show();
-            this.Close();
-        }
     }
 }
