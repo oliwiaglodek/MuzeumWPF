@@ -225,6 +225,25 @@ namespace MuzeumInz
             }
         }
 
+        private void Reports_Click(object sender, RoutedEventArgs e)
+        {
+            var existingWindow = Application.Current.Windows.OfType<Reports>().FirstOrDefault();
+
+            if (existingWindow == null)
+            {
+                using (DbConnect dbConnect = new DbConnect())
+                {
+                    Reports reportsWindow = new Reports();
+                    reportsWindow.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                existingWindow.Focus();
+            }
+        }
+
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow MainWindow = new MainWindow();

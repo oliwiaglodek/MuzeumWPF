@@ -142,7 +142,7 @@
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" >
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Click="Reports_Click">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
