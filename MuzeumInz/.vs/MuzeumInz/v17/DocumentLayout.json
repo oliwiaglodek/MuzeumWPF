@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibits.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|c:\\users\\emil\\documents\\github\\muzeumwpf\\muzeuminz\\muzeuminz\\reports.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|C:\\Users\\Emil\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\muzeuminz\\reports.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\reports.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|c:\\users\\emil\\documents\\github\\muzeumwpf\\muzeuminz\\muzeuminz\\exhibits.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|C:\\Users\\Emil\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\muzeuminz\\exhibits.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibits.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -23,7 +23,7 @@
       "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\mainpanel.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|c:\\users\\emil\\documents\\github\\muzeumwpf\\muzeuminz\\muzeuminz\\reports.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|C:\\Users\\Emil\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\muzeuminz\\reports.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\reports.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
@@ -62,8 +62,7 @@
               "RelativeToolTip": "MuzeumInz\\Exhibits.xaml.cs",
               "ViewState": "AQIAAOEAAAAAAAAAAAAQwPQAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T22:57:52.951Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-14T22:57:52.951Z"
             },
             {
               "$type": "Document",
@@ -75,8 +74,7 @@
               "RelativeToolTip": "MuzeumInz\\Reports.xaml.cs",
               "ViewState": "AQIAAGYAAAAAAAAAAAAQwIMAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T12:01:13.633Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-14T12:01:13.633Z"
             },
             {
               "$type": "Document",
@@ -87,8 +85,7 @@
               "ToolTip": "C:\\Users\\Emil\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Reports.xaml",
               "RelativeToolTip": "MuzeumInz\\Reports.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-14T11:57:48.616Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-14T11:57:48.616Z"
             },
             {
               "$type": "Document",
@@ -100,8 +97,7 @@
               "RelativeToolTip": "MuzeumInz\\Exhibitions.xaml.cs",
               "ViewState": "AQIAAGYAAAAAAAAAAAAqwIcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-08T21:56:09.445Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-08T21:56:09.445Z"
             },
             {
               "$type": "Document",
@@ -113,8 +109,7 @@
               "RelativeToolTip": "MuzeumInz\\DbConnect.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABUAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-25T14:08:38.341Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-25T14:08:38.341Z"
             },
             {
               "$type": "Document",
@@ -125,8 +120,7 @@
               "ToolTip": "C:\\Users\\Emil\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\MainPanel.xaml",
               "RelativeToolTip": "MuzeumInz\\MainPanel.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-28T20:59:48.344Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-28T20:59:48.344Z"
             }
           ]
         }
