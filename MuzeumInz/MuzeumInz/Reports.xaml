@@ -111,6 +111,21 @@
             </Button>
         </StackPanel>
         <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="1453,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
+        <Button x:Name="SaveHistoryPDFBtn" 
+        Background="#210B61" 
+        Foreground="White" 
+        FontSize="50" 
+        HorizontalAlignment="Left" 
+        Height="185" 
+        Width="290" 
+        Margin="327,92,0,0" 
+        VerticalAlignment="Top"
+                Click="SaveHistoryPDF">
+            <TextBlock Text="Eksportuj Historię PDF" 
+               TextWrapping="Wrap" 
+               TextAlignment="Center" 
+               VerticalAlignment="Center" />
+        </Button>
 
     </Grid>
 </Window>
