@@ -339,5 +339,29 @@ namespace MuzeumInz
                 }
             }
         }
+
+        private void searchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SearchExhibits();
+        }
+
+        private void SearchExhibits()
+        {
+            string nameFilter = searchByNameTxt.Text.ToLower();
+            string authorFilter = searchByAuthorTxt.Text.ToLower();
+            string locationFilter = searchByLocationTxt.Text.ToLower();
+            string yearFilter = searchByYearTxt.Text;
+            string categoryFilter = searchByCategoryCmb.Text.ToLower();
+
+            var filteredExhibits = addExhibits.Where(exhibit =>
+                (string.IsNullOrEmpty(nameFilter) || exhibit.Name.ToLower().Contains(nameFilter)) &&
+                (string.IsNullOrEmpty(authorFilter) || exhibit.Author.ToLower().Contains(authorFilter)) &&
+                (string.IsNullOrEmpty(locationFilter) || exhibit.Location.ToLower().Contains(locationFilter)) &&
+                (string.IsNullOrEmpty(yearFilter) || exhibit.Year == int.Parse(yearFilter)) &&//.Contains(yearFilter)) &&
+                (string.IsNullOrEmpty(categoryFilter) || exhibit.Category.Contains(categoryFilter))
+            ).ToList();
+
+            exhibits_exhibitsDb.ItemsSource = filteredExhibits;
+        }
     }
 }

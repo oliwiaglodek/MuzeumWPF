@@ -41,7 +41,6 @@ namespace MuzeumInz
             }
         }
 
-
         public DataTable GetData(SQLiteCommand command)
         {
             DataTable dt = new DataTable();
@@ -57,7 +56,7 @@ namespace MuzeumInz
 
             return dt;
         }
-        /*public void ExecuteQuery(string query)
+        public void ExecuteQuery(string query)
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -65,20 +64,20 @@ namespace MuzeumInz
                 connection.Open();
                 command.ExecuteNonQuery();
             }
-        }*/
+        }
 
         // Zwracamy istniejące połączenie, aby inne metody mogły z niego korzystać
         public SQLiteConnection GetConnection()
         {
             if (_connection.State == ConnectionState.Closed)
                 _connection.Open();
-            return _connection;
+            return _connection; 
         }
 
         //sprawdzenie czy użytkonik istanieje w bazie - do rejestracji
         public bool CheckUserExist(string email)
         {
-            using (SQLiteConnection connection = GetConnection())
+            using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
                 string query = "SELECT COUNT(*) FROM users WHERE email = @email";
@@ -93,16 +92,16 @@ namespace MuzeumInz
         //dodanie użytkownika
         public void RegisterUser(string email, string password)
         {
-            using (SQLiteConnection connection = GetConnection())
-            {
-                connection.Open();
-                string query = "INSERT INTO users (email, password) VALUES (@email, @password)";
-                SQLiteCommand command = new SQLiteCommand(query, connection);
-                command.Parameters.AddWithValue("@email", email);
-                command.Parameters.AddWithValue("@password", password);
+            using (var connection = new SQLiteConnection(connectionString)) 
+             {
+                 connection.Open();
+                 string query = "INSERT INTO users (email, password) VALUES (@email, @password)";
+                 SQLiteCommand command = new SQLiteCommand(query, connection);
+                 command.Parameters.AddWithValue("@email", email);
+                 command.Parameters.AddWithValue("@password", password);
 
-                command.ExecuteNonQuery();
-            }
+                 command.ExecuteNonQuery();
+             }
         }
         //ustawia w tymczasowej tabeli użytkownika a raczej jego nazwę - potem można rozszerzyć o dane logowania i itp
         public void SetCurrentUser(string userEmail)
@@ -113,9 +112,9 @@ namespace MuzeumInz
 
                 // Sprawdź, czy tabela current_user istnieje, jeśli nie, to ją stwórz
                 string createTableQuery = @"
-            CREATE TABLE IF NOT EXISTS current_user ( user_id TEXT);
-            DELETE FROM current_user; -- usuń istniejącego użytkownika
-        ";
+                    CREATE TABLE IF NOT EXISTS current_user ( user_id TEXT);
+                    DELETE FROM current_user; -- usuń istniejącego użytkownika
+                 ";
 
                 using (var command = new SQLiteCommand(createTableQuery, connection))
                 {

@@ -8,12 +8,16 @@
         Title="Exhibits" Height="800" Width="1482" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Move_MouseLeftButtonDown">
 
     <Grid Width="1482" Height="800">
-        <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="1453,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
-        <DataGrid x:Name="exhibits_exhibitsDb" d:ItemsSource="{d:SampleData ItemCount=20}" Margin="276,42,330,392" FontFamily="Tahoma" FontSize="15" SelectionChanged="exhibits_exhibitsDb_SelectionChanged" ColumnWidth="*" IsReadOnly="True"/>
-        <Button x:Name="exhibits_addBtn" Content="Dodaj" HorizontalAlignment="Left" Margin="1200,268,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="242" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_addBtn_Click"/>
-        <Button x:Name="exhibits_deleteBtn" Content="Usuń" HorizontalAlignment="Left" Margin="1200,309,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="242" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_deleteBtn_Click"/>
-        <Button x:Name="exhibits_editBtn" Content="Edytuj" HorizontalAlignment="Left" Margin="1200,350,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="243" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_editBtn_Click"/>
-        <Grid x:Name="exhibits_addGrid" Margin="299,448,87,10" Visibility="Collapsed">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="239*"/>
+            <ColumnDefinition Width="255*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="736,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619" Grid.Column="1"/>
+        <DataGrid x:Name="exhibits_exhibitsDb" d:ItemsSource="{d:SampleData ItemCount=20}" Margin="278,0,328,357" FontFamily="Tahoma" FontSize="15" SelectionChanged="exhibits_exhibitsDb_SelectionChanged" ColumnWidth="*" IsReadOnly="True" Grid.ColumnSpan="2" Height="366" VerticalAlignment="Bottom"/>
+        <Button x:Name="exhibits_addBtn" Content="Dodaj" HorizontalAlignment="Left" Margin="483,318,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="242" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_addBtn_Click" Grid.Column="1"/>
+        <Button x:Name="exhibits_deleteBtn" Content="Usuń" HorizontalAlignment="Left" Margin="483,359,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="242" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_deleteBtn_Click" Grid.Column="1"/>
+        <Button x:Name="exhibits_editBtn" Content="Edytuj" HorizontalAlignment="Left" Margin="483,400,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" Height="36" Width="243" Background="#210B61" Foreground="white" FontWeight="Bold" Cursor="Hand" Click="exhibits_editBtn_Click" Grid.Column="1"/>
+        <Grid x:Name="exhibits_addGrid" Margin="299,448,87,10" Visibility="Collapsed" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -40,7 +44,7 @@
             <Button x:Name="exhibits_imageBtn" Grid.Column="1" Content="Wybierz" HorizontalAlignment="Left" Margin="155,221,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibits_imageBtn_Click"/>
             <Button x:Name="exhibits_saveBtn" Grid.Column="1" Content="Zapisz" HorizontalAlignment="Left" Margin="155,280,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibits_saveBtn_Click"/>
         </Grid>
-        <Grid x:Name="exhibits_editGrid" Margin="299,448,87,10">
+        <Grid x:Name="exhibits_editGrid" Margin="278,448,108,10" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -67,7 +71,7 @@
             <Button x:Name="exhibitsEdit_imageBtn" Grid.Column="1" Content="Wybierz" HorizontalAlignment="Left" Margin="155,221,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibitsEdit_imageBtn_Click"/>
             <Button x:Name="exhibitsEdit_saveBtn" Grid.Column="1" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="155,280,0,0" VerticalAlignment="Top" Width="316" Height="27" Background="#210B61" Foreground="white" FontFamily="Tahoma" Click="exhibitsEdit_saveBtn_Click"/>
         </Grid>
-        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,1282,0" Width="200" Height="800" >
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,517,0" Width="200" Height="800" >
             <Button 
                 VerticalAlignment="Top" 
                 Margin="10" Height="100" HorizontalAlignment="Stretch" FontSize="20" FontWeight="Bold" FontFamily="Tahoma" Foreground="White" Content="Eksponaty" Background="#210B61" />
@@ -170,7 +174,21 @@
                 </Button.RenderTransform>
             </Button>
         </StackPanel>
-        <Image x:Name="exhibits_selectedImageBox" HorizontalAlignment="Left" Height="200" Margin="1217,42,0,0" VerticalAlignment="Top" Width="200"/>
+        <Grid Margin="278,0,59,728" Grid.ColumnSpan="2" Height="62" VerticalAlignment="Bottom">
+            <TextBox x:Name="searchByNameTxt" HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+            <Label Content="Wyszukaj po nazwie:" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="180"/>
+            <TextBox x:Name="searchByAuthorTxt" HorizontalAlignment="Left" Margin="210,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+            <TextBox x:Name="searchByLocationTxt" HorizontalAlignment="Left" Margin="411,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+            <TextBox x:Name="searchByYearTxt" HorizontalAlignment="Left" Margin="609,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+            <ComboBox x:Name="searchByCategoryCmb" HorizontalAlignment="Left" Margin="807,31,0,0" VerticalAlignment="Top" Width="130" Height="18"/>
+            <Label Content="Wyszukaj po autorze:" HorizontalAlignment="Left" Margin="210,5,0,0" VerticalAlignment="Top" Width="180"/>
+            <Label Content="Wyszukaj po lokalizacji:" HorizontalAlignment="Left" Margin="411,5,0,0" VerticalAlignment="Top" Width="180"/>
+            <Label Content="Wyszukaj po roku:" HorizontalAlignment="Left" Margin="609,5,0,0" VerticalAlignment="Top" Width="180"/>
+            <Label Content="Wyszukaj po kategorii:" HorizontalAlignment="Left" Margin="807,5,0,0" VerticalAlignment="Top" Width="180"/>
+            <Button x:Name="searchBtn" Content="Szukaj" HorizontalAlignment="Left" Margin="966,30,0,0" VerticalAlignment="Top" Width="121" Click="searchBtn_Click"/>
+
+        </Grid>
+        <Image x:Name="exhibits_selectedImageBox" HorizontalAlignment="Left" Height="200" Margin="500,77,0,0" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
 
     </Grid>
 </Window>
