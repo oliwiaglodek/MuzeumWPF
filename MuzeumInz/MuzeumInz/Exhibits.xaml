@@ -175,17 +175,15 @@
             </Button>
         </StackPanel>
         <Grid Margin="278,0,59,728" Grid.ColumnSpan="2" Height="62" VerticalAlignment="Bottom">
-            <TextBox x:Name="searchByNameTxt" HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+            <TextBox x:Name="searchByNameTxt" HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TextChanged="searchByNameTxt_TextChanged"/>
             <Label Content="Wyszukaj po nazwie:" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="180"/>
-            <TextBox x:Name="searchByAuthorTxt" HorizontalAlignment="Left" Margin="210,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
-            <TextBox x:Name="searchByLocationTxt" HorizontalAlignment="Left" Margin="411,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
-            <TextBox x:Name="searchByYearTxt" HorizontalAlignment="Left" Margin="609,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
-            <ComboBox x:Name="searchByCategoryCmb" HorizontalAlignment="Left" Margin="807,31,0,0" VerticalAlignment="Top" Width="130" Height="18"/>
+            <TextBox x:Name="searchByAuthorTxt" HorizontalAlignment="Left" Margin="210,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TextChanged="searchByAuthorTxt_TextChanged"/>
+            <TextBox x:Name="searchByLocationTxt" HorizontalAlignment="Left" Margin="411,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TextChanged="searchByLocationTxt_TextChanged"/>
+            <TextBox x:Name="searchByYearTxt" HorizontalAlignment="Left" Margin="609,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" TextChanged="searchByYearTxt_TextChanged"/>
             <Label Content="Wyszukaj po autorze:" HorizontalAlignment="Left" Margin="210,5,0,0" VerticalAlignment="Top" Width="180"/>
             <Label Content="Wyszukaj po lokalizacji:" HorizontalAlignment="Left" Margin="411,5,0,0" VerticalAlignment="Top" Width="180"/>
             <Label Content="Wyszukaj po roku:" HorizontalAlignment="Left" Margin="609,5,0,0" VerticalAlignment="Top" Width="180"/>
-            <Label Content="Wyszukaj po kategorii:" HorizontalAlignment="Left" Margin="807,5,0,0" VerticalAlignment="Top" Width="180"/>
-            <Button x:Name="searchBtn" Content="Szukaj" HorizontalAlignment="Left" Margin="966,30,0,0" VerticalAlignment="Top" Width="121" Click="searchBtn_Click"/>
+            <Button x:Name="searchBtn" Content="Szukaj" HorizontalAlignment="Left" Margin="816,30,0,0" VerticalAlignment="Top" Width="120" Click="searchBtn_Click"/>
 
         </Grid>
         <Image x:Name="exhibits_selectedImageBox" HorizontalAlignment="Left" Height="200" Margin="500,77,0,0" VerticalAlignment="Top" Width="200" Grid.Column="1"/>

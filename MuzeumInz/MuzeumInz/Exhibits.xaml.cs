@@ -350,18 +350,37 @@ namespace MuzeumInz
             string nameFilter = searchByNameTxt.Text.ToLower();
             string authorFilter = searchByAuthorTxt.Text.ToLower();
             string locationFilter = searchByLocationTxt.Text.ToLower();
-            string yearFilter = searchByYearTxt.Text;
-            string categoryFilter = searchByCategoryCmb.Text.ToLower();
+            string yearFilter = searchByYearTxt.Text;         
 
             var filteredExhibits = addExhibits.Where(exhibit =>
                 (string.IsNullOrEmpty(nameFilter) || exhibit.Name.ToLower().Contains(nameFilter)) &&
                 (string.IsNullOrEmpty(authorFilter) || exhibit.Author.ToLower().Contains(authorFilter)) &&
                 (string.IsNullOrEmpty(locationFilter) || exhibit.Location.ToLower().Contains(locationFilter)) &&
-                (string.IsNullOrEmpty(yearFilter) || exhibit.Year == int.Parse(yearFilter)) &&//.Contains(yearFilter)) &&
-                (string.IsNullOrEmpty(categoryFilter) || exhibit.Category.Contains(categoryFilter))
+                (string.IsNullOrEmpty(yearFilter) || exhibit.Year == int.Parse(yearFilter)) 
             ).ToList();
 
             exhibits_exhibitsDb.ItemsSource = filteredExhibits;
+        }
+
+        //wyszukiwanie w czasie rzeczywistym
+        private void searchByNameTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchExhibits();
+        }
+
+        private void searchByAuthorTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchExhibits();
+        }
+
+        private void searchByLocationTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchExhibits();
+        }
+
+        private void searchByYearTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchExhibits();
         }
     }
 }
