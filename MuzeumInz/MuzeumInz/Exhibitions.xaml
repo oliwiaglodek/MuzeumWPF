@@ -199,13 +199,13 @@
             <TextBox x:Name="searchByStatusTxt" HorizontalAlignment="Center" Margin="0,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Height="20" TextChanged="searchByStatusTxt_TextChanged"/>
             <DatePicker x:Name="searchByStartDate" HorizontalAlignment="Left" Margin="668,30,0,0" VerticalAlignment="Top" Height="26" Width="174" SelectedDateChanged="searchByStartDate_SelectedDateChanged"/>
             <DatePicker x:Name="searchByEndDate" HorizontalAlignment="Left" Margin="860,30,0,0" VerticalAlignment="Top" Height="26" Width="176" SelectedDateChanged="searchByEndDate_SelectedDateChanged"/>
-            <Button x:Name="searchBtn" Content="Szukaj" HorizontalAlignment="Left" Margin="1058,32,0,0" VerticalAlignment="Top" Width="78" Click="searchBtn_Click"/>
-            <Label Content="Wyszukaj po nazwie:" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="120"/>
-            <Label Content="Wyszukaj po lokalizacji:" HorizontalAlignment="Left" Margin="160,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="134"/>
-            <Label Content="Wyszukaj po organizatorze:" HorizontalAlignment="Left" Margin="320,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="167"/>
-            <Label Content="Wyszukaj po statusie:" HorizontalAlignment="Center" Margin="0,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="134"/>
-            <Label Content="Wyszukaj po dacie rozpoczęcia:" HorizontalAlignment="Left" Margin="663,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="184"/>
-            <Label Content="Wyszukaj po dacie zakończenia:" HorizontalAlignment="Left" Margin="860,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="187"/>
+            <Button x:Name="searchBtn" Content="Szukaj" HorizontalAlignment="Left" Margin="1058,32,0,0" VerticalAlignment="Top" Width="78" Click="searchBtn_Click" Background="#FF210B61" Foreground="White" FontFamily="Tahoma"/>
+            <Label Content="Wyszukaj po nazwie:" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="120" FontFamily="Tahoma"/>
+            <Label Content="Wyszukaj po lokalizacji:" HorizontalAlignment="Left" Margin="160,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="134" FontFamily="Tahoma"/>
+            <Label Content="Wyszukaj po organizatorze:" HorizontalAlignment="Left" Margin="320,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="167" FontFamily="Tahoma"/>
+            <Label Content="Wyszukaj po statusie:" HorizontalAlignment="Center" Margin="0,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="134" FontFamily="Tahoma"/>
+            <Label Content="Wyszukaj po dacie rozpoczęcia:" HorizontalAlignment="Left" Margin="663,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="184" FontFamily="Tahoma"/>
+            <Label Content="Wyszukaj po dacie zakończenia:" HorizontalAlignment="Left" Margin="860,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="187" FontFamily="Tahoma"/>
         </Grid>
     </Grid>
 </Window>
