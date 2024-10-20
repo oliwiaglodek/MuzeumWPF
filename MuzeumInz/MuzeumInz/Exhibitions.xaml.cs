@@ -351,5 +351,35 @@ namespace MuzeumInz
         {
             SearchExhibitions();
         }
+
+
+        //wyszukaj eksponatów w wystawie
+        private void SearchExhibits()
+        {
+            string exhibitionFilter = serachByExhibitionTxt.Text.ToLower();
+            string exhibitsFilter = serahByExhibitsTxt.Text.ToLower();
+
+            var filteredExhibitions = exhibitsInExhibitionsDtos.Where(exhibitions =>
+                (string.IsNullOrEmpty(exhibitionFilter) || exhibitions.ExhibitionName.ToLower().Contains(exhibitionFilter)) &&
+                (string.IsNullOrEmpty(exhibitsFilter) || exhibitions.ExhibitName.ToLower().Contains(exhibitsFilter)) 
+                ).ToList();
+
+            exhibitions_exhibitsInExhibitionDb.ItemsSource = filteredExhibitions;
+        }
+
+        private void serachByExhibitionTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchExhibits();
+        }
+
+        private void serahByExhibitsTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchExhibits();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SearchExhibits();
+        }
     }
 }
