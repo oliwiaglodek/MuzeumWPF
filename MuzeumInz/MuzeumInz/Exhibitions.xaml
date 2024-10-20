@@ -110,16 +110,16 @@
                 </Button.RenderTransform>
             </Button>
         </StackPanel>
-        <Grid Margin="275,15,61,617">
+        <Grid Margin="275,81,61,551">
             <DataGrid x:Name="exhibitionsDb" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,10,10" ColumnWidth="*" AutoGenerateColumns="True" IsReadOnly="True" FontFamily="Tahoma" FontSize="15" SelectionChanged="exhibitionsDb_SelectionChanged"/>
         </Grid>
         <Grid Margin="1448,10,10,764"/>
-        <Grid Margin="275,188,61,560">
+        <Grid Margin="275,254,61,494">
             <Button x:Name="exhibition_addBtn" Content="Dodaj wystawe" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="0,10,0,0" Click="exhibition_addBtn_Click" />
             <Button x:Name="exhibition_deleteBtn" Content="Usuń wystawe" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="432,10,0,0" Click="exhibition_deleteBtn_Click" />
             <Button x:Name="exhibition_editBtn" Content="Edytuj wystawe" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="894,10,0,0" Click="exhibition_editBtn_Click" />
         </Grid>
-        <Grid x:Name="exhibitions_exhibitsInExhibitionsGrid" Margin="275,266,61,83">
+        <Grid x:Name="exhibitions_exhibitsInExhibitionsGrid" Margin="275,324,61,24">
             <Grid.RowDefinitions>
                 <RowDefinition Height="65*"/>
                 <RowDefinition Height="77*"/>
@@ -192,6 +192,20 @@
             <DatePicker x:Name="exhibitions_editEndDateTxt" HorizontalAlignment="Left" Margin="175,141,0,0" VerticalAlignment="Top" Width="359" FontFamily="Tahoma" FontSize="15" DisplayDateStart="{Binding DisplayDate.Today, ElementName=exhibitions_editEndDateTxt, Mode=OneWay}"/>
         </Grid>
         <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="1453,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exit_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
-
+        <Grid Margin="275,10,61,724">
+            <TextBox x:Name="searchByNameTxt" HorizontalAlignment="Left" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" TextChanged="searchByNameTxt_TextChanged"/>
+            <TextBox x:Name="searchByLocationTxt" HorizontalAlignment="Left" Margin="160,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Height="20" TextChanged="searchByLocationTxt_TextChanged"/>
+            <TextBox x:Name="searchByResponsiblePersonTxt" HorizontalAlignment="Left" Margin="320,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="20" TextChanged="searchByResponsiblePersonTxt_TextChanged"/>
+            <TextBox x:Name="searchByStatusTxt" HorizontalAlignment="Center" Margin="0,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Height="20" TextChanged="searchByStatusTxt_TextChanged"/>
+            <DatePicker x:Name="searchByStartDate" HorizontalAlignment="Left" Margin="668,30,0,0" VerticalAlignment="Top" Height="26" Width="174" SelectedDateChanged="searchByStartDate_SelectedDateChanged"/>
+            <DatePicker x:Name="searchByEndDate" HorizontalAlignment="Left" Margin="860,30,0,0" VerticalAlignment="Top" Height="26" Width="176" SelectedDateChanged="searchByEndDate_SelectedDateChanged"/>
+            <Button x:Name="searchBtn" Content="Szukaj" HorizontalAlignment="Left" Margin="1058,32,0,0" VerticalAlignment="Top" Width="78" Click="searchBtn_Click"/>
+            <Label Content="Wyszukaj po nazwie:" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="120"/>
+            <Label Content="Wyszukaj po lokalizacji:" HorizontalAlignment="Left" Margin="160,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="134"/>
+            <Label Content="Wyszukaj po organizatorze:" HorizontalAlignment="Left" Margin="320,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="167"/>
+            <Label Content="Wyszukaj po statusie:" HorizontalAlignment="Center" Margin="0,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="134"/>
+            <Label Content="Wyszukaj po dacie rozpoczęcia:" HorizontalAlignment="Left" Margin="663,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="184"/>
+            <Label Content="Wyszukaj po dacie zakończenia:" HorizontalAlignment="Left" Margin="860,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.514" Width="187"/>
+        </Grid>
     </Grid>
 </Window>

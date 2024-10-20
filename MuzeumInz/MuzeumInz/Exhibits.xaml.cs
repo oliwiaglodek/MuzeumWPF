@@ -344,7 +344,7 @@ namespace MuzeumInz
         {
             SearchExhibits();
         }
-
+        //wyszukaj eksponat
         private void SearchExhibits()
         {
             string nameFilter = searchByNameTxt.Text.ToLower();

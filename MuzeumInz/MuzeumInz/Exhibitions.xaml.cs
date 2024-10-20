@@ -282,5 +282,74 @@ namespace MuzeumInz
             exhibitsCmb.ItemsSource = dbConnect.GetExhibits();
             exhibitsCmb.SelectedIndex = 0;
         }
+
+        //wyszukaj wystawe
+        private void SearchExhibitions()
+        {
+            string nameFilter = searchByNameTxt.Text.ToLower();
+            string locationFilter = searchByLocationTxt.Text.ToLower();
+            string responsiblePersonFilter = searchByResponsiblePersonTxt.Text.ToLower();
+            string statusFilter = searchByStatusTxt.Text.ToLower();
+
+            // Parsowanie startDateFilter i endDateFilter jako daty
+            DateTime? startDateFilter = null;
+            DateTime? endDateFilter = null;
+
+            if (DateTime.TryParse(searchByStartDate.Text, out DateTime parsedStartDate))
+            {
+                startDateFilter = parsedStartDate;
+            }
+
+            if (DateTime.TryParse(searchByEndDate.Text, out DateTime parsedEndDate))
+            {
+                endDateFilter = parsedEndDate;
+            }
+
+            var filteredExhibitions = addExhibitions.Where(exhibitions =>
+                (string.IsNullOrEmpty(nameFilter) || exhibitions.Name.ToLower().Contains(nameFilter)) &&
+                (!startDateFilter.HasValue || exhibitions.StartDate >= startDateFilter.Value) &&
+                (!endDateFilter.HasValue || exhibitions.EndDate <= endDateFilter.Value) &&
+                (string.IsNullOrEmpty(locationFilter) || exhibitions.Location.ToLower().Contains(locationFilter)) &&
+                (string.IsNullOrEmpty(responsiblePersonFilter) || exhibitions.ResponsiblePerson.ToLower().Contains(responsiblePersonFilter)) &&
+                (string.IsNullOrEmpty(statusFilter) || exhibitions.Status.ToLower().Contains(statusFilter))
+                ).ToList();
+
+            exhibitionsDb.ItemsSource = filteredExhibitions;
+        }
+
+        private void searchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SearchExhibitions();
+        }
+
+        private void searchByNameTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchExhibitions();
+        }
+
+        private void searchByLocationTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchExhibitions();
+        }
+
+        private void searchByResponsiblePersonTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchExhibitions();
+        }
+
+        private void searchByStatusTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchExhibitions();
+        }
+
+        private void searchByStartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SearchExhibitions();
+        }
+
+        private void searchByEndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SearchExhibitions();
+        }
     }
 }
