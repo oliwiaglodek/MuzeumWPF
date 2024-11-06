@@ -461,5 +461,47 @@ namespace MuzeumInz
             }
             return list;
         }
+        public List<AddExhibitions> GetUpcomingExhibitions()
+        {
+            string sql = "SELECT id, name, description, startDate, endDate, location, responsiblePerson, status, type " +
+                         "FROM exhibitions " +
+                         "WHERE startDate >= @CurrentDate AND startDate <= @Next30Days";
+
+            List<AddExhibitions> list = new List<AddExhibitions>();
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    // Dodaj parametry dla obecnej daty i daty za 30 dni
+                    command.Parameters.AddWithValue("@CurrentDate", DateTime.Now);
+                    command.Parameters.AddWithValue("@Next30Days", DateTime.Now.AddDays(30));
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            string name = reader.GetString(1);
+                            string description = reader.IsDBNull(2) ? null : reader.GetString(2);
+                            DateTime startDate = DateTime.Parse(reader.GetString(3));
+                            DateTime endDate = DateTime.Parse(reader.GetString(4));
+                            string location = reader.GetString(5);
+                            string responsiblePerson = reader.GetString(6);
+                            string status = reader.GetString(7);
+                            string type = reader.GetString(8);
+
+                            // Utwórz obiekt AddExhibitions z danymi z bazy
+                            AddExhibitions exhibition = new AddExhibitions(id, name, description, startDate, endDate, location, responsiblePerson, status, type);
+                            list.Add(exhibition);
+                        }
+                    }
+                }
+            }
+
+            return list;
+        }
     }
 }

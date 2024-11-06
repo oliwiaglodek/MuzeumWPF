@@ -3,28 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|c:\\users\\admin\\documents\\github\\muzeumwpf\\muzeuminz\\muzeuminz\\exhibitions.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibitions.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|c:\\users\\admin\\documents\\github\\muzeumwpf\\muzeuminz\\muzeuminz\\exhibitions.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibitions.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\muzeuminz\\exhibits.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibits.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\muzeuminz\\exhibits.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibits.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|c:\\users\\admin\\documents\\github\\muzeumwpf\\muzeuminz\\muzeuminz\\addexhibits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\addexhibits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\muzeuminz\\exhibitionnotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibitionnotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\muzeuminz\\dbconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\dbconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|c:\\users\\admin\\documents\\github\\muzeumwpf\\muzeuminz\\muzeuminz\\emailservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\emailservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\muzeuminz\\exhibitions.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88CE4225-E05B-49E3-9422-D0793099CE71}|MuzeumInz\\MuzeumInz.csproj|solutionrelative:muzeuminz\\exhibitions.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,30 +26,43 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AddExhibits.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\AddExhibits.cs",
-              "RelativeDocumentMoniker": "MuzeumInz\\AddExhibits.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\AddExhibits.cs",
-              "RelativeToolTip": "MuzeumInz\\AddExhibits.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "ExhibitionNotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\ExhibitionNotificationService.cs",
+              "RelativeDocumentMoniker": "MuzeumInz\\ExhibitionNotificationService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\ExhibitionNotificationService.cs*",
+              "RelativeToolTip": "MuzeumInz\\ExhibitionNotificationService.cs*",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAACcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:47:40.058Z",
+              "WhenOpened": "2024-10-27T14:30:23.584Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "EmailServices.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\EmailServices.cs",
+              "RelativeDocumentMoniker": "MuzeumInz\\EmailServices.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\EmailServices.cs",
+              "RelativeToolTip": "MuzeumInz\\EmailServices.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-27T14:00:17.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Exhibitions.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibitions.xaml.cs",
               "RelativeDocumentMoniker": "MuzeumInz\\Exhibitions.xaml.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibitions.xaml.cs*",
-              "RelativeToolTip": "MuzeumInz\\Exhibitions.xaml.cs*",
-              "ViewState": "AQIAAGMBAAAAAAAAAAArwH0BAAAdAAAA",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibitions.xaml.cs",
+              "RelativeToolTip": "MuzeumInz\\Exhibitions.xaml.cs",
+              "ViewState": "AQIAAKoAAAAAAAAAAADwv8QAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-20T15:03:32.131Z",
               "EditorCaption": ""
@@ -65,49 +70,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Exhibitions.xaml",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibitions.xaml",
-              "RelativeDocumentMoniker": "MuzeumInz\\Exhibitions.xaml",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibitions.xaml*",
-              "RelativeToolTip": "MuzeumInz\\Exhibitions.xaml*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-20T13:25:47.255Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Exhibits.xaml",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibits.xaml",
-              "RelativeDocumentMoniker": "MuzeumInz\\Exhibits.xaml",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibits.xaml",
-              "RelativeToolTip": "MuzeumInz\\Exhibits.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-19T18:23:53.929Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Exhibits.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibits.xaml.cs",
-              "RelativeDocumentMoniker": "MuzeumInz\\Exhibits.xaml.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\Exhibits.xaml.cs",
-              "RelativeToolTip": "MuzeumInz\\Exhibits.xaml.cs",
-              "ViewState": "AQIAAMQAAAAAAAAAAAAlwGgBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T22:57:52.951Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "DbConnect.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\DbConnect.cs",
               "RelativeDocumentMoniker": "MuzeumInz\\DbConnect.cs",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\MuzeumWPF\\MuzeumInz\\MuzeumInz\\DbConnect.cs",
               "RelativeToolTip": "MuzeumInz\\DbConnect.cs",
-              "ViewState": "AQIAAEAAAAAAAAAAAAAkwE8AAABLAAAA",
+              "ViewState": "AQIAAMQBAAAAAAAAAAAIwPsBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-25T14:08:38.341Z",
               "EditorCaption": ""

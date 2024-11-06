@@ -194,6 +194,10 @@ namespace MuzeumInz
             {
                 AddExhibitions exhibitions = new AddExhibitions(0, exhibitions_addNameTxt.Text, exhibitions_addDescriptionTxt.Text, exhibitions_addStartDateTxt.SelectedDate.Value, exhibitions_addEndDateTxt.SelectedDate.Value, exhibitions_addLocationTxt.Text, exhibitions_addResponsiblePersonTxt.Text, ((ComboBoxItem)exhibitions_addStatusList.SelectedItem).Content.ToString(), ((ComboBoxItem)exhibitions_addTypeTxt.SelectedItem).Content.ToString());
                 dbConnect.InsertExhibitions(exhibitions);
+
+                ExhibitionNotificationService emailServices = new ExhibitionNotificationService();
+                emailServices.SendNotificationEmail(exhibitions);
+
                 loadGrid();
             }       
                
