@@ -18,13 +18,25 @@ namespace MuzeumInz
             _emailService = new EmailServices(); 
             _dbConnect = new DbConnect(); 
         }
-        // funkcja wysyłająca powiadomienie email o nadchodzącej wystawie
+        // funkcja wysyłająca powiadomienie email o utworzonej wystawie
         public void SendNotificationEmail(AddExhibitions exhibition)
         {
             string recipientEmail = GetLoggedUserEmail(); // ustaw adres email odbiorcy
             string subject = "Powiadomienie o nadchodzącej wystawie";
             string body = $"Wystawa '{exhibition.Name}' rozpocznie się {exhibition.StartDate.Value.ToString("dd.MM.yyyy")}. " +
                           $"Miejsce: {exhibition.Location}. Przygotuj się!";
+
+            _emailService.SendEmail(recipientEmail, subject, body);
+        }
+
+        // powiadomienie email o utworzeniu konta
+        public void SendAccountCreationNotification(string newUserEmail)
+        {
+            string recipientEmail = newUserEmail; // adres email nowego użytkownika
+            string subject = "Witamy w systemie Muzeum!";
+            string body = $"Dziękujemy za założenie konta w naszym systemie! " +
+                          $"Teraz możesz korzystać z naszego systemu do zarządzania wystawami i eksponatami. " +
+                          $"Życzymy miłego korzystania!";
 
             _emailService.SendEmail(recipientEmail, subject, body);
         }

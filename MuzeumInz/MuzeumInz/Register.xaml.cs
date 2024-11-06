@@ -101,6 +101,9 @@ namespace MuzeumInz
                 dbConnect.RegisterUser(email, hashedPass);
                 MessageBox.Show("Zarejestrowano poprawnie");
 
+                ExhibitionNotificationService emailServices = new ExhibitionNotificationService();
+                emailServices.SendAccountCreationNotification(email);
+
                 //czyszczenie pól
                 register_loginTxt.Text = string.Empty;
                 register_passTxt.Password = string.Empty;
