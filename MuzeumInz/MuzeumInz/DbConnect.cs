@@ -503,5 +503,93 @@ namespace MuzeumInz
 
             return list;
         }
+        //pobranie do dataGrida w Users.xaml
+        public List<User> GetUsers()
+        {
+            string sql = @"SELECT id, email, password FROM users";
+
+            List<User> list = new List<User>();
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            string email = reader.GetString(1);
+                            string password = reader.GetString(2);
+
+                            list.Add(new User()
+                            {
+                                Id = id,
+                                Email = email,
+                                Password = password
+                            });
+
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+        //Dodanie uzytkowników dla admina
+        public void InsertUser(User user)
+        {
+            string sql = @"INSERT INTO users(email,password) VALUES(@Email,@Password);";
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Email", user.Email);
+                    command.Parameters.AddWithValue("@Password", user.Password);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        //usuwanie dla admina
+        public void DeleteUser(int id)
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE FROM users WHERE id = @Id";
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        //update dla admina
+        public void UpdateUser(User user)
+        {
+            string sql = @"UPDATE users SET email = @Email, password = @Password WHERE id = @Id;";
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", user.Id);
+                    command.Parameters.AddWithValue("@Email", user.Email);
+                    command.Parameters.AddWithValue("@Password", user.Password);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

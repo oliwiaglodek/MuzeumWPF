@@ -158,3 +158,5 @@ C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\QuestPDF
 C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\QuestPDF.xml
 C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Reports.g.cs
 C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Reports.baml
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Users.g.cs
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Users.baml
