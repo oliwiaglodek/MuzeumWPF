@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,9 +47,10 @@ namespace MuzeumInz
             {
                 MessageBox.Show("Email nie jest poprawny");
             }
-            else if (string.IsNullOrEmpty(password_Txt.Text) || password_Txt.Text.Length < 6)
+            else if (string.IsNullOrEmpty(password_Txt.Text) || !IsValidPassword(password_Txt.Text))
             {
-                MessageBox.Show("Hasło powinno mieć minimum 6 znaków");
+                MessageBox.Show("Haslo musi posiadać co najmniej: 8 znaków, jedna cyfrę oraz znak specjalny");
+                return;
             }
             else
             {
@@ -100,6 +102,25 @@ namespace MuzeumInz
             else
             {
                 MessageBox.Show("Proszę zaznaczyć rekord do usunięcia.");
+            }
+        }
+        // Metoda sprawdzająca poprawność hasła za pomocą regex
+        private bool IsValidPassword(string password)
+        {
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                return false;
+            }
+
+            try
+            {
+                // Regex dla sprawdzenia hasła
+                var passwordRegex = new Regex(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", RegexOptions.Compiled);
+                return passwordRegex.IsMatch(password);
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 
