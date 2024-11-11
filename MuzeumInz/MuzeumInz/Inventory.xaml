@@ -92,6 +92,21 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
+            <Button x:Name="UsersBtn" Content="Użytkownicy" 
+                Background="#210B61" 
+                Foreground="White"
+                Height="43"
+                FontSize="16"
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" Click="UsersBtn_Click" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-20"/>
+                        <RotateTransform Angle="-20"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
             <Button x:Name="LogoutBtn" Content="Wyloguj" 
                 HorizontalAlignment="Stretch" 
                 VerticalAlignment="Top" 

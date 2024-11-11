@@ -139,6 +139,23 @@ namespace MuzeumInz
             exhibitions_history.ItemsSource = dbConnect.GetHistory();
         }
 
+        private void UsersBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var existingWindow = Application.Current.Windows.OfType<Users>().FirstOrDefault();
 
+            if (existingWindow == null)
+            {
+                using (DbConnect dbConnect = new DbConnect())
+                {
+                    Users exhibitsHistoryWindow = new Users();
+                    exhibitsHistoryWindow.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                existingWindow.Focus();
+            }
+        }
     }
 }
