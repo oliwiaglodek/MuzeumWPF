@@ -30,6 +30,9 @@ namespace MuzeumInz
             InitializeComponent();
             dbConnect = new DbConnect();
             loadGrid();
+
+            roleCmb.ItemsSource = new string[] { "user", "admin" };
+            roleCmb.SelectedIndex = 0;
         }
         public void loadGrid()
         {
@@ -59,7 +62,8 @@ namespace MuzeumInz
                 {
                     Id = idUser.GetValueOrDefault(),
                     Email = email_Txt.Text,
-                    Password = HashPassword(password_Txt.Text)
+                    Password = HashPassword(password_Txt.Text),
+                    Role = roleCmb.SelectedValue.ToString()
                 };
 
                 if (idUser.HasValue)
@@ -151,6 +155,7 @@ namespace MuzeumInz
                 idUser = user.Id;
                 email_Txt.Text = user.Email;
                 password_Txt.Text = user.Password;
+                roleCmb.Text = user.Role;
                 addUsersBtn.Content = "Zapisz";
             }
         }

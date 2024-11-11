@@ -25,6 +25,7 @@ namespace MuzeumInz
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static string Role = "user";
         public DbConnect dbConnect;
 
         public MainWindow()
@@ -67,6 +68,7 @@ namespace MuzeumInz
 
                 if (result.Rows.Count > 0)
                 {
+                    Role = result.Rows[0]["role"].ToString();
                     dbConnect.SetCurrentUser(email);  // Zapisz zalogowanego użytkownika
                     Main_Panel_Btn_Click(sender, e); //przy poprawnym zalogowaniu otworzy panel administracyjny
                 }

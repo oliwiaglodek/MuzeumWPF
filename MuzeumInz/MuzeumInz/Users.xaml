@@ -131,9 +131,11 @@
         <Button x:Name="deleteUsersBtn" Content="Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="604,552,0,0" Click="deleteBtn_Click" />
         <Button x:Name="clearBtn" Content="Wyczyść" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="946,552,0,0" Click="clearBtn_Click" />
         <TextBox x:Name="email_Txt" HorizontalAlignment="Left" Margin="252,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316" Height="34" FontFamily="Tahoma" FontSize="22"/>
-        <TextBox x:Name="password_Txt" HorizontalAlignment="Left" Margin="656,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316" Height="34" FontFamily="Tahoma" FontSize="22"/>
+        <TextBox x:Name="password_Txt" HorizontalAlignment="Left" Margin="604,480,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316" Height="34" FontFamily="Tahoma" FontSize="22"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="252,441,0,0" VerticalAlignment="Top" Width="136" FontFamily="Tahoma" FontSize="20"/>
-        <Label Content="Hasło" HorizontalAlignment="Left" Margin="656,441,0,0" VerticalAlignment="Top" Width="136" FontFamily="Tahoma" FontSize="20"/>
+        <Label Content="Hasło" HorizontalAlignment="Left" Margin="605,441,0,0" VerticalAlignment="Top" Width="136" FontFamily="Tahoma" FontSize="20"/>
+        <ComboBox x:Name="roleCmb" HorizontalAlignment="Left" Margin="947,480,0,0" VerticalAlignment="Top" Width="324" Height="34" FontFamily="Tahoma" FontSize="22"/>
+        <Label Content="Rola" HorizontalAlignment="Left" Margin="947,441,0,0" VerticalAlignment="Top" Width="136" FontFamily="Tahoma" FontSize="20"/>
 
     </Grid>
 </Window>

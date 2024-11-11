@@ -130,7 +130,7 @@ namespace MuzeumInz
                 }
             }
         }
-
+       
         public void ClearCurrentUser()
         {
             using (var connection = new SQLiteConnection(connectionString))
@@ -506,7 +506,7 @@ namespace MuzeumInz
         //pobranie do dataGrida w Users.xaml
         public List<User> GetUsers()
         {
-            string sql = @"SELECT id, email, password FROM users";
+            string sql = @"SELECT id, email, password, rola FROM users";
 
             List<User> list = new List<User>();
 
@@ -523,12 +523,14 @@ namespace MuzeumInz
                             int id = reader.GetInt32(0);
                             string email = reader.GetString(1);
                             string password = reader.GetString(2);
-
+                            string rola = reader.GetString(3);
+                          
                             list.Add(new User()
                             {
                                 Id = id,
                                 Email = email,
-                                Password = password
+                                Password = password,
+                                Role = rola,
                             });
 
                         }
@@ -540,7 +542,7 @@ namespace MuzeumInz
         //Dodanie uzytkowników dla admina
         public void InsertUser(User user)
         {
-            string sql = @"INSERT INTO users(email,password) VALUES(@Email,@Password);";
+            string sql = @"INSERT INTO users(email,password, rola) VALUES(@Email,@Password, @Role);";
 
             using (var connection = new SQLiteConnection(connectionString))
             {
@@ -550,6 +552,7 @@ namespace MuzeumInz
                 {
                     command.Parameters.AddWithValue("@Email", user.Email);
                     command.Parameters.AddWithValue("@Password", user.Password);
+                    command.Parameters.AddWithValue("@Role", user.Role);
 
                     command.ExecuteNonQuery();
                 }
@@ -575,7 +578,7 @@ namespace MuzeumInz
         //update dla admina
         public void UpdateUser(User user)
         {
-            string sql = @"UPDATE users SET email = @Email, password = @Password WHERE id = @Id;";
+            string sql = @"UPDATE users SET email = @Email, password = @Password, rola = @Role WHERE id = @Id;";
 
             using (var connection = new SQLiteConnection(connectionString))
             {
@@ -586,6 +589,7 @@ namespace MuzeumInz
                     command.Parameters.AddWithValue("@Id", user.Id);
                     command.Parameters.AddWithValue("@Email", user.Email);
                     command.Parameters.AddWithValue("@Password", user.Password);
+                    command.Parameters.AddWithValue("@Role", user.Role);
 
                     command.ExecuteNonQuery();
                 }
