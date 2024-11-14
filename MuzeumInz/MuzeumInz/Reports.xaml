@@ -60,12 +60,12 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <Button x:Name="InventoryBtn" Content="Inwentaryzacja" 
+            <Button x:Name="BackupBtn" Content="Kopia zapasowa danych" 
                 Background="#210B61" 
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" Click="Inventory_Click">
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" Click="Backup_Click">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -129,18 +129,48 @@
         <Button x:Name="SaveHistoryPDFBtn" 
         Background="#210B61" 
         Foreground="White" 
-        FontSize="50" 
+        FontSize="22" 
         HorizontalAlignment="Left" 
-        Height="185" 
-        Width="290" 
-        Margin="327,92,0,0" 
+        Margin="518,115,0,0" 
         VerticalAlignment="Top"
-                Click="SaveHistoryPDF">
-            <TextBlock Text="Eksportuj Historię PDF" 
+                Click="SaveHistoryPDF" Height="46" Width="150">
+            <TextBlock 
                TextWrapping="Wrap" 
                TextAlignment="Center" 
-               VerticalAlignment="Center" />
+               VerticalAlignment="Center" Text="PDF" />
         </Button>
-
+        <TextBlock HorizontalAlignment="Left" Margin="301,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="146"><Run Language="pl-pl" Text="Pełna Historia"/></TextBlock>
+        <Button x:Name="SaveHistoryCSVBtn" 
+            Background="#210B61" 
+            Foreground="White" 
+            FontSize="22" 
+            HorizontalAlignment="Left" 
+            Margin="709,114,0,0" 
+            VerticalAlignment="Top"
+            Click="SaveHistoryCSV" Height="46" Width="150">
+            <TextBlock 
+                TextWrapping="Wrap" 
+                TextAlignment="Center" 
+                VerticalAlignment="Center" ><Run Language="pl-pl" Text="CSV"/></TextBlock>
+        </Button>
+        <Button x:Name="PreviewPrintBtn" 
+            Background="White" 
+            Foreground="#210B61"
+            FontSize="22" 
+            HorizontalAlignment="Left" 
+            Margin="904,114,0,0" 
+            VerticalAlignment="Top"
+            RenderTransformOrigin="0.5,0.5" Click="PreviewAndPrint" Height="46" Width="200" BorderBrush="#FF210B61">
+            <TextBlock 
+                TextWrapping="Wrap" 
+                TextAlignment="Center" 
+                VerticalAlignment="Center" ><Run Language="pl-pl" Text="Podgląd i druk"/></TextBlock>
+        </Button>
+        <TextBlock Name="LoadingText" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1167,116,0,0" FontSize="16" Foreground="#210B61" Visibility="Collapsed" >Generuję...</TextBlock>
+        <ProgressBar x:Name="LoadingSpinner" 
+                     Width="116" Height="20"
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Top"
+                     IsIndeterminate="True" Margin="1146,139,0,0" Visibility="Collapsed" />
     </Grid>
 </Window>

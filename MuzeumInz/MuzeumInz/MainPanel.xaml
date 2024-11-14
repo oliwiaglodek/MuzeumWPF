@@ -60,12 +60,12 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <Button x:Name="InventoryBtn" Content="Inwentaryzacja" 
+            <Button x:Name="BackupBtn" Content="Kopia zapasowa danych" 
                 Background="#210B61" 
                 Foreground="White"
                 Height="43"
                 FontSize="16"
-                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" Click="Inventory_Click">
+                FontFamily="Tahoma" RenderTransformOrigin="0.5,0.5" Margin="0,5,0,0" Width="200" Click="Backup_Click">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

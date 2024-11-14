@@ -96,22 +96,22 @@ namespace MuzeumInz
         }
 
 
-        private void Inventory_Click(object sender, RoutedEventArgs e)
+        private void Backup_Click(object sender, RoutedEventArgs e)
         {
-            var existingWindow = Application.Current.Windows.OfType<Inventory>().FirstOrDefault();
+            var existingWindow = Application.Current.Windows.OfType<Backup>().FirstOrDefault();
 
             if (existingWindow == null)
             {
                 using (DbConnect dbConnect = new DbConnect())
                 {
-                    Inventory inventoryWindow = new Inventory();
-                    inventoryWindow.Show();
-                    this.Close();  
-                } 
+                    Backup BackupWindow = new Backup();
+                    BackupWindow.Show();
+                    this.Close();
+                }
             }
-            else  
+            else
             {
-                existingWindow.Focus(); 
+                existingWindow.Focus();
             }
         }
 
