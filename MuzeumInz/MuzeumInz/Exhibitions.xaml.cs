@@ -143,9 +143,9 @@ namespace MuzeumInz
 
         private void exhibition_addExhibitsBtn_Click(object sender, RoutedEventArgs e)
         {
-            exhibitions_allExhibitsGrid.Visibility = Visibility.Visible;
-            exhibitions_addExhibitionsGrid.Visibility = Visibility.Collapsed;
-            exhibitions_editExhibitionsGrid.Visibility = Visibility.Collapsed;
+            //exhibitions_allExhibitsGrid.Visibility = Visibility.Visible;
+            //exhibitions_addExhibitionsGrid.Visibility = Visibility.Collapsed;
+            //exhibitions_editExhibitionsGrid.Visibility = Visibility.Collapsed;
         }
 
         private void exhibition_addBtn_Click(object sender, RoutedEventArgs e)
@@ -220,6 +220,9 @@ namespace MuzeumInz
                 exhibitions_editTypeTxt.Text = exhibitions.Type;
 
                 exhibitions_exhibitsInExhibitionsGrid.Visibility = Visibility.Visible;
+                exhibitions_editExhibitionsGrid.Visibility = Visibility.Collapsed;
+                exhibitions_addExhibitionsGrid.Visibility = Visibility.Collapsed;
+                exhibitions_allExhibitsGrid.Visibility = Visibility.Collapsed;
             } 
             else
             {
