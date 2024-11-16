@@ -131,9 +131,7 @@ C:\Users\Darek\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Exhibits
 C:\Users\Darek\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\ExhibitsHistory.baml
 C:\Users\Darek\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Inventory.baml
 C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\ExhibitsHistory.g.cs
-C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Inventory.g.cs
 C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\ExhibitsHistory.baml
-C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Inventory.baml
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\runtimes\linux-arm64\native\libQuestPdfSkia.so
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\runtimes\linux-musl-x64\native\libQuestPdfSkia.so
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\runtimes\linux-x64\native\libQuestPdfSkia.so
@@ -164,3 +162,7 @@ C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Backup.g.
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Backup.baml
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Emil\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Backup.g.cs
+C:\Users\Admin\Documents\GitHub\MuzeumWPF\MuzeumInz\MuzeumInz\obj\Debug\Backup.baml
