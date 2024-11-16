@@ -25,21 +25,34 @@ namespace MuzeumInz
     {
         private DbConnect dbConnect;
         private int? idUser;
+        List<User> users;
         public Users()
         {
             InitializeComponent();
             dbConnect = new DbConnect();
             loadGrid();
+            LoadUsers();
 
             roleCmb.ItemsSource = new string[] { "user", "admin", "supervisor" };
             roleCmb.SelectedIndex = 0;
+
+            searchRoleCmb.ItemsSource = new string[] { "user", "admin", "supervisor" };
+            searchRoleCmb.SelectedIndex = 0;
         }
         public void loadGrid()
         {
             usersGrid.ItemsSource = null;
             usersGrid.ItemsSource = dbConnect.GetUsers();
         }
+        private void LoadUsers()
+        {
+            using (DbConnect db = new DbConnect())
+            {
+                users = db.GetUsers(); // Wypełnienie listy users danymi
+            }
 
+            usersGrid.ItemsSource = users;
+        }
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(email_Txt.Text))
@@ -296,6 +309,36 @@ namespace MuzeumInz
         {
             dbConnect.ClearCurrentUser(); // Wyczyść zalogowanego użytkownika
             Application.Current.Shutdown();
+        }
+
+        //wyszukaj użytkowaników
+        private void searchUsersBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SearchUsers();
+        }
+
+        private void SearchUsers()
+        {
+            if (users == null)
+            {
+                MessageBox.Show("Brak danych użytkowników.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            string emailFilter = searchEmail_Txt.Text.ToLower();
+            string roleFilter = searchRoleCmb.Text.ToLower();
+
+            var filteredUser = users.Where(user =>
+                (string.IsNullOrEmpty(emailFilter) || user.Email.ToLower().Contains(emailFilter)) &&
+                (string.IsNullOrEmpty(roleFilter) || user.Role.ToLower().Contains(roleFilter))
+            ).ToList();
+
+            usersGrid.ItemsSource = filteredUser;
+        }
+
+        private void searchEmail_Txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchUsers();
         }
     }
 }

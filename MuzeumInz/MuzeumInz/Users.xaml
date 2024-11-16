@@ -126,7 +126,7 @@
             </Button>
         </StackPanel>
         <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="1453,0,0,762" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
-        <DataGrid x:Name="usersGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="250,123,44,426" SelectionChanged="usersGrid_SelectionChanged"/>
+        <DataGrid x:Name="usersGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="250,123,44,426" SelectionChanged="usersGrid_SelectionChanged" ColumnWidth="*"/>
         <Button x:Name="addUsersBtn" Content="Dodaj" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="250,552,0,0" Click="addBtn_Click" />
         <Button x:Name="deleteUsersBtn" Content="Usuń" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="604,552,0,0" Click="deleteBtn_Click" />
         <Button x:Name="clearBtn" Content="Wyczyść" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="946,552,0,0" Click="clearBtn_Click" />
@@ -136,6 +136,11 @@
         <Label Content="Hasło" HorizontalAlignment="Left" Margin="605,441,0,0" VerticalAlignment="Top" Width="136" FontFamily="Tahoma" FontSize="20"/>
         <ComboBox x:Name="roleCmb" HorizontalAlignment="Left" Margin="947,480,0,0" VerticalAlignment="Top" Width="324" Height="34" FontFamily="Tahoma" FontSize="22"/>
         <Label Content="Rola" HorizontalAlignment="Left" Margin="947,441,0,0" VerticalAlignment="Top" Width="136" FontFamily="Tahoma" FontSize="20"/>
+        <TextBox x:Name="searchEmail_Txt" HorizontalAlignment="Left" Margin="252,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316" Height="34" FontFamily="Tahoma" FontSize="22" TextChanged="searchEmail_Txt_TextChanged"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="250,13,0,0" VerticalAlignment="Top" Width="136" FontFamily="Tahoma" FontSize="20"/>
+        <ComboBox x:Name="searchRoleCmb" HorizontalAlignment="Left" Margin="605,52,0,0" VerticalAlignment="Top" Width="324" Height="34" FontFamily="Tahoma" FontSize="22"/>
+        <Label Content="Rola" HorizontalAlignment="Left" Margin="605,13,0,0" VerticalAlignment="Top" Width="136" FontFamily="Tahoma" FontSize="20"/>
+        <Button x:Name="searchUsersBtn" Content="Szukaj" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Margin="947,50,0,0" Click="searchUsersBtn_Click" />
 
     </Grid>
 </Window>
