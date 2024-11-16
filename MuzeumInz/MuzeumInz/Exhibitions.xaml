@@ -197,14 +197,14 @@
             <TextBox x:Name="exhibitions_editLocationTxt" HorizontalAlignment="Left" Margin="175,172,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="359" Height="28" FontFamily="Tahoma" FontSize="15"/>
             <TextBox x:Name="exhibitions_editResponsiblePersonTxt" HorizontalAlignment="Left" Margin="175,205,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="359" Height="28" FontFamily="Tahoma" FontSize="15"/>
             <ComboBox x:Name="exhibitions_editStatusList" HorizontalAlignment="Left" Margin="175,73,0,0" VerticalAlignment="Top" Width="359" Height="25" SelectedIndex="0">
-                <ComboBoxItem Content="Obraz" FontFamily="Tahoma" FontSize="15"/>
-                <ComboBoxItem Content="Rzeźba" FontFamily="Tahoma" FontSize="15"/>
-                <ComboBoxItem Content="Inne" FontFamily="Tahoma" FontSize="15"/>
+                <ComboBoxItem Content="Planowana" FontFamily="Tahoma" FontSize="15"/>
+                <ComboBoxItem Content="Zakończona" FontFamily="Tahoma" FontSize="15"/>
+                <ComboBoxItem Content="Trwająca" FontFamily="Tahoma" FontSize="15"/>
             </ComboBox>
             <ComboBox x:Name="exhibitions_editTypeTxt" HorizontalAlignment="Left" Margin="175,238,0,0" VerticalAlignment="Top" Width="359" Height="28" SelectedIndex="0">
                 <ComboBoxItem Content="Stała" FontFamily="Tahoma" FontSize="15"/>
                 <ComboBoxItem Content="Czasowa" FontFamily="Tahoma" FontSize="15"/>
-                <ComboBoxItem Content="Nie pamietam" FontFamily="Tahoma" FontSize="15"/>
+                <ComboBoxItem Content="Objazdowa" FontFamily="Tahoma" FontSize="15"/>
             </ComboBox>
             <TextBox x:Name="exhibitions_editDescriptionTxt" HorizontalAlignment="Left" Margin="711,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="414" Height="232" FontFamily="Tahoma" FontSize="15"/>
             <Button x:Name="exhibitions_saveEditBtn" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="883,290,0,0" VerticalAlignment="Top" Height="36" Width="242" Background="#210B61" Foreground="white" FontFamily="Tahoma" FontSize="15" FontWeight="Bold" Click="exhibitions_saveEditBtn_Click"/>
