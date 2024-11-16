@@ -429,7 +429,7 @@ namespace MuzeumInz
         //pobierz z tabeli historia
         public List<History> GetHistory()
         {
-            string sql = @"SELECT * FROM history";
+            string sql = @"SELECT * FROM history ORDER BY changed_at";
 
             List<History> list = new List<History>();
 

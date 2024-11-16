@@ -12,6 +12,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using System.IO;
+using System.Security.Cryptography;
+using System.Data.Common;
 
 namespace MuzeumInz
 {
@@ -24,6 +28,7 @@ namespace MuzeumInz
         public Backup()
         {
             InitializeComponent();
+            LoadBackupList();
         }
         //przenoszenie okna
         private void Move_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -144,6 +149,171 @@ namespace MuzeumInz
             else
             {
                 existingWindow.Focus();
+            }
+        }
+
+        private readonly string _backupDirectory = System.IO.Path.Combine(Environment.CurrentDirectory, "Backup");
+        private readonly string _sourceFile = "Muzeum.db";
+
+        // Funkcja eksportu bazy danych z szyfrowaniem
+        private async void BackupDatabaseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LoadingSpinner.Visibility = Visibility.Visible;
+            LoadingText.Visibility = Visibility.Visible;
+
+            await Task.Run(() =>
+            {
+                string backupFile = System.IO.Path.Combine(_backupDirectory, $"Muzeum_{DateTime.Now:yyyyMMdd_HHmmss}.db");
+                string encryptedBackupFile = backupFile + ".enc";
+
+                try
+                {
+                    if (!Directory.Exists(_backupDirectory))
+                    {
+                        Directory.CreateDirectory(_backupDirectory);
+                    }
+
+                    // Tworzenie kopii zapasowej
+                    File.Copy(_sourceFile, backupFile, overwrite: true);
+
+                    // Szyfrowanie pliku kopii zapasowej
+                    EncryptFile(backupFile, encryptedBackupFile);
+
+                    // Usunięcie nieszyfrowanej kopii
+                    File.Delete(backupFile);
+
+                    Dispatcher.Invoke(() =>
+                    {
+                        MessageBox.Show($"Kopia zapasowa została utworzona i zabezpieczona: {encryptedBackupFile}");
+                        LoadBackupList(); // Odświeżenie listy rozwijanej
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        MessageBox.Show("Błąd podczas tworzenia kopii zapasowej: " + ex.Message);
+                    });
+                }
+            });
+
+            LoadingSpinner.Visibility = Visibility.Collapsed;
+            LoadingText.Visibility = Visibility.Collapsed;
+        }
+
+        // Funkcja importu i przywrócenia bazy danych z listy
+        private async void ImportDatabaseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (BackupList.SelectedItem is string selectedBackup)
+            {
+                string encryptedBackupFile = System.IO.Path.Combine(_backupDirectory, selectedBackup);
+                string tempDecryptedFile = System.IO.Path.Combine(_backupDirectory, "temp.db"); // Tymczasowy plik
+
+                LoadingSpinner2.Visibility = Visibility.Visible;
+                LoadingText2.Visibility = Visibility.Visible;
+
+                await Task.Run(() =>
+                {
+                    try
+                    {
+                        // Odszyfrowanie pliku kopii zapasowej do tymczasowego pliku
+                        DecryptFile(encryptedBackupFile, tempDecryptedFile);
+
+                        // Zamknięcie połączenia z aktualną bazą danych
+                        CloseDatabaseConnections();
+
+                        // Podmiana bazy danych
+                        File.Copy(tempDecryptedFile, _sourceFile, overwrite: true);
+
+                        // Usunięcie tymczasowego pliku
+                        File.Delete(tempDecryptedFile);
+
+                        Dispatcher.Invoke(() =>
+                        {
+                            MessageBox.Show("Baza danych została pomyślnie przywrócona.");
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Dispatcher.Invoke(() =>
+                        {
+                            MessageBox.Show("Błąd podczas przywracania bazy danych: " + ex.Message);
+                        });
+                    }
+                });
+
+                LoadingSpinner2.Visibility = Visibility.Collapsed;
+                LoadingText2.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MessageBox.Show("Wybierz kopię zapasową z listy.");
+            }
+        }
+
+        private void CloseDatabaseConnections()
+        {
+            // Jeśli używasz globalnego obiektu połączenia
+            if (dbConnect != null)
+            {
+                dbConnect.Dispose();
+                dbConnect = null; // Ustawienie na null pozwala na utworzenie nowego połączenia w razie potrzeby
+            }
+        }
+
+
+        // Funkcja szyfrowania pliku
+        private void EncryptFile(string sourceFile, string destinationFile)
+        {
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = Encoding.UTF8.GetBytes("1234567890123456"); // Klucz szyfrowania
+                aesAlg.IV = Encoding.UTF8.GetBytes("1234567890123456"); // Wektor inicjalizacyjny
+
+                using (FileStream fsOutput = new FileStream(destinationFile, System.IO.FileMode.Create))
+                {
+                    using (CryptoStream cs = new CryptoStream(fsOutput, aesAlg.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        using (FileStream fsInput = new FileStream(sourceFile, System.IO.FileMode.Open))
+                        {
+                            fsInput.CopyTo(cs);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Funkcja odszyfrowania pliku
+        private void DecryptFile(string sourceFile, string destinationFile)
+        {
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = Encoding.UTF8.GetBytes("1234567890123456"); // Klucz szyfrowania
+                aesAlg.IV = Encoding.UTF8.GetBytes("1234567890123456"); // Wektor inicjalizacyjny
+
+                using (FileStream fsInput = new FileStream(sourceFile,FileMode.Open))
+                {
+                    using (CryptoStream cs = new CryptoStream(fsInput, aesAlg.CreateDecryptor(), CryptoStreamMode.Read))
+                    {
+                        using (FileStream fsOutput = new FileStream(destinationFile, FileMode.Create))
+                        {
+                            cs.CopyTo(fsOutput);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Ładowanie listy kopii zapasowych
+        private void LoadBackupList()
+        {
+            if (Directory.Exists(_backupDirectory))
+            {
+                var files = Directory.GetFiles(_backupDirectory, "*.enc")
+                                     .Select(System.IO.Path.GetFileName)
+                                     .ToList();
+
+                BackupList.ItemsSource = files; // Załaduj listę kopii do ComboBoxa
             }
         }
     }
