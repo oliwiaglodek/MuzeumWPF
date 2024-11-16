@@ -146,6 +146,35 @@ namespace MuzeumInz
             //exhibitions_allExhibitsGrid.Visibility = Visibility.Visible;
             //exhibitions_addExhibitionsGrid.Visibility = Visibility.Collapsed;
             //exhibitions_editExhibitionsGrid.Visibility = Visibility.Collapsed;
+
+            try
+            {
+                // czy wybrano wystawę i eksponat
+                if (exhibitionsCmb.SelectedItem == null || exhibitsCmb.SelectedItem == null)
+                {
+                    MessageBox.Show("Proszę wybrać zarówno wystawę, jak i eksponat.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                // Pobranie wybranej wystawy i eksponatu
+                var selectedExhibition = (AddExhibitions)exhibitionsCmb.SelectedItem;
+                var selectedExhibit = (AddExhibits)exhibitsCmb.SelectedItem;
+
+                using (DbConnect db = new DbConnect())
+                {
+                    // Dodanie eksponatu do wystawy
+                    db.AddExhibitToExhibition(selectedExhibition.Id, selectedExhibit.Id);
+                }
+
+                MessageBox.Show("Eksponat został pomyślnie dodany do wystawy.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Odświeżenie listy eksponatów w wystawach
+                LoadExhibitsInExhibitions();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Wystąpił błąd podczas dodawania eksponatu do wystawy: {ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void exhibition_addBtn_Click(object sender, RoutedEventArgs e)
@@ -405,6 +434,38 @@ namespace MuzeumInz
             else
             {
                 existingWindow.Focus();
+            }
+        }
+
+        //usuń eksponat z wystawy
+        private void exhibition_deleteExhibitsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Sprawdzenie, czy wybrano eksponat w DataGrid
+                if (exhibitions_exhibitsInExhibitionDb.SelectedItem == null)
+                {
+                    MessageBox.Show("Proszę wybrać eksponat do usunięcia z wystawy.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                // Pobranie wybranego eksponatu w wystawie
+                var selectedExhibitInExhibition = (ExhibitsInExhibitionsDto)exhibitions_exhibitsInExhibitionDb.SelectedItem;
+
+                using (DbConnect db = new DbConnect())
+                {
+                    // Usunięcie eksponatu z wystawy
+                    db.DeleteExhibitFromExhibition(selectedExhibitInExhibition.exhibitionId, selectedExhibitInExhibition.exhibitId);
+                }
+
+                MessageBox.Show("Eksponat został pomyślnie usunięty z wystawy.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Odświeżenie listy eksponatów w wystawach
+                LoadExhibitsInExhibitions();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Wystąpił błąd podczas usuwania eksponatu z wystawy: {ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

@@ -595,5 +595,43 @@ namespace MuzeumInz
                 }
             }
         }
+
+        //dodanie eksponatu do wystawy 
+        public void AddExhibitToExhibition(int exhibitionId, int exhibitId)
+        {
+            string sql = @"INSERT INTO exhibits_exhibitions (idExhibitions, idExhibits) 
+                   VALUES (@ExhibitionId, @ExhibitId);";
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@ExhibitionId", exhibitionId);
+                    command.Parameters.AddWithValue("@ExhibitId", exhibitId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        //usuń eksponat z wystawy
+        public void DeleteExhibitFromExhibition(int exhibitionId, int exhibitId)
+        {
+            string sql = @"DELETE FROM exhibits_exhibitions 
+                   WHERE idExhibitions = @ExhibitionId AND idExhibits = @ExhibitId;";
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@ExhibitionId", exhibitionId);
+                    command.Parameters.AddWithValue("@ExhibitId", exhibitId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

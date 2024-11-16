@@ -8,8 +8,8 @@ namespace MuzeumInz
 {
     public class ExhibitsInExhibitionsDto
     {
-        private int exhibitionId;
-        private int exhibitId;
+        public int exhibitionId;
+        public int exhibitId;
         public string ExhibitionName { get; set; }
         public DateTime ExhibitionStart { get; set; }
         public DateTime ExhibitionEnd { get; set; }
