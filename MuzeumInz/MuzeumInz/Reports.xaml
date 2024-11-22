@@ -131,7 +131,7 @@
         Foreground="White" 
         FontSize="22" 
         HorizontalAlignment="Left" 
-        Margin="518,115,0,0" 
+        Margin="502,219,0,0" 
         VerticalAlignment="Top"
                 Click="SaveHistoryPDF" Height="46" Width="150">
             <TextBlock 
@@ -139,13 +139,13 @@
                TextAlignment="Center" 
                VerticalAlignment="Center" Text="PDF" />
         </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="301,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="146"><Run Language="pl-pl" Text="Pełna Historia"/></TextBlock>
+        <TextBlock x:Name="FullHistoryLabel" HorizontalAlignment="Left" Margin="299,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="146"><Run Language="pl-pl" Text="Pełna Historia"/></TextBlock>
         <Button x:Name="SaveHistoryCSVBtn" 
             Background="#210B61" 
             Foreground="White" 
             FontSize="22" 
             HorizontalAlignment="Left" 
-            Margin="709,114,0,0" 
+            Margin="741,219,0,0" 
             VerticalAlignment="Top"
             Click="SaveHistoryCSV" Height="46" Width="150">
             <TextBlock 
@@ -158,7 +158,7 @@
             Foreground="#210B61"
             FontSize="22" 
             HorizontalAlignment="Left" 
-            Margin="904,114,0,0" 
+            Margin="950,219,0,0" 
             VerticalAlignment="Top"
             RenderTransformOrigin="0.5,0.5" Click="PreviewAndPrint" Height="46" Width="200" BorderBrush="#FF210B61">
             <TextBlock 
@@ -172,5 +172,31 @@
                      HorizontalAlignment="Left" 
                      VerticalAlignment="Top"
                      IsIndeterminate="True" Margin="1146,139,0,0" Visibility="Collapsed" />
+        <Button x:Name="SaveExhibitionsPDFBtn" 
+            Background="#210B61" 
+            Foreground="White" 
+            FontSize="22" 
+            HorizontalAlignment="Left" 
+            Margin="297,101,0,0" 
+            VerticalAlignment="Top"
+            Click="SaveExhibitionsPDFBtn_Click" Height="62" Width="296">
+            <TextBlock 
+                TextWrapping="Wrap" 
+                TextAlignment="Center" 
+                VerticalAlignment="Center" Text="Pobierz wystawy do PDF" />
+        </Button>
+        <Button x:Name="SaveExhibitsListPDFBtn" 
+            Background="#210B61" 
+            Foreground="White" 
+            FontSize="22" 
+            HorizontalAlignment="Left" 
+            Margin="668,101,0,0" 
+            VerticalAlignment="Top"
+            Click="SaveExhibitsListPDFBtn_Click" Height="62" Width="296">
+            <TextBlock 
+                TextWrapping="Wrap" 
+                TextAlignment="Center" 
+                VerticalAlignment="Center" Text="Pobierz eksponaty do PDF" />
+        </Button>
     </Grid>
 </Window>

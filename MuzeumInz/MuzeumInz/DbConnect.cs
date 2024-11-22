@@ -146,9 +146,19 @@ namespace MuzeumInz
             }
         }
         //wczytaj eksponaty
-        public List<AddExhibits> GetExhibits()
+        public List<AddExhibits> GetExhibits(int exhibitionId = 0)
         {
-            string sql = "SELECT id, name, Description, Year, Category, Author, Origin, Image, Location FROM exhibits;";
+            string sql = "SELECT exhibits.id, name, Description, Year, Category, Author, Origin, Image, Location FROM exhibits;";
+
+            if (exhibitionId != 0)
+            {
+                sql += " JOIN exhibits_exhibitions ON exhibits_exhibitions.idExhibits = exhibits.id WHERE exhibits_exhibitions.idExhibits = @exhibitionId;";
+            }
+            else
+            {
+                sql += ";";
+            }
+
             List < AddExhibits > list = new List<AddExhibits>();
 
             using (var connection = new SQLiteConnection(connectionString))
@@ -156,6 +166,11 @@ namespace MuzeumInz
                 connection.Open();
                 using (var command = new SQLiteCommand(sql, connection))
                 {
+                    if (exhibitionId != 0)
+                    {
+                        command.Parameters.AddWithValue("@exhibitionId", exhibitionId);
+                    }
+
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -356,7 +371,7 @@ namespace MuzeumInz
             return image;
         }
         //metoda konwertuje obrazek bitmap na tablice byte 
-        private byte[] convertBitmapToBytes(BitmapImage image)
+        public byte[] convertBitmapToBytes(BitmapImage image)
         {
             byte[] data;
 

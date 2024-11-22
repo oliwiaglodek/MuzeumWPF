@@ -21,7 +21,8 @@ using QuestPDF.Previewer;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Windows.Controls;
-using System.Threading; //możliwość zapisu pliku wedle uznania
+using System.Threading;
+using System.IO; //możliwość zapisu pliku wedle uznania
 
 namespace MuzeumInz
 {
@@ -35,6 +36,26 @@ namespace MuzeumInz
         {        
             dbConnect = new DbConnect();
             InitializeComponent();
+            setVisibility();
+        }
+
+        private void setVisibility()
+        {
+            if (MainWindow.Role != "admin")
+            {
+                //widoczne tylko dla admina
+                SaveHistoryPDFBtn.Visibility = Visibility.Hidden;
+                SaveHistoryCSVBtn.Visibility = Visibility.Hidden;
+                FullHistoryLabel.Visibility = Visibility.Hidden;
+                PreviewPrintBtn.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                SaveHistoryPDFBtn.Visibility = Visibility.Visible;
+                SaveHistoryCSVBtn.Visibility = Visibility.Visible;
+                FullHistoryLabel.Visibility = Visibility.Visible;
+                PreviewPrintBtn.Visibility = Visibility.Visible;
+            }
         }
 
         private List<History> GetHistoryRecordsFromDatabase()
@@ -524,6 +545,248 @@ namespace MuzeumInz
             // Dodatkowa obróbka, np. usunięcie białych znaków z początku i końca
             return value.Trim();
         }
-   
+
+        //zapis wystaw do pdf
+        private void SaveExhibitionsPDFBtn_Click(object sender, RoutedEventArgs e)
+        {
+            QuestPDF.Settings.License = LicenseType.Community;
+
+            // Odczytaj dane z bazy danych
+            List<AddExhibitions> exhibitions = dbConnect.GetExhibitions();
+
+            // Użycie SaveFileDialog, aby pozwolić użytkownikowi wybrać lokalizację zapisu pliku
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf"; // Filtr plików PDF
+            saveFileDialog.Title = "Zapisz raport jako PDF";
+
+            // Jeśli użytkownik wybierze lokalizację i kliknie "Zapisz"
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                // Tworzenie dokumentu PDF
+                Document.Create(container =>
+                {
+                    container.Page(page =>
+                    {
+                        page.Size(PageSizes.A4);
+                        page.Margin(2, Unit.Centimetre);
+                        page.PageColor(QuestPDF.Helpers.Colors.White); //Musiałem zastosować pełna nazwę ponieważ inaczej te same odwołania ma system.windows.media.colors.white
+                        page.DefaultTextStyle(x => x.FontSize(10));
+
+                        // Nagłówek dokumentu
+                        page.Header()
+                            .Text("Wystawy")
+                            .SemiBold().FontSize(20).FontColor(QuestPDF.Helpers.Colors.Blue.Medium);
+
+                        // Zawartość dokumentu: tabela
+                        page.Content()
+                            .Table(table =>
+                            {
+                                // Definicja kolumn
+                                table.ColumnsDefinition(columns =>
+                                {
+                                    columns.RelativeColumn(2);
+                                    columns.RelativeColumn(3);
+                                    columns.RelativeColumn(4);
+                                    columns.RelativeColumn(5);
+                                    columns.RelativeColumn(6);
+                                    columns.RelativeColumn(7);
+                                    columns.RelativeColumn(8);
+                                });
+
+
+
+                                // Nagłówki tabeli
+                                table.Header(header =>
+                                {
+                                    header.Cell().Element(CellStyle).Text("Name");
+                                    header.Cell().Element(CellStyle).Text("Start date");
+                                    header.Cell().Element(CellStyle).Text("End date");
+                                    header.Cell().Element(CellStyle).Text("Location");
+                                    header.Cell().Element(CellStyle).Text("Responsible person");
+                                    header.Cell().Element(CellStyle).Text("Status");
+                                    header.Cell().Element(CellStyle).Text("Type");
+
+                                    QuestPDF.Infrastructure.IContainer CellStyle(QuestPDF.Infrastructure.IContainer cellContainer)
+                                    {
+                                        return cellContainer.DefaultTextStyle(x => x.ExtraBold()).Padding(5).BorderBottom(1).BorderColor(QuestPDF.Helpers.Colors.Black);
+                                    }
+                                });
+
+                                // Dane tabeli
+                                foreach (var record in exhibitions)
+                                {
+                                    table.Cell().Element(BodyCellStyle).Text(record.Name);
+                                    table.Cell().Element(BodyCellStyle).Text(record.StartDate.Value.ToShortDateString());
+                                    table.Cell().Element(BodyCellStyle).Text(record.EndDate.Value.ToShortDateString());
+                                    table.Cell().Element(BodyCellStyle).Text(record.Location);
+                                    table.Cell().Element(BodyCellStyle).Text(record.ResponsiblePerson);
+                                    table.Cell().Element(BodyCellStyle).Text(record.Status);
+                                    table.Cell().Element(BodyCellStyle).Text(record.Type);
+
+                                    var items = dbConnect.GetExhibits(record.Id);
+
+                                    if (items.Any())
+                                    {
+                                        table.Cell().Element(BodyCellStyle).Text("").Bold();
+                                        table.Cell().Element(BodyCellStyle).Text("Name").Bold();
+                                        table.Cell().Element(BodyCellStyle).Text("Year").Bold();
+                                        table.Cell().Element(BodyCellStyle).Text("Category").Bold();
+                                        table.Cell().Element(BodyCellStyle).Text("Author").Bold();
+                                        table.Cell().Element(BodyCellStyle).Text("Origin").Bold();
+                                        table.Cell().Element(BodyCellStyle).Text("Location").Bold();
+
+
+                                        foreach (var item in items)
+                                        {
+                                            table.Cell().Element(BodyCellStyle).Text("");
+                                            table.Cell().Element(BodyCellStyle).Text(item.Name);
+                                            table.Cell().Element(BodyCellStyle).Text(item.Year);
+                                            table.Cell().Element(BodyCellStyle).Text(item.Category);
+                                            table.Cell().Element(BodyCellStyle).Text(item.Author);
+                                            table.Cell().Element(BodyCellStyle).Text(item.Origin);
+                                            table.Cell().Element(BodyCellStyle).Text(item.Location);
+                                        }
+                                    }
+
+                                    QuestPDF.Infrastructure.IContainer BodyCellStyle(QuestPDF.Infrastructure.IContainer bodyCell)
+                                    {
+                                        return bodyCell.Padding(5);
+                                    }
+                                }
+                            });
+
+                        // Stopka dokumentu
+                        page.Footer()
+                            .AlignCenter()
+                            .Text(x =>
+                            {
+                                x.CurrentPageNumber();
+                                x.Span(" / ");
+                                x.TotalPages();
+                            });
+                    });
+                })
+                .GeneratePdf(filePath); // Zapisuje plik PDF w wybranej przez użytkownika ścieżce
+            }
+        }
+
+        //raport z eksponatów
+        private void SaveExhibitsListPDFBtn_Click(object sender, RoutedEventArgs e)
+        {
+            QuestPDF.Settings.License = LicenseType.Community;
+
+            // Użycie SaveFileDialog, aby pozwolić użytkownikowi wybrać lokalizację zapisu pliku
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf"; // Filtr plików PDF
+            saveFileDialog.Title = "Zapisz raport jako PDF";
+
+            // Jeśli użytkownik wybierze lokalizację i kliknie "Zapisz"
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                // Tworzenie dokumentu PDF
+                Document.Create(container =>
+                {
+                    container.Page(page =>
+                    {
+                        page.Size(PageSizes.A4);
+                        page.Margin(2, Unit.Centimetre);
+                        page.PageColor(QuestPDF.Helpers.Colors.White); //Musiałem zastosować pełna nazwę ponieważ inaczej te same odwołania ma system.windows.media.colors.white
+                        page.DefaultTextStyle(x => x.FontSize(10));
+
+                        // Nagłówek dokumentu
+                        page.Header()
+                            .Text("Eksponaty")
+                            .SemiBold().FontSize(20).FontColor(QuestPDF.Helpers.Colors.Blue.Medium);
+
+                        // Zawartość dokumentu: tabela
+                        page.Content()
+                            .Table(table =>
+                            {
+                                // Definicja kolumn
+                                table.ColumnsDefinition(columns =>
+                                {
+                                    columns.RelativeColumn(2);
+                                    columns.RelativeColumn(3);
+                                    columns.RelativeColumn(4);
+                                    columns.RelativeColumn(5);
+                                    columns.RelativeColumn(6);
+                                    columns.RelativeColumn(7);
+                                    columns.RelativeColumn(8);
+                                });
+
+
+                                table.Header(header =>
+                                {
+                                    header.Cell().Element(CellStyle).Text("Name");
+                                    header.Cell().Element(CellStyle).Text("Year");
+                                    header.Cell().Element(CellStyle).Text("Category");
+                                    header.Cell().Element(CellStyle).Text("Author");
+                                    header.Cell().Element(CellStyle).Text("Origin");
+                                    header.Cell().Element(CellStyle).Text("Location");
+                                    header.Cell().Element(CellStyle).Text("Image");
+
+                                    QuestPDF.Infrastructure.IContainer CellStyle(QuestPDF.Infrastructure.IContainer cellContainer)
+                                    {
+                                        return cellContainer.DefaultTextStyle(x => x.ExtraBold()).Padding(5).BorderBottom(1).BorderColor(QuestPDF.Helpers.Colors.Black);
+                                    }
+                                });
+
+
+                                var items = dbConnect.GetExhibits();
+
+                                foreach (var item in items)
+                                {
+                                    table.Cell().Element(BodyCellStyle).Text(item.Name);
+                                    table.Cell().Element(BodyCellStyle).Text(item.Year);
+                                    table.Cell().Element(BodyCellStyle).Text(item.Category);
+                                    table.Cell().Element(BodyCellStyle).Text(item.Author);
+                                    table.Cell().Element(BodyCellStyle).Text(item.Origin);
+                                    table.Cell().Element(BodyCellStyle).Text(item.Location);
+                                    if (item.Image != null)
+                                    {
+                                        table.Cell().Element(BodyCellStyle).Image(dbConnect.convertBitmapToBytes(item.Image));
+                                    }
+                                    else
+                                    {
+                                        table.Cell().Element(BodyCellStyle).Text("");
+                                    }
+                                }
+
+                                QuestPDF.Infrastructure.IContainer BodyCellStyle(QuestPDF.Infrastructure.IContainer bodyCell)
+                                {
+                                    return bodyCell.Padding(5);
+                                }
+
+                            });
+
+                        page.Footer()
+                           .AlignCenter()
+                           .Text(x =>
+                           {
+                               x.CurrentPageNumber();
+                               x.Span(" / ");
+                               x.TotalPages();
+                           });
+                    });
+                }).GeneratePdf(filePath);
+            }
+        }
+
+        private void CopyDbBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "DB Files (*.db)|*.db"; // Filtr plików PDF
+            saveFileDialog.Title = "Zapisz raport jako db";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string filePath = saveFileDialog.FileName;
+                File.Copy("Muzeum.db", filePath);
+            }
+        }
     }
 }
