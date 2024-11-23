@@ -198,5 +198,45 @@
                 TextAlignment="Center" 
                 VerticalAlignment="Center" Text="Pobierz eksponaty do PDF" />
         </Button>
+        <Button x:Name="SaveLoginPDFBtn" 
+            Background="#210B61" 
+            Foreground="White" 
+            FontSize="22" 
+            HorizontalAlignment="Left" 
+            Margin="502,302,0,0" 
+            VerticalAlignment="Top"
+            Click="SaveLoginHistoryPDF" Height="46" Width="150">
+            <TextBlock 
+                TextWrapping="Wrap" 
+                TextAlignment="Center" 
+                VerticalAlignment="Center" Text="PDF" />
+        </Button>
+        <TextBlock x:Name="LoginCSVLabel" HorizontalAlignment="Left" Margin="312,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="120"><Run Language="pl-pl" Text="Logowania"/></TextBlock>
+        <Button x:Name="SaveHistoryCSVBtn_Kopiuj" 
+            Background="#210B61" 
+            Foreground="White" 
+            FontSize="22" 
+            HorizontalAlignment="Left" 
+            Margin="741,302,0,0" 
+            VerticalAlignment="Top"
+            Click="SaveLoginCSV" Height="46" Width="150">
+            <TextBlock 
+                TextWrapping="Wrap" 
+                TextAlignment="Center" 
+                VerticalAlignment="Center" ><Run Language="pl-pl" Text="CSV"/></TextBlock>
+        </Button>
+        <Button x:Name="LoginPreviewPrintBtn" 
+            Background="White" 
+            Foreground="#210B61"
+            FontSize="22" 
+            HorizontalAlignment="Left" 
+            Margin="950,302,0,0" 
+            VerticalAlignment="Top"
+            RenderTransformOrigin="0.5,0.5" Click="LoginPreviewPrint" Height="46" Width="200" BorderBrush="#FF210B61">
+            <TextBlock 
+                TextWrapping="Wrap" 
+                TextAlignment="Center" 
+                VerticalAlignment="Center" ><Run Language="pl-pl" Text="Podgląd i druk"/></TextBlock>
+        </Button>
     </Grid>
 </Window>

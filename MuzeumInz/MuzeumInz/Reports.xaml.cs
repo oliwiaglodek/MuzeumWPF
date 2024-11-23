@@ -672,6 +672,303 @@ namespace MuzeumInz
             }
         }
 
+        private async void SaveLoginHistoryPDF(object sender, RoutedEventArgs e)
+        {
+            QuestPDF.Settings.License = LicenseType.Community;
+
+            // Pokaż animację ładowania
+            LoadingSpinner.Visibility = Visibility.Visible;
+            LoadingText.Visibility = Visibility.Visible;
+
+            // Uruchom generowanie PDF w tle
+            await Task.Run(() =>
+            {
+                try
+                {
+                    // Odczytaj dane z bazy danych na podstawie filtrowanego użytkownika
+                    List<History> loginRecords = dbConnect.GetLoginHistory(); 
+
+                    // Wyświetlenie SaveFileDialog i generowanie PDF (jak wcześniej)
+                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    {
+                        Filter = "PDF Files (*.pdf)|*.pdf",
+                        Title = "Zapisz raport jako PDF"
+                    };
+
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+                        string filePath = saveFileDialog.FileName;
+
+                        Document.Create(container =>
+                        {
+                            container.Page(page =>
+                            {
+                                page.Size(PageSizes.A4);
+                                page.Margin(1, Unit.Centimetre);
+                                page.PageColor(QuestPDF.Helpers.Colors.White);
+                                page.DefaultTextStyle(x => x.FontSize(10));
+
+                                // Nagłówek dokumentu
+                                page.Header()
+                                    .Text("Historia zmian")
+                                    .SemiBold().FontSize(20).FontColor(QuestPDF.Helpers.Colors.Blue.Medium);
+
+                                // Zawartość dokumentu: tabela
+                                page.Content()
+                                    .Table(table =>
+                                    {
+                                        // Definicja kolumn
+                                        table.ColumnsDefinition(columns =>
+                                        {
+                                            columns.RelativeColumn(2); // Użytkownik (ChangedBy)
+                                            columns.RelativeColumn(2); // Typ operacji (Operation)
+                                            columns.RelativeColumn(2); // Data (ChangedAt)
+                                        });
+
+                                        // Nagłówki tabeli
+                                        table.Header(header =>
+                                        {
+                                            header.Cell().Element(CellStyle).Text("Użytkownik");
+                                            header.Cell().Element(CellStyle).Text("Typ");
+                                            header.Cell().Element(CellStyle).Text("Data");
+
+                                            QuestPDF.Infrastructure.IContainer CellStyle(QuestPDF.Infrastructure.IContainer cellContainer)
+                                            {
+                                                return cellContainer.DefaultTextStyle(x => x.SemiBold()).Padding(5).BorderBottom(1).BorderColor(QuestPDF.Helpers.Colors.Black);
+                                            }
+                                        });
+
+                                        // Dane tabeli
+                                        foreach (var record in loginRecords)
+                                        {
+                                            table.Cell().Element(BodyCellStyle).Text(record.changed_by ?? "N/D");
+                                            table.Cell().Element(BodyCellStyle).Text(record.operation);
+                                            table.Cell().Element(BodyCellStyle).Text(record.changed_at.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                                            QuestPDF.Infrastructure.IContainer BodyCellStyle(QuestPDF.Infrastructure.IContainer bodyCell)
+                                            {
+                                                return bodyCell.Padding(5);
+                                            }
+                                        }
+                                    });
+
+                                // Stopka dokumentu
+                                page.Footer()
+                                    .AlignCenter()
+                                    .Text(x =>
+                                    {
+                                        x.CurrentPageNumber();
+                                        x.Span(" / ");
+                                        x.TotalPages();
+                                    });
+                            });
+                        })
+.GeneratePdf(filePath);
+
+
+                        MessageBox.Show("PDF został zapisany pomyślnie!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wystąpił błąd: " + ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            });
+
+            // Ukryj animację ładowania
+            LoadingSpinner.Visibility = Visibility.Collapsed;
+            LoadingText.Visibility = Visibility.Collapsed;
+        }
+
+        private async void SaveLoginCSV(object sender, RoutedEventArgs e)
+        {
+            // Pokaż animację ładowania
+            LoadingSpinner.Visibility = Visibility.Visible;
+            LoadingText.Visibility = Visibility.Visible;
+
+            await Task.Run(() =>
+            {
+                try
+                {
+                    // Pobierz dane z bazy danych
+                    List<History> historyRecords = GetHistoryRecordsFromDatabase();
+
+                    // Użycie SaveFileDialog, aby pozwolić użytkownikowi wybrać lokalizację zapisu pliku
+                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    {
+                        Filter = "CSV Files (*.csv)|*.csv", // Filtr plików CSV
+                        Title = "Zapisz raport jako CSV"
+                    };
+
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+                        string filePath = saveFileDialog.FileName;
+
+                        // Tworzenie pliku CSV
+                        using (var writer = new System.IO.StreamWriter(filePath, false, Encoding.UTF8))
+                        {
+                            // Nagłówki
+                            writer.WriteLine("Użytkownik,Typ operacji,Data");
+
+                            // Zapis danych
+                            foreach (var record in historyRecords)
+                            {
+                                string user = record.changed_by ?? "N/D"; // Obsługa null dla użytkownika
+                                string operation = record.operation;
+                                string date = record.changed_at.ToString("yyyy-MM-dd HH:mm:ss");
+
+                                // Zapis wiersza w CSV
+                                writer.WriteLine($"{user},{operation},{date}");
+                            }
+                        }
+
+                        MessageBox.Show("CSV zostało zapisane pomyślnie!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wystąpił błąd podczas generowania pliku CSV: " + ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            });
+
+            // Ukryj animację ładowania
+            LoadingSpinner.Visibility = Visibility.Collapsed;
+            LoadingText.Visibility = Visibility.Collapsed;
+        }
+
+        private async void LoginPreviewPrint(object sender, RoutedEventArgs e)
+        {
+            // Pokaż animację ładowania
+            LoadingSpinner.Visibility = Visibility.Visible;
+            LoadingText.Visibility = Visibility.Visible;
+
+            // Uruchom generowanie dokumentu w tle, aby nie blokować interfejsu użytkownika
+            await Task.Run(() =>
+            {
+                try
+                {
+                    // Pobierz dane z bazy danych - historia logowań
+                    List<History> loginRecords = dbConnect.GetLoginHistory();
+
+                    // Ścieżka do folderu Temp w katalogu roboczym aplikacji
+                    string tempFolderPath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Temp");
+
+                    // Tworzenie folderu Temp, jeśli jeszcze nie istnieje
+                    if (!System.IO.Directory.Exists(tempFolderPath))
+                    {
+                        System.IO.Directory.CreateDirectory(tempFolderPath);
+                    }
+
+                    // Ścieżka zapisu pliku PDF w folderze Temp
+                    string filePath = System.IO.Path.Combine(tempFolderPath, "login_preview.pdf");
+
+                    // Generowanie dokumentu PDF
+                    QuestPDF.Settings.License = LicenseType.Community;
+
+                    Document.Create(container =>
+                    {
+                        container.Page(page =>
+                        {
+                            page.Size(PageSizes.A4);
+                            page.Margin(1, Unit.Centimetre);
+                            page.PageColor(QuestPDF.Helpers.Colors.White);
+                            page.DefaultTextStyle(x => x.FontSize(10));
+
+                            // Nagłówek dokumentu
+                            page.Header()
+                                .Text("Historia logowań")
+                                .SemiBold().FontSize(20).FontColor(QuestPDF.Helpers.Colors.Blue.Medium);
+
+                            // Zawartość dokumentu: tabela
+                            page.Content()
+                                .Table(table =>
+                                {
+                                    // Definicja kolumn
+                                    table.ColumnsDefinition(columns =>
+                                    {
+                                        columns.RelativeColumn(2); // Użytkownik (ChangedBy)
+                                        columns.RelativeColumn(2); // Typ operacji (Operation)
+                                        columns.RelativeColumn(2); // Data (ChangedAt)
+                                    });
+
+                                    // Nagłówki tabeli
+                                    table.Header(header =>
+                                    {
+                                        header.Cell().Element(CellStyle).Text("Użytkownik");
+                                        header.Cell().Element(CellStyle).Text("Typ");
+                                        header.Cell().Element(CellStyle).Text("Data");
+
+                                        QuestPDF.Infrastructure.IContainer CellStyle(QuestPDF.Infrastructure.IContainer cellContainer)
+                                        {
+                                            return cellContainer.DefaultTextStyle(x => x.SemiBold()).Padding(5).BorderBottom(1).BorderColor(QuestPDF.Helpers.Colors.Black);
+                                        }
+                                    });
+
+                                    // Dane tabeli
+                                    foreach (var record in loginRecords)
+                                    {
+                                        table.Cell().Element(BodyCellStyle).Text(record.changed_by ?? "N/D");
+                                        table.Cell().Element(BodyCellStyle).Text(record.operation);
+                                        table.Cell().Element(BodyCellStyle).Text(record.changed_at.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                                        QuestPDF.Infrastructure.IContainer BodyCellStyle(QuestPDF.Infrastructure.IContainer bodyCell)
+                                        {
+                                            return bodyCell.Padding(5);
+                                        }
+                                    }
+                                });
+
+                            // Stopka dokumentu
+                            page.Footer()
+                                .AlignCenter()
+                                .Text(x =>
+                                {
+                                    x.CurrentPageNumber();
+                                    x.Span(" / ");
+                                    x.TotalPages();
+                                });
+                        });
+                    }).GeneratePdf(filePath); // Zapisuje plik PDF w folderze Temp
+
+                    // Otwórz plik PDF za pomocą domyślnej aplikacji
+                    Process pdfProcess = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = filePath,
+                            UseShellExecute = true
+                        }
+                    };
+
+                    pdfProcess.Start();
+
+                    // Usunięcie pliku po zamknięciu aplikacji przeglądającej PDF
+                    Task.Run(() =>
+                    {
+                        pdfProcess.WaitForExit();
+
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            System.IO.File.Delete(filePath);
+                        }
+                    });
+
+                    /*MessageBox.Show("Dokument PDF został otwarty w domyślnej aplikacji.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);*/
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wystąpił błąd podczas generowania lub otwierania pliku PDF: " + ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            });
+
+            // Ukryj animację ładowania po zakończeniu generowania PDF
+            LoadingSpinner.Visibility = Visibility.Collapsed;
+            LoadingText.Visibility = Visibility.Collapsed;
+        }
+
+
+
+
         //raport z eksponatów
         private void SaveExhibitsListPDFBtn_Click(object sender, RoutedEventArgs e)
         {

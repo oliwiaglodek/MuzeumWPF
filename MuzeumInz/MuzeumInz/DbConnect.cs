@@ -441,6 +441,44 @@ namespace MuzeumInz
             }
             return list;
         }
+        //wybieramy usera i generujemy PDF z jego historią logowań
+        public List<History> GetLoginHistory()
+        {
+            string sql = @"SELECT * FROM history WHERE operation = 'logowanie' OR operation = 'wylogowanie' ORDER BY changed_at";
+
+            List<History> list = new List<History>();
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int historyId = reader.GetInt32(0);
+                            string tableName = reader.GetString(1);
+                            int recordId = reader.GetInt32(2);
+                            string operation = reader.GetString(3);
+                            string changed_by = reader.IsDBNull(4) ? null : reader.GetString(4);
+                            DateTime changed_at = DateTime.Parse(reader.GetString(5));
+                            string old_values = reader.IsDBNull(6) ? null : reader.GetString(6);
+                            string new_values = reader.IsDBNull(7) ? null : reader.GetString(7);
+
+                            list.Add(new History(historyId, tableName, recordId, operation, changed_by, changed_at, old_values, new_values));
+                        }
+                    }
+                }
+            }
+
+            return list;
+        }
+
+
+
         //pobierz z tabeli historia
         public List<History> GetHistory()
         {
