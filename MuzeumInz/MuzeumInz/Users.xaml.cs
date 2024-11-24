@@ -63,9 +63,9 @@ namespace MuzeumInz
             {
                 MessageBox.Show("Email nie jest poprawny");
             }
-            else if (string.IsNullOrEmpty(password_Txt.Text) || !IsValidPassword(password_Txt.Text))
+            else if (string.IsNullOrEmpty(password_Txt.Text) || password_Txt.Text.Length <8)
             {
-                MessageBox.Show("Haslo musi posiadać co najmniej: 8 znaków, jedna cyfrę oraz znak specjalny");
+                MessageBox.Show("Hasło musi posiadać co najmniej 8 znaków, jedną cyfrę oraz jeden znak specjalny");
                 return;
             }
             else
@@ -124,21 +124,9 @@ namespace MuzeumInz
         // Metoda sprawdzająca poprawność hasła za pomocą regex
         private bool IsValidPassword(string password)
         {
-            if (string.IsNullOrWhiteSpace(password))
-            {
-                return false;
-            }
-
-            try
-            {
-                // Regex dla sprawdzenia hasła
-                var passwordRegex = new Regex(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", RegexOptions.Compiled);
-                return passwordRegex.IsMatch(password);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            // Regex dla sprawdzenia hasła
+            var passwordRegex = new Regex(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", RegexOptions.Compiled);
+            return passwordRegex.IsMatch(password);
         }
 
         private bool isValidEmail(string email)
