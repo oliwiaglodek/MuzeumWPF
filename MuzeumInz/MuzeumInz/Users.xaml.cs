@@ -33,10 +33,10 @@ namespace MuzeumInz
             loadGrid();
             LoadUsers();
 
-            roleCmb.ItemsSource = new string[] { "user", "admin", "supervisor" };
+            roleCmb.ItemsSource = new string[] { "user", "admin" };
             roleCmb.SelectedIndex = 0;
 
-            searchRoleCmb.ItemsSource = new string[] { "user", "admin", "supervisor" };
+            searchRoleCmb.ItemsSource = new string[] { "user", "admin"};
             searchRoleCmb.SelectedIndex = 0;
         }
         public void loadGrid()
