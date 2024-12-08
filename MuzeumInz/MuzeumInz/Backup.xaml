@@ -184,7 +184,6 @@
         <TextBlock HorizontalAlignment="Left" Foreground="#210B61" Margin="278,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="175" Width="755" FontSize="18"><Run Text="Baza "/><Run Language="pl-pl" Text="importuje się z archiwum programu - zapisana w formacie rokmiesiącdzień.dtb.enc"/><LineBreak/></TextBlock>
         <Rectangle x:Name="underline" Fill="#210B61" HorizontalAlignment="Left" Height="3" Margin="278,108,0,0" VerticalAlignment="Top" Width="236"/>
         <Rectangle x:Name="underline_Kopiuj" Fill="#210B61" HorizontalAlignment="Left" Height="3" Margin="278,348,0,0" VerticalAlignment="Top" Width="236"/>
-        <TextBox HorizontalAlignment="Left" Foreground="red" Margin="278,24,0,0" TextWrapping="Wrap" Text="ZAPYTAĆ O SZYFROWANIE BAZY!!! Tu jest neijako jawne!" VerticalAlignment="Top" Width="181" Height="35"/>
         <TextBlock x:Name="LoadingText2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1336,314,0,0" FontSize="16" Foreground="#210B61" Visibility="Collapsed" ><Run Language="pl-pl" Text="Importuję"/><Run Text="..."/></TextBlock>
         <ProgressBar x:Name="LoadingSpinner2" 
             Width="116" Height="20"
