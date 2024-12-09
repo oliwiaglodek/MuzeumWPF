@@ -28,6 +28,19 @@ namespace MuzeumInz
             InitializeComponent();
             dbConnect = new DbConnect();
             loadGrid();
+            setVisibility();
+        }
+
+        private void setVisibility()
+        {
+            if (MainWindow.Role != "admin")
+            {
+                UsersBtn.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                UsersBtn.Visibility = Visibility.Visible;
+            }
         }
 
         //przenoszenie okna

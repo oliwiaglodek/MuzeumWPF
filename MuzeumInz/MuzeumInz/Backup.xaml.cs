@@ -29,6 +29,18 @@ namespace MuzeumInz
         {
             InitializeComponent();
             LoadBackupList();
+            setVisibility();
+        }
+        private void setVisibility()
+        {
+            if (MainWindow.Role != "admin")
+            {
+                UsersBtn.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                UsersBtn.Visibility = Visibility.Visible;
+            }
         }
         //przenoszenie okna
         private void Move_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

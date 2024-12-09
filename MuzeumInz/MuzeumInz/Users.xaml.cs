@@ -35,9 +35,6 @@ namespace MuzeumInz
 
             roleCmb.ItemsSource = new string[] { "user", "admin" };
             roleCmb.SelectedIndex = 0;
-
-            searchRoleCmb.ItemsSource = new string[] { "user", "admin"};
-            searchRoleCmb.SelectedIndex = 0;
         }
         public void loadGrid()
         {
@@ -314,11 +311,9 @@ namespace MuzeumInz
             }
 
             string emailFilter = searchEmail_Txt.Text.ToLower();
-            string roleFilter = searchRoleCmb.Text.ToLower();
 
             var filteredUser = users.Where(user =>
-                (string.IsNullOrEmpty(emailFilter) || user.Email.ToLower().Contains(emailFilter)) &&
-                (string.IsNullOrEmpty(roleFilter) || user.Role.ToLower().Contains(roleFilter))
+                (string.IsNullOrEmpty(emailFilter) || user.Email.ToLower().Contains(emailFilter))
             ).ToList();
 
             usersGrid.ItemsSource = filteredUser;

@@ -30,6 +30,18 @@ namespace MuzeumInz
             dbConnect = new DbConnect();
             loadGrid();
             LoadExhibitsInExhibitions();
+            setVisibility();
+        }
+        private void setVisibility()
+        {
+            if (MainWindow.Role != "admin")
+            {
+                UsersBtn.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                UsersBtn.Visibility = Visibility.Visible;
+            }
         }
         public void loadGrid()
         {

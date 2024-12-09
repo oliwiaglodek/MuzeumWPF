@@ -48,6 +48,7 @@ namespace MuzeumInz
                 SaveHistoryCSVBtn.Visibility = Visibility.Hidden;
                 FullHistoryLabel.Visibility = Visibility.Hidden;
                 PreviewPrintBtn.Visibility = Visibility.Hidden;
+                UsersBtn.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -55,6 +56,7 @@ namespace MuzeumInz
                 SaveHistoryCSVBtn.Visibility = Visibility.Visible;
                 FullHistoryLabel.Visibility = Visibility.Visible;
                 PreviewPrintBtn.Visibility = Visibility.Visible;
+                UsersBtn.Visibility = Visibility.Visible;
             }
         }
 
