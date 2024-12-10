@@ -140,22 +140,6 @@
         </Button>
 
         <TextBlock HorizontalAlignment="Left" Foreground="#210B61" Margin="278,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="162" Height="40"><Run Language="pl-pl" Text="Eksportuj bazę"/></TextBlock>
-
-        <Button x:Name="DiskBtn1" 
-        Background="#210B61" 
-        Foreground="White" 
-        FontSize="22" 
-        HorizontalAlignment="Left" 
-        Margin="1018,202,0,0" 
-        VerticalAlignment="Top" 
-        Height="46" Width="150">
-            <TextBlock 
-        TextWrapping="Wrap" 
-        TextAlignment="Center" 
-        VerticalAlignment="Center" >
-        <Run Language="pl-pl" Text="Dysk Google" />
-            </TextBlock>
-        </Button>
         <TextBlock Name="LoadingText" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1336,82,0,0" FontSize="16" Foreground="#210B61" Visibility="Collapsed" >Eksportuję...</TextBlock>
         <ProgressBar x:Name="LoadingSpinner" 
               Width="116" Height="20"
@@ -180,7 +164,7 @@
          Click="ImportDatabaseBtn_Click" Margin="1018,415,195,345" />
         <TextBlock HorizontalAlignment="Left" Foreground="#210B61" Margin="278,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="162" Height="40" RenderTransformOrigin="0.57,2.365"><Run Language="pl-pl" Text="Importuj bazę"/></TextBlock>
         <Label x:Name="exitClick" Content="X" HorizontalAlignment="Left" Margin="1453,10,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="15" MouseLeftButtonDown="exitClick_MouseLeftButtonDown" RenderTransformOrigin="-0.416,0.619"/>
-        <TextBlock HorizontalAlignment="Left" Foreground="#210B61" Margin="278,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="175" Width="755" FontSize="18"><Run Language="pl-pl" Text="Baza eksportuje się z datą do archiwum kopii programu. Dane są szyfrowane przed niepowołanym dostępem."/><LineBreak/><Run Language="pl-pl"/><LineBreak/><Run Language="pl-pl" Text="Baza zostaje zaszyfrowana i wysłana do chmury - potrzebne dane logowania (nie działa jeszcze)"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Foreground="#210B61" Margin="278,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="175" Width="755" FontSize="18"><Run Text="Baza eksportuje się z datą do archiwum kopii programu. Dane są szyfrowane przed niepowołanym dostępem."/><LineBreak/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Foreground="#210B61" Margin="278,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="175" Width="755" FontSize="18"><Run Text="Baza "/><Run Language="pl-pl" Text="importuje się z archiwum programu - zapisana w formacie rokmiesiącdzień.dtb.enc"/><LineBreak/></TextBlock>
         <Rectangle x:Name="underline" Fill="#210B61" HorizontalAlignment="Left" Height="3" Margin="278,108,0,0" VerticalAlignment="Top" Width="236"/>
         <Rectangle x:Name="underline_Kopiuj" Fill="#210B61" HorizontalAlignment="Left" Height="3" Margin="278,348,0,0" VerticalAlignment="Top" Width="236"/>
